@@ -393,9 +393,9 @@
             this.globalDropNotify_CheckBox.AutoSize = true;
             this.globalDropNotify_CheckBox.Location = new System.Drawing.Point(381, 250);
             this.globalDropNotify_CheckBox.Name = "globalDropNotify_CheckBox";
-            this.globalDropNotify_CheckBox.Size = new System.Drawing.Size(150, 16);
+            this.globalDropNotify_CheckBox.Size = new System.Drawing.Size(108, 16);
             this.globalDropNotify_CheckBox.TabIndex = 124;
-            this.globalDropNotify_CheckBox.Text = "Notify Server on Drop";
+            this.globalDropNotify_CheckBox.Text = "掉落服务器通知";
             this.globalDropNotify_CheckBox.UseVisualStyleBackColor = true;
             this.globalDropNotify_CheckBox.CheckedChanged += new System.EventHandler(this.globalDropNotify_CheckBox_CheckedChanged);
             // 
@@ -1600,7 +1600,7 @@
             this.tabPage3.Controls.Add(this.Bind_donttradecheckbox);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(658, 442);
+            this.tabPage3.Size = new System.Drawing.Size(860, 462);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Binding";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1787,7 +1787,7 @@
             this.tabPage4.Controls.Add(this.BlinkcheckBox);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(658, 442);
+            this.tabPage4.Size = new System.Drawing.Size(860, 462);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Special Stats";
             this.tabPage4.UseVisualStyleBackColor = true;

@@ -59,6 +59,7 @@ namespace Launcher
             this.TotalProg_pb = new System.Windows.Forms.PictureBox();
             this.Launch_pb = new System.Windows.Forms.PictureBox();
             this.Main_browser = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.serverTreeView = new System.Windows.Forms.TreeView();
             this.Movement_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Config_pb)).BeginInit();
@@ -322,12 +323,23 @@ namespace Launcher
             this.Main_browser.CausesValidation = false;
             this.Main_browser.CreationProperties = null;
             this.Main_browser.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.Main_browser.Location = new System.Drawing.Point(7, 42);
+            this.Main_browser.Location = new System.Drawing.Point(226, 42);
             this.Main_browser.Name = "Main_browser";
-            this.Main_browser.Size = new System.Drawing.Size(785, 420);
+            this.Main_browser.Size = new System.Drawing.Size(566, 420);
             this.Main_browser.TabIndex = 32;
             this.Main_browser.Visible = false;
             this.Main_browser.ZoomFactor = 1D;
+            // 
+            // serverTreeView
+            // 
+            this.serverTreeView.BackColor = System.Drawing.SystemColors.ControlText;
+            this.serverTreeView.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.serverTreeView.ForeColor = System.Drawing.Color.Lime;
+            this.serverTreeView.Indent = 10;
+            this.serverTreeView.Location = new System.Drawing.Point(12, 46);
+            this.serverTreeView.Name = "serverTreeView";
+            this.serverTreeView.Size = new System.Drawing.Size(208, 416);
+            this.serverTreeView.TabIndex = 34;
             // 
             // AMain
             // 
@@ -337,6 +349,7 @@ namespace Launcher
             this.BackgroundImage = global::Client.Properties.Resources.pfffft;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 542);
+            this.Controls.Add(this.serverTreeView);
             this.Controls.Add(this.Main_browser);
             this.Controls.Add(this.SpeedLabel);
             this.Controls.Add(this.Credit_label);
@@ -399,6 +412,7 @@ namespace Launcher
         private System.Windows.Forms.PictureBox Config_pb;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Microsoft.Web.WebView2.WinForms.WebView2 Main_browser;
+        private TreeView serverTreeView;
     }
 }
 

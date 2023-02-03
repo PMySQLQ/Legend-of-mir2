@@ -3506,6 +3506,7 @@ namespace Server.MirObjects
                 case Spell.金刚不坏:
                     ImmortalSkin(magic, out cast);
                     break;
+
                 case Spell.爆裂火焰:
                 case Spell.冰咆哮:
                     FireBang(magic, target == null ? location : target.CurrentLocation);

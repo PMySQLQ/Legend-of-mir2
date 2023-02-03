@@ -1152,6 +1152,7 @@ public enum Spell : byte
     血龙剑法 = 16,
     金刚不坏 = 17,
 
+
     //Wizard
     火球术 = 31,
     抗拒火环 = 32,

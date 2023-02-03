@@ -11759,6 +11759,7 @@ namespace Client.MirScenes
                 case Spell.捕绳剑:
                 case Spell.迷魂术:
                 case Spell.烈火身:
+
                 case Spell.FireBounce:
                 case Spell.MeteorShower:
                     if (actor.NextMagicObject != null)
