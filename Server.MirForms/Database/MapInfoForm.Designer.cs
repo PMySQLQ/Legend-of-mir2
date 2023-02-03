@@ -393,7 +393,7 @@ namespace Server
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(691, 535);
             this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Attributes";
+            this.tabPage6.Text = "属性";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // NoPositionMoveCheckbox
@@ -668,7 +668,7 @@ namespace Server
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(691, 535);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Safe Zones";
+            this.tabPage3.Text = "安全区";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // RemoveSZButton
@@ -802,7 +802,7 @@ namespace Server
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(691, 535);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Respawns";
+            this.tabPage2.Text = "刷怪";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // RPasteButton
@@ -1089,7 +1089,7 @@ namespace Server
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(691, 535);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Movements";
+            this.tabPage4.Text = "地图连接";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // RemoveMButton
@@ -1329,7 +1329,7 @@ namespace Server
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(691, 535);
             this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "MineZones";
+            this.tabPage7.Text = "矿区";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // MZDeletebutton

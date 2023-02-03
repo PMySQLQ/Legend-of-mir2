@@ -136,7 +136,7 @@ namespace Server.Database
             this.itemInfoGridView.Location = new System.Drawing.Point(0, 0);
             this.itemInfoGridView.Name = "itemInfoGridView";
             this.itemInfoGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.itemInfoGridView.Size = new System.Drawing.Size(956, 433);
+            this.itemInfoGridView.Size = new System.Drawing.Size(956, 400);
             this.itemInfoGridView.TabIndex = 0;
             this.itemInfoGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.itemInfoGridView_CellValidating);
             this.itemInfoGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.itemInfoGridView_DataError);
@@ -149,7 +149,7 @@ namespace Server.Database
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(956, 47);
+            this.panel1.Size = new System.Drawing.Size(956, 43);
             this.panel1.TabIndex = 1;
             // 
             // panel3
@@ -165,14 +165,14 @@ namespace Server.Database
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(956, 47);
+            this.panel3.Size = new System.Drawing.Size(956, 43);
             this.panel3.TabIndex = 5;
             // 
             // Gameshop_button
             // 
-            this.Gameshop_button.Location = new System.Drawing.Point(774, 22);
+            this.Gameshop_button.Location = new System.Drawing.Point(774, 20);
             this.Gameshop_button.Name = "Gameshop_button";
-            this.Gameshop_button.Size = new System.Drawing.Size(83, 23);
+            this.Gameshop_button.Size = new System.Drawing.Size(83, 21);
             this.Gameshop_button.TabIndex = 30;
             this.Gameshop_button.Text = "+ Gameshop";
             this.Gameshop_button.UseVisualStyleBackColor = true;
@@ -180,9 +180,9 @@ namespace Server.Database
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(693, 22);
+            this.btnExport.Location = new System.Drawing.Point(693, 20);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.Size = new System.Drawing.Size(75, 21);
             this.btnExport.TabIndex = 6;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -190,9 +190,9 @@ namespace Server.Database
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(611, 22);
+            this.btnImport.Location = new System.Drawing.Point(611, 20);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.Size = new System.Drawing.Size(75, 21);
             this.btnImport.TabIndex = 5;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -201,9 +201,9 @@ namespace Server.Database
             // lblFilterType
             // 
             this.lblFilterType.AutoSize = true;
-            this.lblFilterType.Location = new System.Drawing.Point(334, 9);
+            this.lblFilterType.Location = new System.Drawing.Point(334, 8);
             this.lblFilterType.Name = "lblFilterType";
-            this.lblFilterType.Size = new System.Drawing.Size(37, 13);
+            this.lblFilterType.Size = new System.Drawing.Size(41, 12);
             this.lblFilterType.TabIndex = 3;
             this.lblFilterType.Text = "Type :";
             // 
@@ -216,7 +216,7 @@ namespace Server.Database
             this.groupView.Controls.Add(this.rbtnViewStats);
             this.groupView.Location = new System.Drawing.Point(3, 3);
             this.groupView.Name = "groupView";
-            this.groupView.Size = new System.Drawing.Size(325, 41);
+            this.groupView.Size = new System.Drawing.Size(325, 38);
             this.groupView.TabIndex = 4;
             this.groupView.TabStop = false;
             this.groupView.Text = "View Mode";
@@ -224,9 +224,9 @@ namespace Server.Database
             // rBtnViewSpecial
             // 
             this.rBtnViewSpecial.AutoSize = true;
-            this.rBtnViewSpecial.Location = new System.Drawing.Point(248, 20);
+            this.rBtnViewSpecial.Location = new System.Drawing.Point(248, 18);
             this.rBtnViewSpecial.Name = "rBtnViewSpecial";
-            this.rBtnViewSpecial.Size = new System.Drawing.Size(60, 17);
+            this.rBtnViewSpecial.Size = new System.Drawing.Size(65, 16);
             this.rBtnViewSpecial.TabIndex = 4;
             this.rBtnViewSpecial.TabStop = true;
             this.rBtnViewSpecial.Text = "Special";
@@ -237,9 +237,9 @@ namespace Server.Database
             // 
             this.rbtnViewAll.AutoSize = true;
             this.rbtnViewAll.Checked = true;
-            this.rbtnViewAll.Location = new System.Drawing.Point(27, 19);
+            this.rbtnViewAll.Location = new System.Drawing.Point(27, 18);
             this.rbtnViewAll.Name = "rbtnViewAll";
-            this.rbtnViewAll.Size = new System.Drawing.Size(36, 17);
+            this.rbtnViewAll.Size = new System.Drawing.Size(41, 16);
             this.rbtnViewAll.TabIndex = 0;
             this.rbtnViewAll.TabStop = true;
             this.rbtnViewAll.Text = "All";
@@ -249,9 +249,9 @@ namespace Server.Database
             // rbtnViewBinding
             // 
             this.rbtnViewBinding.AutoSize = true;
-            this.rbtnViewBinding.Location = new System.Drawing.Point(181, 19);
+            this.rbtnViewBinding.Location = new System.Drawing.Point(181, 18);
             this.rbtnViewBinding.Name = "rbtnViewBinding";
-            this.rbtnViewBinding.Size = new System.Drawing.Size(60, 17);
+            this.rbtnViewBinding.Size = new System.Drawing.Size(65, 16);
             this.rbtnViewBinding.TabIndex = 3;
             this.rbtnViewBinding.TabStop = true;
             this.rbtnViewBinding.Text = "Binding";
@@ -261,9 +261,9 @@ namespace Server.Database
             // rbtnViewBasic
             // 
             this.rbtnViewBasic.AutoSize = true;
-            this.rbtnViewBasic.Location = new System.Drawing.Point(69, 19);
+            this.rbtnViewBasic.Location = new System.Drawing.Point(69, 18);
             this.rbtnViewBasic.Name = "rbtnViewBasic";
-            this.rbtnViewBasic.Size = new System.Drawing.Size(51, 17);
+            this.rbtnViewBasic.Size = new System.Drawing.Size(53, 16);
             this.rbtnViewBasic.TabIndex = 1;
             this.rbtnViewBasic.TabStop = true;
             this.rbtnViewBasic.Text = "Basic";
@@ -273,9 +273,9 @@ namespace Server.Database
             // rbtnViewStats
             // 
             this.rbtnViewStats.AutoSize = true;
-            this.rbtnViewStats.Location = new System.Drawing.Point(126, 19);
+            this.rbtnViewStats.Location = new System.Drawing.Point(126, 18);
             this.rbtnViewStats.Name = "rbtnViewStats";
-            this.rbtnViewStats.Size = new System.Drawing.Size(49, 17);
+            this.rbtnViewStats.Size = new System.Drawing.Size(53, 16);
             this.rbtnViewStats.TabIndex = 2;
             this.rbtnViewStats.TabStop = true;
             this.rbtnViewStats.Text = "Stats";
@@ -286,26 +286,26 @@ namespace Server.Database
             // 
             this.drpFilterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.drpFilterType.FormattingEnabled = true;
-            this.drpFilterType.Location = new System.Drawing.Point(337, 24);
+            this.drpFilterType.Location = new System.Drawing.Point(337, 22);
             this.drpFilterType.Name = "drpFilterType";
-            this.drpFilterType.Size = new System.Drawing.Size(121, 21);
+            this.drpFilterType.Size = new System.Drawing.Size(121, 20);
             this.drpFilterType.TabIndex = 2;
             this.drpFilterType.SelectedIndexChanged += new System.EventHandler(this.drpFilterType_SelectedIndexChanged);
             // 
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(461, 9);
+            this.lblSearch.Location = new System.Drawing.Point(463, 8);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(44, 13);
+            this.lblSearch.Size = new System.Drawing.Size(35, 12);
             this.lblSearch.TabIndex = 1;
-            this.lblSearch.Text = "Search:";
+            this.lblSearch.Text = "搜索:";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(464, 25);
+            this.txtSearch.Location = new System.Drawing.Point(464, 23);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(141, 20);
+            this.txtSearch.Size = new System.Drawing.Size(141, 21);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
@@ -313,9 +313,9 @@ namespace Server.Database
             // 
             this.panel2.Controls.Add(this.itemInfoGridView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 47);
+            this.panel2.Location = new System.Drawing.Point(0, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(956, 433);
+            this.panel2.Size = new System.Drawing.Size(956, 400);
             this.panel2.TabIndex = 2;
             // 
             // Modified
@@ -326,68 +326,68 @@ namespace Server.Database
             this.Modified.HeaderText = "Modified";
             this.Modified.Name = "Modified";
             this.Modified.ReadOnly = true;
-            this.Modified.Width = 53;
+            this.Modified.Width = 59;
             // 
             // ItemIndex
             // 
             this.ItemIndex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ItemIndex.DataPropertyName = "ItemIndex";
             this.ItemIndex.Frozen = true;
-            this.ItemIndex.HeaderText = "Index";
+            this.ItemIndex.HeaderText = "物品索引";
             this.ItemIndex.Name = "ItemIndex";
             this.ItemIndex.ReadOnly = true;
-            this.ItemIndex.Width = 58;
+            this.ItemIndex.Width = 78;
             // 
             // ItemName
             // 
             this.ItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ItemName.DataPropertyName = "ItemName";
             this.ItemName.Frozen = true;
-            this.ItemName.HeaderText = "Name";
+            this.ItemName.HeaderText = "物品名称";
             this.ItemName.Name = "ItemName";
-            this.ItemName.Width = 60;
+            this.ItemName.Width = 78;
             // 
             // ItemType
             // 
             this.ItemType.DataPropertyName = "ItemType";
-            this.ItemType.HeaderText = "Type";
+            this.ItemType.HeaderText = "物品类型";
             this.ItemType.Name = "ItemType";
             this.ItemType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ItemGrade
             // 
             this.ItemGrade.DataPropertyName = "ItemGrade";
-            this.ItemGrade.HeaderText = "Grade";
+            this.ItemGrade.HeaderText = "物品级别";
             this.ItemGrade.Name = "ItemGrade";
             // 
             // ItemRequiredType
             // 
             this.ItemRequiredType.DataPropertyName = "ItemRequiredType";
-            this.ItemRequiredType.HeaderText = "Required Type";
+            this.ItemRequiredType.HeaderText = "需求类型";
             this.ItemRequiredType.Name = "ItemRequiredType";
             // 
             // ItemRequiredGender
             // 
             this.ItemRequiredGender.DataPropertyName = "ItemRequiredGender";
-            this.ItemRequiredGender.HeaderText = "Required Gender";
+            this.ItemRequiredGender.HeaderText = "需求性别";
             this.ItemRequiredGender.Name = "ItemRequiredGender";
             // 
             // ItemRequiredClass
             // 
             this.ItemRequiredClass.DataPropertyName = "ItemRequiredClass";
-            this.ItemRequiredClass.HeaderText = "Required Class";
+            this.ItemRequiredClass.HeaderText = "需求职业";
             this.ItemRequiredClass.Name = "ItemRequiredClass";
             // 
             // ItemSet
             // 
             this.ItemSet.DataPropertyName = "ItemSet";
-            this.ItemSet.HeaderText = "Set";
+            this.ItemSet.HeaderText = "套装";
             this.ItemSet.Name = "ItemSet";
             // 
             // ItemRandomStatsId
             // 
             this.ItemRandomStatsId.DataPropertyName = "ItemRandomStatsId";
-            this.ItemRandomStatsId.HeaderText = "Random Stats";
+            this.ItemRandomStatsId.HeaderText = "随机属性";
             this.ItemRandomStatsId.Name = "ItemRandomStatsId";
             // 
             // ItemRequiredAmount
@@ -399,7 +399,7 @@ namespace Server.Database
             // ItemImage
             // 
             this.ItemImage.DataPropertyName = "ItemImage";
-            this.ItemImage.HeaderText = "Image";
+            this.ItemImage.HeaderText = "图片";
             this.ItemImage.Name = "ItemImage";
             // 
             // ItemShape
@@ -417,7 +417,7 @@ namespace Server.Database
             // ItemStackSize
             // 
             this.ItemStackSize.DataPropertyName = "ItemStackSize";
-            this.ItemStackSize.HeaderText = "Stack Size";
+            this.ItemStackSize.HeaderText = "堆叠大小";
             this.ItemStackSize.Name = "ItemStackSize";
             // 
             // ItemSlots
@@ -429,31 +429,31 @@ namespace Server.Database
             // ItemWeight
             // 
             this.ItemWeight.DataPropertyName = "ItemWeight";
-            this.ItemWeight.HeaderText = "Weight";
+            this.ItemWeight.HeaderText = "重量";
             this.ItemWeight.Name = "ItemWeight";
             // 
             // ItemLightRange
             // 
             this.ItemLightRange.DataPropertyName = "ItemLightRange";
-            this.ItemLightRange.HeaderText = "Light Range";
+            this.ItemLightRange.HeaderText = "光照范围";
             this.ItemLightRange.Name = "ItemLightRange";
             // 
             // ItemLightIntensity
             // 
             this.ItemLightIntensity.DataPropertyName = "ItemLightIntensity";
-            this.ItemLightIntensity.HeaderText = "Intensity";
+            this.ItemLightIntensity.HeaderText = "强度";
             this.ItemLightIntensity.Name = "ItemLightIntensity";
             // 
             // ItemDurability
             // 
             this.ItemDurability.DataPropertyName = "ItemDurability";
-            this.ItemDurability.HeaderText = "Durability";
+            this.ItemDurability.HeaderText = "持久";
             this.ItemDurability.Name = "ItemDurability";
             // 
             // ItemPrice
             // 
             this.ItemPrice.DataPropertyName = "ItemPrice";
-            this.ItemPrice.HeaderText = "Price";
+            this.ItemPrice.HeaderText = "价格";
             this.ItemPrice.Name = "ItemPrice";
             // 
             // ItemToolTip
@@ -461,7 +461,7 @@ namespace Server.Database
             this.ItemToolTip.DataPropertyName = "ItemToolTip";
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ItemToolTip.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ItemToolTip.HeaderText = "ToolTip";
+            this.ItemToolTip.HeaderText = "物品描述";
             this.ItemToolTip.Name = "ItemToolTip";
             this.ItemToolTip.Width = 68;
             // 
@@ -522,9 +522,9 @@ namespace Server.Database
             // 
             // ItemInfoFormNew
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 480);
+            this.ClientSize = new System.Drawing.Size(956, 443);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "ItemInfoFormNew";

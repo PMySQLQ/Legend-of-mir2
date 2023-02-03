@@ -1200,7 +1200,7 @@
             this.labelRange.Name = "labelRange";
             this.labelRange.Size = new System.Drawing.Size(39, 13);
             this.labelRange.TabIndex = 15;
-            this.labelRange.Text = "Range";
+            this.labelRange.Text = "范围";
             // 
             // labelGold
             // 
@@ -1209,7 +1209,7 @@
             this.labelGold.Name = "labelGold";
             this.labelGold.Size = new System.Drawing.Size(32, 13);
             this.labelGold.TabIndex = 16;
-            this.labelGold.Text = "Gold:";
+            this.labelGold.Text = "金币:";
             // 
             // textBoxGoldOdds
             // 
@@ -1226,7 +1226,7 @@
             this.labelGoldOdds.Name = "labelGoldOdds";
             this.labelGoldOdds.Size = new System.Drawing.Size(52, 13);
             this.labelGoldOdds.TabIndex = 18;
-            this.labelGoldOdds.Text = "Odds: 1 /";
+            this.labelGoldOdds.Text = "爆率: 1 /";
             // 
             // groupBoxGold
             // 
@@ -1240,7 +1240,7 @@
             this.groupBoxGold.Size = new System.Drawing.Size(144, 121);
             this.groupBoxGold.TabIndex = 20;
             this.groupBoxGold.TabStop = false;
-            this.groupBoxGold.Text = "Gold Settings";
+            this.groupBoxGold.Text = "金币设置";
             // 
             // buttonUpdateGold
             // 
@@ -1250,7 +1250,7 @@
             this.buttonUpdateGold.Name = "buttonUpdateGold";
             this.buttonUpdateGold.Size = new System.Drawing.Size(124, 28);
             this.buttonUpdateGold.TabIndex = 21;
-            this.buttonUpdateGold.Text = "Update";
+            this.buttonUpdateGold.Text = "更新";
             this.buttonUpdateGold.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonUpdateGold.UseVisualStyleBackColor = true;
             this.buttonUpdateGold.Click += new System.EventHandler(this.buttonUpdateGold_Click);
@@ -1278,7 +1278,7 @@
             this.groupBoxItem.Size = new System.Drawing.Size(144, 121);
             this.groupBoxItem.TabIndex = 21;
             this.groupBoxItem.TabStop = false;
-            this.groupBoxItem.Text = "Item Settings";
+            this.groupBoxItem.Text = "物品设置";
             // 
             // QuestOnlyCheckBox
             // 
@@ -1307,7 +1307,7 @@
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(124, 42);
             this.buttonEdit.TabIndex = 9;
-            this.buttonEdit.Text = "Edit Drop File";
+            this.buttonEdit.Text = "编辑爆率";
             this.buttonEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
@@ -1318,7 +1318,7 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(124, 42);
             this.buttonAdd.TabIndex = 8;
-            this.buttonAdd.Text = "Add Item";
+            this.buttonAdd.Text = "添加物品";
             this.buttonAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
