@@ -8735,43 +8735,43 @@ namespace Client.MirScenes
                 switch (MapObject.User.Class)
                 {
                     case MirClass.战士:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.Warrior))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.战士))
                             colour = Color.Red;
                         break;
                     case MirClass.法师:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.Wizard))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.法师))
                             colour = Color.Red;
                         break;
                     case MirClass.道士:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.Taoist))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.道士))
                             colour = Color.Red;
                         break;
                     case MirClass.刺客:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.Assassin))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.刺客))
                             colour = Color.Red;
                         break;
                     case MirClass.弓手:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.Archer))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.弓手))
                             colour = Color.Red;
                         break;
                     case MirClass.碧血战士://stupple
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.HighWarrior))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.碧血战士))
                             colour = Color.Red;
                         break;
                     case MirClass.虹玄法师:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.HighWizard))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.虹玄法师))
                             colour = Color.Red;
                         break;
                     case MirClass.翊仙道士:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.HighTaoist))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.翊仙道士))
                             colour = Color.Red;
                         break;
                     case MirClass.飞燕刺客:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.HighAssassin))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.飞燕刺客))
                             colour = Color.Red;
                         break;
                     case MirClass.暗鬼弓手:
-                        if (!realItem.RequiredClass.HasFlag(RequiredClass.HighArcher))
+                        if (!realItem.RequiredClass.HasFlag(RequiredClass.暗鬼弓手))
                             colour = Color.Red;
                         break;
 

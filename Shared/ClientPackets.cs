@@ -1702,7 +1702,6 @@ namespace ClientPackets
         public int To;
         public MirGridType GridTo;
         public ulong ToUniqueID;
-
         protected override void ReadPacket(BinaryReader reader)
         {
             Grid = (MirGridType)reader.ReadByte();
@@ -2580,4 +2579,6 @@ namespace ClientPackets
             writer.Write(SelectIndex);
         }
     }
+
+  
 }

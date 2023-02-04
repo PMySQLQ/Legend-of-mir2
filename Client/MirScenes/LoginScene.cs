@@ -162,7 +162,7 @@ namespace Client.MirScenes
 
         private  void SendVersion()
         {
-            _connectBox.Label.Text = "Sending Client Version.";
+            _connectBox.Label.Text = "检测版本信息.";
 
             C.ClientVersion p = new C.ClientVersion();
             try

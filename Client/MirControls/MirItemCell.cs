@@ -2220,70 +2220,70 @@ namespace Client.MirControls
             switch (actor.Class)
             {
                 case MirClass.战士:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.Warrior))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.战士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Warriors cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.法师:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.Wizard))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.法师))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Wizards cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.道士:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.Taoist))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.道士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Taoists cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.刺客:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.Assassin))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.刺客))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Assassins cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.弓手:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.Archer))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.弓手))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Archers cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.碧血战士:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.HighWarrior))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.碧血战士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighWarriors cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.虹玄法师:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.HighWizard))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.虹玄法师))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighWizards cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.翊仙道士:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.HighTaoist))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.翊仙道士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighTaoists cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.飞燕刺客:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.HighAssassin))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.飞燕刺客))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighAssassins cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.暗鬼弓手:
-                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.HighArcher))
+                    if (!Item.Info.RequiredClass.HasFlag(RequiredClass.暗鬼弓手))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighArcher cannot use this item.", ChatType.System);
                         return false;
@@ -2437,70 +2437,70 @@ namespace Client.MirControls
             switch (actor.Class)
             {
                 case MirClass.战士:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.Warrior))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.战士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Warriors cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.法师:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.Wizard))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.法师))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Wizards cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.道士:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.Taoist))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.道士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Taoists cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.刺客:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.Assassin))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.刺客))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Assassins cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.弓手:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.Archer))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.弓手))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("Archers cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.碧血战士:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.HighWarrior))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.碧血战士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighWarriors cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.虹玄法师:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.HighWizard))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.虹玄法师))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighWizards cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.翊仙道士:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.HighTaoist))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.翊仙道士))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighTaoists cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.飞燕刺客:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.HighAssassin))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.飞燕刺客))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighAssassins cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.暗鬼弓手:
-                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.HighArcher))
+                    if (!i.Info.RequiredClass.HasFlag(RequiredClass.暗鬼弓手))
                     {
                         GameScene.Scene.ChatDialog.ReceiveChat("HighArchers cannot use this item.", ChatType.System);
                         return false;

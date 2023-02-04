@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 
 public enum MouseCursor : byte
 {
@@ -1049,47 +1050,44 @@ public enum SpecialItemMode : short
 [Flags]
 public enum RequiredClass : ushort
 {
-    //Warrior = 1,
-    //Wizard = 2,
-    //Taoist = 4,
-    //Assassin = 8,
-    //Archer = 16,
-    //HighWarrior = 30,
-    //HighWizard = 60,
-    //HighTaoist = 120,
-    //HighAssassin = 240,
-    //HighArcher = 482,
+    战士 = 1 << 0,
+    法师 = 1 << 1,
+    道士 = 1 << 2,
+    刺客 = 1 << 3,
+    弓手 = 1 << 4,
 
-    //High = HighWarrior | HighWizard | HighTaoist | HighAssassin | HighArcher,
-    //WarWizTao = Warrior | Wizard | Taoist,
-    //AllWarWizTao = HighWarrior | HighWizard | HighTaoist | WarWizTao,
-    //Low = WarWizTao | Assassin | Archer,
-    //None = Low | High
+    战法道 = 战士 | 法师 | 道士,
 
-    Warrior = 0,
-    Wizard = 1,
-    Taoist = 2,
-    Assassin = 3,
-    Archer = 4,
-    HighWarrior = 5,
-    HighWizard = 6,
-    HighTaoist = 7,
-    HighAssassin = 8,
-    HighArcher = 9,
+    非仙全职业 = 战士 | 法师 | 道士 | 刺客 | 弓手,
 
-    WarWizTao = 10,
+    普通去弓全职业 = 战士 | 法师 | 道士 | 刺客,
 
-    WarHighWar = 11,
-    WizHighWiz = 12,
-    TaoHighTao = 13,
-    AssHighAss = 14,
-    ArcHighArc = 15,
+    碧血战士 = 1 << 5,
+    虹玄法师 = 1 << 6,
+    翊仙道士 = 1 << 7,
+    飞燕刺客 = 1 << 8,
+    暗鬼弓手 = 1 << 9,
 
-    WarWizTaoAssArc = 16,
-    All = 17,
-    None = 18,
-    High = 19,
-    WarwiztaoHigh = 20
+    飞升战法道 = 碧血战士 | 虹玄法师 | 翊仙道士,
+
+    飞升全职业 = 碧血战士 | 虹玄法师 | 翊仙道士 | 飞燕刺客 | 暗鬼弓手,
+
+    飞升去弓全职业 = 碧血战士 | 虹玄法师 | 翊仙道士 | 飞燕刺客,
+
+
+    战仙 = 战士 | 碧血战士,
+    法仙 = 法师 | 虹玄法师,
+    道仙 = 道士 | 翊仙道士,
+    刺仙 = 刺客 | 飞燕刺客,
+    弓仙 = 弓手 | 暗鬼弓手,
+
+    所有战法道 = 碧血战士 | 虹玄法师 | 翊仙道士 | 战士 | 法师 | 道士,
+
+
+    所有去弓 = 普通去弓全职业 | 飞升去弓全职业,
+
+    None = 非仙全职业 | 飞升全职业
+
 }
 
 [Flags]

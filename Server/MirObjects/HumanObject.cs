@@ -1074,56 +1074,56 @@ namespace Server.MirObjects
             switch (Class)
             {
                 case MirClass.战士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Warrior))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.战士))
                     {
                         ReceiveChat("Warriors cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.法师:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Wizard))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.法师))
                     {
                         ReceiveChat("Wizards cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.道士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Taoist))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.道士))
                     {
                         ReceiveChat("Taoists cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.刺客:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Assassin))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.刺客))
                     {
                         ReceiveChat("Assassins cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.碧血战士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighWarrior))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.碧血战士))
                     {
                         ReceiveChat("HighWarriors cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.虹玄法师:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighWizard))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.虹玄法师))
                     {
                         ReceiveChat("HighWizards cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.翊仙道士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighTaoist))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.翊仙道士))
                     {
                         ReceiveChat("HighTaoists cannot use this item.", ChatType.System);
                         return false;
                     }
                     break;
                 case MirClass.飞燕刺客:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighAssassin))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.飞燕刺客))
                     {
                         ReceiveChat("HighAssassins cannot use this item.", ChatType.System);
                         return false;
@@ -1686,19 +1686,19 @@ namespace Server.MirObjects
             switch (Class)
             {
                 case MirClass.战士:
-                    if (!info.RequiredClass.HasFlag(RequiredClass.Warrior)) return false;
+                    if (!info.RequiredClass.HasFlag(RequiredClass.战士)) return false;
                     break;
                 case MirClass.法师:
-                    if (!info.RequiredClass.HasFlag(RequiredClass.Wizard)) return false;
+                    if (!info.RequiredClass.HasFlag(RequiredClass.法师)) return false;
                     break;
                 case MirClass.道士:
-                    if (!info.RequiredClass.HasFlag(RequiredClass.Taoist)) return false;
+                    if (!info.RequiredClass.HasFlag(RequiredClass.道士)) return false;
                     break;
                 case MirClass.刺客:
-                    if (!info.RequiredClass.HasFlag(RequiredClass.Assassin)) return false;
+                    if (!info.RequiredClass.HasFlag(RequiredClass.刺客)) return false;
                     break;
                 case MirClass.弓手:
-                    if (!info.RequiredClass.HasFlag(RequiredClass.Archer)) return false;
+                    if (!info.RequiredClass.HasFlag(RequiredClass.弓手)) return false;
                     break;
                 default:
                     return false;
@@ -7463,35 +7463,35 @@ namespace Server.MirObjects
             switch (Class)
             {
                 case MirClass.战士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Warrior))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.战士))
                         return false;
                     break;
                 case MirClass.法师:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Wizard))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.法师))
                         return false;
                     break;
                 case MirClass.道士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Taoist))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.道士))
                         return false;
                     break;
                 case MirClass.刺客:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.Assassin))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.刺客))
                         return false;
                     break;
                 case MirClass.碧血战士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighWarrior))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.碧血战士))
                         return false;
                     break;
                 case MirClass.虹玄法师:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighWizard))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.虹玄法师))
                         return false;
                     break;
                 case MirClass.翊仙道士:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighTaoist))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.翊仙道士))
                         return false;
                     break;
                 case MirClass.飞燕刺客:
-                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.HighAssassin))
+                    if (!item.Info.RequiredClass.HasFlag(RequiredClass.飞燕刺客))
                         return false;
                     break;
             }

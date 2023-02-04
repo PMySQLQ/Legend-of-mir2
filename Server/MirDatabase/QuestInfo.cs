@@ -364,43 +364,43 @@ namespace Server.MirDatabase
             switch (player.Class)
             {
                 case MirClass.战士:
-                    if (!RequiredClass.HasFlag(RequiredClass.Warrior))
+                    if (!RequiredClass.HasFlag(RequiredClass.战士))
                         return false;
                     break;
                 case MirClass.法师:
-                    if (!RequiredClass.HasFlag(RequiredClass.Wizard))
+                    if (!RequiredClass.HasFlag(RequiredClass.法师))
                         return false;
                     break;
                 case MirClass.道士:
-                    if (!RequiredClass.HasFlag(RequiredClass.Taoist))
+                    if (!RequiredClass.HasFlag(RequiredClass.道士))
                         return false;
                     break;
                 case MirClass.刺客:
-                    if (!RequiredClass.HasFlag(RequiredClass.Assassin))
+                    if (!RequiredClass.HasFlag(RequiredClass.刺客))
                         return false;
                     break;
                 case MirClass.弓手:
-                    if (!RequiredClass.HasFlag(RequiredClass.Archer))
+                    if (!RequiredClass.HasFlag(RequiredClass.弓手))
                         return false;
                     break;
                 case MirClass.碧血战士:
-                    if (!RequiredClass.HasFlag(RequiredClass.HighWarrior))
+                    if (!RequiredClass.HasFlag(RequiredClass.碧血战士))
                         return false;
                     break;
                 case MirClass.虹玄法师:
-                    if (!RequiredClass.HasFlag(RequiredClass.HighWizard))
+                    if (!RequiredClass.HasFlag(RequiredClass.虹玄法师))
                         return false;
                     break;
                 case MirClass.翊仙道士:
-                    if (!RequiredClass.HasFlag(RequiredClass.HighTaoist))
+                    if (!RequiredClass.HasFlag(RequiredClass.翊仙道士))
                         return false;
                     break;
                 case MirClass.飞燕刺客:
-                    if (!RequiredClass.HasFlag(RequiredClass.HighAssassin))
+                    if (!RequiredClass.HasFlag(RequiredClass.飞燕刺客))
                         return false;
                     break;
                 case MirClass.暗鬼弓手:
-                    if (!RequiredClass.HasFlag(RequiredClass.HighArcher))
+                    if (!RequiredClass.HasFlag(RequiredClass.暗鬼弓手))
                         return false;
                     break;
             }
