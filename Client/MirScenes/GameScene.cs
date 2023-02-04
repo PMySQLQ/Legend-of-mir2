@@ -6979,19 +6979,19 @@ namespace Client.MirScenes
                 switch (HoverItem.Info.Type)
                 {
                     case ItemType.护身符:
-                        text += string.Format(" Usage {0}/{1}", HoverItem.CurrentDura, HoverItem.MaxDura);
+                        text += string.Format(" 耐久:{0}/{1}", HoverItem.CurrentDura, HoverItem.MaxDura);
                         break;
                     case ItemType.矿物:
-                        text += string.Format(" Purity {0}", Math.Floor(HoverItem.CurrentDura / 1000M));
+                        text += string.Format(" 纯度:{0}", Math.Floor(HoverItem.CurrentDura / 1000M));
                         break;
                     case ItemType.肉:
-                        text += string.Format(" Quality {0}", Math.Floor(HoverItem.CurrentDura / 1000M));
+                        text += string.Format(" 品质:{0}", Math.Floor(HoverItem.CurrentDura / 1000M));
                         break;
                     case ItemType.坐骑:
-                        text += string.Format(" Loyalty {0} / {1}", HoverItem.CurrentDura, HoverItem.MaxDura);
+                        text += string.Format(" 忠诚:{0} / {1}", HoverItem.CurrentDura, HoverItem.MaxDura);
                         break;
                     case ItemType.食物:
-                        text += string.Format(" Nutrition {0}", HoverItem.CurrentDura);
+                        text += string.Format(" 营养:{0}", HoverItem.CurrentDura);
                         break;
                     case ItemType.宝玉:
                     case ItemType.药剂:
@@ -7002,7 +7002,7 @@ namespace Client.MirScenes
                         if (HoverItem.Info.Shape == 26 || HoverItem.Info.Shape == 28)//WonderDrug, Knapsack
                         {
                             string strTime = Functions.PrintTimeSpanFromSeconds((HoverItem.CurrentDura * 3600), false);
-                            text += string.Format(" Duration {0}", strTime);
+                            text += string.Format(" 持续时间:{0}", strTime);
                         }
                         break;
                     default:
@@ -7215,7 +7215,7 @@ namespace Client.MirScenes
                 switch (realItem.Shape)
                 {
                     default:
-                        text = string.Format("Adds +{0} Durability", minValue / 1000);
+                        text = string.Format("增加{0}持久", minValue / 1000);
                         break;
                     case 8:
                         text = string.Format("Seals for {0}", Functions.PrintTimeSpanFromSeconds(minValue * 60));
@@ -7250,7 +7250,7 @@ namespace Client.MirScenes
                 if (HoverItem.Info.Type != ItemType.宝玉)
                     text = string.Format(addValue > 0 ? GameLanguage.DC : GameLanguage.DC2, minValue, maxValue + addValue, addValue);
                 else
-                    text = string.Format("Adds +{0} DC", minValue + maxValue + addValue);
+                    text = string.Format("增加{0}攻击", minValue + maxValue + addValue);
                 MirLabel DCLabel = new MirLabel
                 {
                     AutoSize = true,
@@ -7279,7 +7279,7 @@ namespace Client.MirScenes
                 if (HoverItem.Info.Type != ItemType.宝玉)
                     text = string.Format(addValue > 0 ? GameLanguage.MC : GameLanguage.MC2, minValue, maxValue + addValue, addValue);
                 else
-                    text = string.Format("Adds +{0} MC", minValue + maxValue + addValue);
+                    text = string.Format("增加{0}魔法", minValue + maxValue + addValue);
                 MirLabel MCLabel = new MirLabel
                 {
                     AutoSize = true,
@@ -7308,7 +7308,7 @@ namespace Client.MirScenes
                 if (HoverItem.Info.Type != ItemType.宝玉)
                     text = string.Format(addValue > 0 ? GameLanguage.SC : GameLanguage.SC2, minValue, maxValue + addValue, addValue);
                 else
-                    text = string.Format("Adds +{0} SC", minValue + maxValue + addValue);
+                    text = string.Format("增加{0}道术", minValue + maxValue + addValue);
                 MirLabel SCLabel = new MirLabel
                 {
                     AutoSize = true,
@@ -7338,11 +7338,11 @@ namespace Client.MirScenes
 
                 if(realItem.Type == ItemType.宠物 && realItem.Shape == 28)
                 {
-                    text = string.Format("BagWeight + {0}% ", minValue + addValue);
+                    text = string.Format("负重 + {0}% ", minValue + addValue);
                 }
                 else if (realItem.Type == ItemType.药剂 && realItem.Shape == 4)
                 {
-                    text = string.Format("Exp + {0}% ", minValue + addValue);
+                    text = string.Format("经验 + {0}% ", minValue + addValue);
                 }
                 else if (realItem.Type == ItemType.药剂 && realItem.Shape == 5)
                 {
@@ -7350,7 +7350,7 @@ namespace Client.MirScenes
                 }
                 else
                 {
-                    text = string.Format(minValue + addValue > 0 ? GameLanguage.Luck: "Curse + {0}", Math.Abs(minValue + addValue));
+                    text = string.Format(minValue + addValue > 0 ? GameLanguage.Luck: "诅咒 + {0}", Math.Abs(minValue + addValue));
                 }
 
                 MirLabel LUCKLabel = new MirLabel
@@ -7383,7 +7383,7 @@ namespace Client.MirScenes
                 if (HoverItem.Info.Type != ItemType.宝玉)
                     text = string.Format(addValue > 0 ? GameLanguage.Accuracy : GameLanguage.Accuracy2, minValue + addValue, addValue);
                 else
-                    text = string.Format("Adds +{0} Accuracy", minValue + maxValue + addValue);
+                    text = string.Format("增加{0}准确", minValue + maxValue + addValue);
                 MirLabel ACCLabel = new MirLabel
                 {
                     AutoSize = true,
@@ -7442,11 +7442,11 @@ namespace Client.MirScenes
                 {
                     string negative = "+";
                     if (addValue < 0) negative = "";
-                    text = string.Format(addValue != 0 ? "A.Speed: " + plus + "{0} ({2}{1})" : "A.Speed: " + plus + "{0}", minValue + addValue, addValue, negative);
+                    text = string.Format(addValue != 0 ? "攻速: " + plus + "{0} ({2}{1})" : "攻速   : " + plus + "{0}", minValue + addValue, addValue, negative);
                     //text = string.Format(addValue > 0 ? "A.Speed: + {0} (+{1})" : "A.Speed: + {0}", minValue + addValue, addValue);
                 }
                 else
-                    text = string.Format("Adds +{0} A.Speed", minValue + maxValue + addValue);
+                    text = string.Format("增加{0}攻速", minValue + maxValue + addValue);
                 MirLabel ASPEEDLabel = new MirLabel
                 {
                     AutoSize = true,
@@ -7474,9 +7474,9 @@ namespace Client.MirScenes
             {
                 count++;
                 if (HoverItem.Info.Type != ItemType.宝玉)
-                    text = string.Format(addValue > 0 ? "Freezing: + {0} (+{1})" : "Freezing: + {0}", minValue + addValue, addValue);
+                    text = string.Format(addValue > 0 ? "减速: + {0} (+{1})" : "减速: + {0}", minValue + addValue, addValue);
                 else
-                    text = string.Format("Adds +{0} Freezing", minValue + maxValue + addValue);
+                    text = string.Format("增加{0}减速", minValue + maxValue + addValue);
                 MirLabel FREEZINGLabel = new MirLabel
                 {
                     AutoSize = true,
@@ -7504,7 +7504,7 @@ namespace Client.MirScenes
             {
                 count++;
                 if (HoverItem.Info.Type != ItemType.宝玉)
-                    text = string.Format(addValue > 0 ? "Poison: + {0} (+{1})" : "Poison: + {0}", minValue + addValue, addValue);
+                    text = string.Format(addValue > 0 ? "毒素: + {0} (+{1})" : "毒素: + {0}", minValue + addValue, addValue);
                 else
                     text = string.Format("Adds +{0} Poison", minValue + maxValue + addValue);
                 MirLabel POISONLabel = new MirLabel
@@ -7541,12 +7541,12 @@ namespace Client.MirScenes
                     OutLine = true,
                     Parent = ItemLabel,
                     //Text = string.Format("Critical Chance + {0}", minValue + addValue)
-                    Text = string.Format(addValue > 0 ? "Critical Chance: + {0} (+{1})" : "Critical Chance: + {0}", minValue + addValue, addValue)
+                    Text = string.Format(addValue > 0 ? "致命一击: + {0} (+{1})" : "致命一击: + {0}", minValue + addValue, addValue)
                 };
 
                 if(fishingItem)
                 {
-                    CRITICALRATELabel.Text = string.Format(addValue > 0 ? "Flexibility: + {0} (+{1})" : "Flexibility: + {0}", minValue + addValue, addValue);
+                    CRITICALRATELabel.Text = string.Format(addValue > 0 ? "灵活: + {0} (+{1})" : "灵活: + {0}", minValue + addValue, addValue);
                 }
 
                 ItemLabel.Size = new Size(Math.Max(ItemLabel.Size.Width, CRITICALRATELabel.DisplayRectangle.Right + 4),
@@ -7572,7 +7572,7 @@ namespace Client.MirScenes
                     OutLine = true,
                     Parent = ItemLabel,
                     //Text = string.Format("Critical Damage + {0}", minValue + addValue)
-                    Text = string.Format(addValue > 0 ? "Critical Damage: + {0} (+{1})" : "Critical Damage: + {0}", minValue + addValue, addValue)
+                    Text = string.Format(addValue > 0 ? "致命伤害: + {0} (+{1})" : "致命伤害: + {0}", minValue + addValue, addValue)
                 };
 
                 ItemLabel.Size = new Size(Math.Max(ItemLabel.Size.Width, CRITICALDAMAGELabel.DisplayRectangle.Right + 4),
@@ -7597,7 +7597,7 @@ namespace Client.MirScenes
                     Location = new Point(4, ItemLabel.DisplayRectangle.Bottom),
                     OutLine = true,
                     Parent = ItemLabel,
-                    Text = string.Format("Reflect chance: {0}", minValue)
+                    Text = string.Format("反击率: {0}", minValue)
                 };
 
                 ItemLabel.Size = new Size(Math.Max(ItemLabel.Size.Width, ReflectLabel.DisplayRectangle.Right + 4),
