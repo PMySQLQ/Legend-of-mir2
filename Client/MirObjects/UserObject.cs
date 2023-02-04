@@ -772,7 +772,7 @@ namespace Client.MirObjects
                 max = item.Count;
                 if (item.Count == 0)
                 {
-                    GameScene.Scene.ChatDialog.ReceiveChat("You do not have enough weight.", ChatType.System);
+                    GameScene.Scene.ChatDialog.ReceiveChat("负重不足.", ChatType.System);
                     return;
                 }
             }

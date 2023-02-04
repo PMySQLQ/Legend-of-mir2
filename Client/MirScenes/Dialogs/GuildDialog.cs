@@ -979,11 +979,11 @@ namespace Client.MirScenes.Dialogs
             {
                 string Error = "";
                 if (GameScene.Scene.GuildDialog.SparePoints < BuffInfo.PointsRequirement)
-                    Error = "Insufficient points available.";
+                    Error = "有足够的可用点数.";
                 if (GameScene.Scene.GuildDialog.Level < BuffInfo.LevelRequirement)
-                    Error = "公会级别太低.";
+                    Error = "行会等级不够.";
                 if (!GameScene.Scene.GuildDialog.GetMyOptions().HasFlag(GuildRankOptions.CanActivateBuff))
-                    Error = "公会等级不允许激活buff.";
+                    Error = "行会等级不够.";
                 if (Error != "")
                 {
                     MirMessageBox messageBox = new MirMessageBox(Error);
@@ -1000,9 +1000,9 @@ namespace Client.MirScenes.Dialogs
                 if (Buff.Active)
                     Error = "Buff已激活.";
                 if (GameScene.Scene.GuildDialog.Gold < BuffInfo.ActivationCost)
-                    Error = "Insufficient guild funds.";
+                    Error = "行会资金不足.";
                 if (!GameScene.Scene.GuildDialog.GetMyOptions().HasFlag(GuildRankOptions.CanActivateBuff))
-                    Error = "公会等级不允许激活buff.";
+                    Error = "行会等级不足以激活buff.";
                 if (Error != "")
                 {
                     MirMessageBox messageBox = new MirMessageBox(Error);
@@ -1113,20 +1113,20 @@ namespace Client.MirScenes.Dialogs
                         if (BuffInfo.TimeLimit > 0)
                         {
                             if (Buff.Active)
-                                Buffs[i].Info.Text = "冷却中.";
+                                Buffs[i].Info.Text = "计时中.";
                             else
-                                Buffs[i].Info.Text = "已过期.";
+                                Buffs[i].Info.Text = "过期.";
                         }
                         else
-                            Buffs[i].Info.Text = "已获得.";
+                            Buffs[i].Info.Text = "过期.";
                         Buffs[i].Info.ForeColour = Buffs[i].Name.ForeColour;
                         if (Buff.Active)
                         {
-                            Buffs[i].Obtained.Text = "激活";
+                            Buffs[i].Obtained.Text = "已激活";
                             Buffs[i].Icon.Index += 1;
                         }
                         else
-                            Buffs[i].Obtained.Text = "关闭";
+                            Buffs[i].Obtained.Text = "未激活";
                     }
                 }
             }

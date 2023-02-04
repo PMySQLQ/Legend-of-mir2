@@ -109,7 +109,7 @@ public class GameLanguage
                          Usrname = "Username",
                          Password = "Password",
 
-                         ShuttingDown = "Disconnected: Server is shutting down.",
+                         ShuttingDown = "断开连接: 服务器已关闭.",
                          MaxCombine = "Max Combine Count : {0}{1}Shift + Left click to split the stack",
                          Count = " Count {0}",
                          ExtraSlots8 = "Are you sure you would like to buy 8 extra slots for 1,000,000 gold?" +
@@ -138,7 +138,7 @@ public class GameLanguage
                          LowMana = "Not Enough Mana to cast.",
                          NoCreatures = "You do not own any creatures.",
                          NoMount = "You do not own a mount.",
-                         NoFishingRod = "You are not holding a fishing rod.",
+                         NoFishingRod = "你没有装备钓鱼竿.",
                          AttemptingConnect = "Attempting to connect to the server.{0}Attempt:{1}",
 
                          CreatingCharactersDisabled = "Creating new characters is currently disabled.",
@@ -174,7 +174,7 @@ public class GameLanguage
                          FriendMail = "Mail",
                          FriendWhisper = "Whisper",
                          FriendEnterAddName = "Please enter the name of the person you would like to Add.",
-                         FriendEnterBlockName = "Please enter the name of the person you would like to Block.",
+                         FriendEnterBlockName = "请输入你想加入{0}的玩家名字.",
                          AddMentor = "Add Mentor",
                          RemoveMentorMentee = "Remove Mentor/Mentee",
                          MentorRequests = "Allow/Disallow Mentor Requests",
@@ -231,8 +231,8 @@ public class GameLanguage
                          GroupSwitch = "Allow/Disallow Group Requests",
                          GroupAdd = "Add",
                          GroupRemove = "Remove",
-                         GroupAddEnterName = "Please enter the name of the person you wish to add.",
-                         GroupRemoveEnterName = "Please enter the name of the person you wish to remove.",
+                         GroupAddEnterName = "请输入你要组队的人的名字.",
+                         GroupRemoveEnterName = "你不是队长.",
                          TooHeavyToHold = "It is too heavy to Hold.",
                          SwitchMarriage = "允许/禁止 结婚",
                          RequestMarriage = "Request Marriage",
@@ -273,7 +273,7 @@ public class GameLanguage
                          NotMale = "You are not Male.",
                          NotInGuild = "You are not in a guild.",
                          NoMentorship = "You don't currently have a Mentorship to cancel.",
-                         NoBagSpace = "You do not have enough space.";
+                         NoBagSpace = "空间不足.";
 
 
     public static void LoadClientLanguage(string languageIniPath)
