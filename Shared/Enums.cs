@@ -1699,8 +1699,8 @@ public enum ServerPacketIds : short
     SetCompass,
     GroupMembersMap,
     SendMemberLocation,
-    PlayerTeleportList,//定点传送
-  
+    PlayerTeleportList,//Fixed-point
+
 
 }
 
@@ -1857,8 +1857,8 @@ public enum ClientPacketIds : short
     ItemRentalLockFee,
     ItemRentalLockItem,
     ConfirmItemRental,
-    MemoryLocation,//定点传送
-    PositionMove,//定点传送
+    MemoryLocation,//Fixed-point
+    PositionMove,//Fixed-point
 }
 
 public enum ConquestType : byte
@@ -1927,8 +1927,8 @@ public enum SpellToggleState: sbyte
     True = 1
 }
 
-#region 地图传送
-public class NPCTeleportInfo  //地图传送
+#region Map transmission
+public class NPCTeleportInfo  //Map transmission
 {
     public string Name;
     public Point Location;
@@ -1954,10 +1954,10 @@ public class NPCTeleportInfo  //地图传送
 
 public class PlayerTeleportInfo
 {
-    public string Name;//传送命名
-    public string MapName;//地图名
-    public Point Location;//坐标
-    public int ColorIndex;//颜色
+    public string Name;
+    public string MapName;
+    public Point Location;
+    public int ColorIndex;
 
     public PlayerTeleportInfo()
     {

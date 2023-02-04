@@ -1941,7 +1941,7 @@ namespace Server.MirObjects
 
                 switch (parts[0].ToUpper())
                 {
-                    case "위치기억삭제"://删除定点传送
+                    case "Deleteposition"://Fixed-point
                         message = message.Remove(0, 6);
                         //int Index = Convert.ToInt32("message");
 

@@ -91,7 +91,7 @@ namespace Client.MirScenes.Dialogs
                 {
                     Network.Enqueue(new Chat
                     {
-                        Message = "@위치기억삭제 " + PositionMoveDialog.SelectIndex.ToString()
+                        Message = "@Deleteposition" + PositionMoveDialog.SelectIndex.ToString()
                     });
                     UpdateMoveCells();
                 };
@@ -438,7 +438,7 @@ namespace Client.MirScenes.Dialogs
             Visible = true;
             Network.Enqueue(new Chat
             {
-               Message = "@위치이동리스트"
+               Message = "@MoveLocationList"
             });
             
         }
@@ -456,7 +456,7 @@ namespace Client.MirScenes.Dialogs
                 Visible = !Visible;
                 Network.Enqueue(new Chat
                 {
-                    Message = "@위치이동리스트"
+                    Message = "@MoveLocationList"
                 });
                 Show();
             }

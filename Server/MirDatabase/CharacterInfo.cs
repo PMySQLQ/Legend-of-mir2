@@ -103,7 +103,7 @@ namespace Server.MirDatabase
         public Dictionary<int, int> GSpurchases = new Dictionary<int, int>();
         public int[] Rank = new int[2];//dont save this in db!(and dont send it to clients :p)
 
-        public List<PlayerTeleportInfo> MyTeleportInfo = new List<PlayerTeleportInfo>();//定点传送
+        public List<PlayerTeleportInfo> MyTeleportInfo = new List<PlayerTeleportInfo>();//Fixed-point
 
         public int MaximumHeroCount = 1;
         public HeroInfo[] Heroes;
@@ -386,7 +386,7 @@ namespace Server.MirDatabase
             if (version > 100)
                 HeroBehaviour = (HeroBehaviour)reader.ReadByte();
 
-            //定点传送
+            //Fixed-point
             if (Envir.LoadVersion > 106)
             {
                 count = reader.ReadInt32();

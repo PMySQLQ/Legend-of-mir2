@@ -3279,7 +3279,7 @@ namespace Client.MirScenes.Dialogs
                     GameScene.Scene.PositionMoveDialog.Show();
                     Network.Enqueue(new C.Chat
                     {
-                        Message = "@위치이동리스트"
+                        Message = "@MoveLocationList"
                     });
                 }
             };

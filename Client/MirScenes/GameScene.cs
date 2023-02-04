@@ -154,7 +154,7 @@ namespace Client.MirScenes
         public CompassDialog CompassControl;
         public RollDialog RollControl;
 
-        public PositionMoveDialog PositionMoveDialog;//定点传送
+        public PositionMoveDialog PositionMoveDialog;//Fixed-point
         public RememberMoveDialog RememberMoveDialog;
 
 
@@ -311,7 +311,7 @@ namespace Client.MirScenes
             GuestItemRentDialog = new GuestItemRentDialog { Parent = this, Visible = false };
             ItemRentalDialog = new ItemRentalDialog { Parent = this, Visible = false };
 
-            PositionMoveDialog = new PositionMoveDialog { Parent = this, Visible = false };//定点传送
+            PositionMoveDialog = new PositionMoveDialog { Parent = this, Visible = false };//Fixed-point
 
             BuffsDialog = new BuffDialog { 
                 Parent = this, 
@@ -1992,7 +1992,7 @@ namespace Client.MirScenes
                     HumUpPlayer((S.HumUpPlayer)p);
                     break;
 
-                case (short)ServerPacketIds.PlayerTeleportList://定点传送
+                case (short)ServerPacketIds.PlayerTeleportList://Fixed-point
                     PlayerTeleportList((S.PlayerTeleportList)p);
                     break;
                 default:
