@@ -30,7 +30,9 @@ namespace Server.MirObjects
         }
 
         public long TickTime, StartTime;
-        public MapObject Caster;
+
+        public MapObject Caster;//施法者，技能释放者
+
         public int Value, TickSpeed, BonusDmg;
         public Spell Spell;
         public Point CastLocation;

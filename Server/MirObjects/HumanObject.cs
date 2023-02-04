@@ -237,9 +237,12 @@ namespace Server.MirObjects
         protected virtual void Load(CharacterInfo info, MirConnection connection) { }
         protected virtual void NewCharacter()
         {
+            //等级设置为1
             Level = 1;
+            //随机选择一个发型
             Hair = (byte)Envir.Random.Next(0, 9);
 
+            //分配初始化的装备
             for (int i = 0; i < Envir.StartItems.Count; i++)
             {
                 ItemInfo info = Envir.StartItems[i];

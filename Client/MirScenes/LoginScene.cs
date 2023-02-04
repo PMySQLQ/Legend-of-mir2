@@ -111,7 +111,7 @@ namespace Client.MirScenes
             //    Location = new Point(684, 10)
             //};
 
-            _connectBox = new MirMessageBox("Attempting to connect to the server.", MirMessageBoxButtons.Cancel);
+            _connectBox = new MirMessageBox("正在连接到服务器.", MirMessageBoxButtons.Cancel);
             _connectBox.CancelButton.Click += (o, e) => Program.Form.Close();
             Shown += (sender, args) =>
                 {
@@ -185,7 +185,7 @@ namespace Client.MirScenes
             switch (p.Result)
             {
                 case 0:
-                    MirMessageBox.Show("Wrong version, please update your game.\nGame will now Close", true);
+                    MirMessageBox.Show("版本错误, 请升级游戏客户端.\n游戏即将关闭", true);
 
                     Network.Disconnect();
                     break;
