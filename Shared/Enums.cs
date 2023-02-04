@@ -1049,22 +1049,47 @@ public enum SpecialItemMode : short
 [Flags]
 public enum RequiredClass : ushort
 {
-    Warrior = 1,
-    Wizard = 2,
-    Taoist = 4,
-    Assassin = 8,
-    Archer = 16,
-    HighWarrior = 30,
-    HighWizard = 60,
-    HighTaoist = 120,
-    HighAssassin = 240,
-    HighArcher = 482,
+    //Warrior = 1,
+    //Wizard = 2,
+    //Taoist = 4,
+    //Assassin = 8,
+    //Archer = 16,
+    //HighWarrior = 30,
+    //HighWizard = 60,
+    //HighTaoist = 120,
+    //HighAssassin = 240,
+    //HighArcher = 482,
 
-    High = HighWarrior | HighWizard | HighTaoist | HighAssassin | HighArcher,
-    WarWizTao = Warrior | Wizard | Taoist,
-    AllWarWizTao = HighWarrior | HighWizard | HighTaoist | WarWizTao,
-    Low = WarWizTao | Assassin | Archer,
-    None = Low | High
+    //High = HighWarrior | HighWizard | HighTaoist | HighAssassin | HighArcher,
+    //WarWizTao = Warrior | Wizard | Taoist,
+    //AllWarWizTao = HighWarrior | HighWizard | HighTaoist | WarWizTao,
+    //Low = WarWizTao | Assassin | Archer,
+    //None = Low | High
+
+    Warrior = 0,
+    Wizard = 1,
+    Taoist = 2,
+    Assassin = 3,
+    Archer = 4,
+    HighWarrior = 5,
+    HighWizard = 6,
+    HighTaoist = 7,
+    HighAssassin = 8,
+    HighArcher = 9,
+
+    WarWizTao = 10,
+
+    WarHighWar = 11,
+    WizHighWiz = 12,
+    TaoHighTao = 13,
+    AssHighAss = 14,
+    ArcHighArc = 15,
+
+    WarWizTaoAssArc = 16,
+    All = 17,
+    None = 18,
+    High = 19,
+    WarwiztaoHigh = 20
 }
 
 [Flags]

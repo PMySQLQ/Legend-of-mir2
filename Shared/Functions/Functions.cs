@@ -93,19 +93,19 @@ public static class Functions
         string answer;
         if (t.TotalMinutes < 1.0)
         {
-            answer = string.Format("{0}s", t.Seconds);
+            answer = string.Format("{0}秒", t.Seconds);
         }
         else if (t.TotalHours < 1.0)
         {
-            answer = accurate ? string.Format("{0}m {1:D2}s", t.Minutes, t.Seconds) : string.Format("{0}m", t.Minutes);
+            answer = accurate ? string.Format("{0}分 {1:D2}秒", t.Minutes, t.Seconds) : string.Format("{0}分", t.Minutes);
         }
         else if (t.TotalDays < 1.0)
         {
-            answer = accurate ? string.Format("{0}h {1:D2}m {2:D2}s", (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}h {1:D2}m", (int)t.TotalHours, t.Minutes);
+            answer = accurate ? string.Format("{0}h {1:D2}分 {2:D2}秒", (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}h {1:D2}分", (int)t.TotalHours, t.Minutes);
         }
         else // more than 1 day
         {
-            answer = accurate ? string.Format("{0}d {1:D2}h {2:D2}m {3:D2}s", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}d {1}h {2:D2}m", (int)t.TotalDays, (int)t.Hours, t.Minutes);
+            answer = accurate ? string.Format("{0}d {1:D2}h {2:D2}分 {3:D2}秒", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}d {1}h {2:D2}分", (int)t.TotalDays, (int)t.Hours, t.Minutes);
         }
 
         return answer;
@@ -117,19 +117,19 @@ public static class Functions
         string answer;
         if (t.TotalMinutes < 1.0)
         {
-            answer = string.Format("{0}.{1}s", t.Seconds, (decimal)(t.Milliseconds / 100));
+            answer = string.Format("{0}.{1}秒", t.Seconds, (decimal)(t.Milliseconds / 100));
         }
         else if (t.TotalHours < 1.0)
         {
-            answer = string.Format("{0}m {1:D2}s", t.TotalMinutes, t.Seconds);
+            answer = string.Format("{0}分 {1:D2}秒", t.TotalMinutes, t.Seconds);
         }
         else if (t.TotalDays < 1.0)
         {
-            answer = string.Format("{0}h {1:D2}m {2:D2}s", (int)t.TotalHours, t.Minutes, t.Seconds);
+            answer = string.Format("{0}h {1:D2}分 {2:D2}秒", (int)t.TotalHours, t.Minutes, t.Seconds);
         }
         else
         {
-            answer = string.Format("{0}d {1}h {2:D2}m {3:D2}s", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds);
+            answer = string.Format("{0}d {1}h {2:D2}分 {3:D2}s", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds);
         }
 
         return answer;

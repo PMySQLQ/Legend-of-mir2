@@ -15,10 +15,17 @@ public class ItemInfo
     public RequiredGender RequiredGender = RequiredGender.None;
     public ItemSet Set;
 
-    public short Shape;
-    public byte Weight, Light, RequiredAmount;
+    public short Shape { get; set; }
+    public byte Weight { get; set; }
+    public byte Light { get; set; }
+    public byte RequiredAmount { get; set; }
 
-    public ushort Image, Durability;
+
+
+    public ushort Image { get; set; }
+
+
+    public ushort Durability { get; set; }
 
     public uint Price; 
     public ushort StackSize = 1;
@@ -38,7 +45,7 @@ public class ItemInfo
     public SpecialItemMode Unique = SpecialItemMode.None;
     public byte RandomStatsId;
     public RandomItemStat RandomStats;
-    public string ToolTip = string.Empty;
+    public string ToolTip { get; set; } = string.Empty;
 
     public byte Slots;
 
