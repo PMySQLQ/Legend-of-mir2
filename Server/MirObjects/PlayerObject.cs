@@ -3541,9 +3541,9 @@ namespace Server.MirObjects
                                 tempConq.WarIsOn = !tempConq.WarIsOn;
                                 tempConq.GuildInfo.AttackerID = MyGuild.Guildindex;
                             }
-                            else return;
-                            ReceiveChat(string.Format("{0} War Started.", tempConq.Info.Name), ChatType.System);
-                            MessageQueue.Enqueue(string.Format("{0} War Started.", tempConq.Info.Name));
+                            hintstring = tempConq.WarIsOn ? "{0} 战争开始了." : "{0} 战争结束了.";
+                            ReceiveChat(string.Format(hintstring, tempConq.Info.Name), ChatType.System);
+                            MessageQueue.Enqueue(string.Format(hintstring,tempConq.Info.Name));
 
                             foreach (var pl in Envir.Players)
                                 pl.BroadcastInfo();
@@ -5500,7 +5500,7 @@ namespace Server.MirObjects
                             temp.CurrentDura = temp.MaxDura;
                             temp.DuraChanged = false;
 
-                            ReceiveChat("Your weapon has been completely repaired", ChatType.Hint);
+                            ReceiveChat("你的武器已经完好如新了", ChatType.Hint);
                             Enqueue(new S.ItemRepaired { UniqueID = temp.UniqueID, MaxDura = temp.MaxDura, CurrentDura = temp.CurrentDura });
                             break;
                         case 6: //ResurrectionScroll
@@ -5520,22 +5520,24 @@ namespace Server.MirObjects
                             if (item.Info.Price > 0)
                             {
                                 GainCredit(item.Info.Price);
-                                ReceiveChat(String.Format("{0} Credits have been added to your Account", item.Info.Price), ChatType.Hint);
+                                ReceiveChat(String.Format("{0} 点数加到账号", item.Info.Price), ChatType.Hint);
                             }
                             break;
                         case 8: //MapShoutScroll
                             HasMapShout = true;
-                            ReceiveChat("You have been given one free shout across your current map", ChatType.Hint);
+                            ReceiveChat("你可以在当前地图喊一句话了", ChatType.Hint);
                             break;
                         case 9://ServerShoutScroll
                             HasServerShout = true;
-                            ReceiveChat("You have been given one free shout across the server", ChatType.Hint);
+                            ReceiveChat("你可以在整个服务器喊一句话了", ChatType.Hint);
                             break;
                         case 10://GuildSkillScroll
                             MyGuild.NewBuff(item.Info.Effect, false);
                             break;
                         case 11://HomeTeleport
-                            if (MyGuild != null && MyGuild.Conquest != null && !MyGuild.Conquest.WarIsOn && MyGuild.Conquest.PalaceMap != null && !TeleportRandom(200, 0, MyGuild.Conquest.PalaceMap))
+                            if (MyGuild != null && MyGuild.Conquest != null && !MyGuild.Conquest.WarIsOn && 
+                                MyGuild.Conquest.PalaceMap != null && 
+                                !TeleportRandom(200, 0, MyGuild.Conquest.PalaceMap))
                             {
                                 Enqueue(p);
                                 return;
@@ -5963,7 +5965,7 @@ namespace Server.MirObjects
             Enqueue(p);
             Enqueue(new S.SplitItem { Item = temp, Grid = grid });
 
-            if (grid == MirGridType.Inventory && (temp.Info.Type == ItemType.药剂 || temp.Info.Type == ItemType.卷轴 || temp.Info.Type == ItemType.护甲 || (temp.Info.Type == ItemType.脚本 && temp.Info.Effect == 1)))
+            if (grid == MirGridType.Inventory && (temp.Info.Type == ItemType.药剂 || temp.Info.Type == ItemType.卷轴 || temp.Info.Type == ItemType.护身符 || (temp.Info.Type == ItemType.脚本 && temp.Info.Effect == 1)))
             {
                 if (temp.Info.Type == ItemType.药剂 || temp.Info.Type == ItemType.卷轴 || (temp.Info.Type == ItemType.脚本 && temp.Info.Effect == 1))
                 {
@@ -5975,7 +5977,7 @@ namespace Server.MirObjects
                         return;
                     }
                 }
-                else if (temp.Info.Type == ItemType.护甲)
+                else if (temp.Info.Type == ItemType.护身符)
                 {
                     for (int i = AmuletBeltMinimum; i < AmuletBeltMaximum; i++)
                     {
@@ -6161,7 +6163,7 @@ namespace Server.MirObjects
                 return;
             }
 
-            if (tempTo.Info.Type != ItemType.护甲&& (gridFrom == MirGridType.Equipment || gridTo == MirGridType.Equipment))
+            if (tempTo.Info.Type != ItemType.护身符 && (gridFrom == MirGridType.Equipment || gridTo == MirGridType.Equipment))
             {
                 Enqueue(p);
                 return;

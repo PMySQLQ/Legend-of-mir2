@@ -34,29 +34,34 @@ namespace Server.MirDatabase
 
         public byte[] Salt = new byte[24];
 
-        public string UserName = string.Empty;
-        public DateTime BirthDate;
-        public string SecretQuestion = string.Empty;
-        public string SecretAnswer = string.Empty;
-        public string EMailAddress = string.Empty;
+        public string UserName { get; set; } = string.Empty;
 
-        public string CreationIP = string.Empty;
+        public DateTime BirthDate;
+        public string SecretQuestion { get; set; } = string.Empty;
+        public string SecretAnswer { get; set; } = string.Empty;
+        public string EMailAddress { get; set; } = string.Empty;
+
+        public string CreationIP { get; set; } = string.Empty;
+
         public DateTime CreationDate;
 
-        public bool Banned;
-        public bool RequirePasswordChange;
-        public string BanReason = string.Empty;
-        public DateTime ExpiryDate;
-        public int WrongPasswordCount;
+        public bool Banned { get; set; }
 
-        public string LastIP = string.Empty;
+        public bool RequirePasswordChange;
+        public string BanReason { get; set; } = string.Empty;
+        public DateTime ExpiryDate;
+        public int WrongPasswordCount { get; set; }
+
+        public string LastIP { get; set; } = string.Empty;
+
         public DateTime LastDate;
 
         public List<CharacterInfo> Characters = new List<CharacterInfo>();
 
         public UserItem[] Storage = new UserItem[80];
-        public bool HasExpandedStorage;
-        public DateTime ExpandedStorageExpiryDate;
+        public bool HasExpandedStorage { get; set; }
+        public DateTime ExpandedStorageExpiryDate { get; set; }
+
         public uint Gold;
         public uint Credit;
 

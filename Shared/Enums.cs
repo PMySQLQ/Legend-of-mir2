@@ -1070,9 +1070,9 @@ public enum RequiredClass : ushort
 [Flags]
 public enum RequiredGender : byte
 {
-    Male = 1,
-    Female = 2,
-    None = Male | Female
+    男 = 1,
+    女 = 2,
+    None = 男 | 女
 }
 
 public enum RequiredType : byte

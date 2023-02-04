@@ -1056,14 +1056,14 @@ namespace Server.MirObjects
             switch (Gender)
             {
                 case MirGender.Male:
-                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.Male))
+                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.男))
                     {
                         ReceiveChat(GameLanguage.NotFemale, ChatType.System);
                         return false;
                     }
                     break;
                 case MirGender.Female:
-                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.Female))
+                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.女))
                     {
                         ReceiveChat(GameLanguage.NotMale, ChatType.System);
                         return false;
@@ -1655,7 +1655,7 @@ namespace Server.MirObjects
                     return;
                 }
             }
-            else if (item.Info.Type == ItemType.护甲)
+            else if (item.Info.Type == ItemType.护身符)
             {
                 for (int i = AmuletBeltMinimum; i < AmuletBeltMaximum; i++)
                 {
@@ -1707,10 +1707,10 @@ namespace Server.MirObjects
             switch (Gender)
             {
                 case MirGender.Male:
-                    if (!info.RequiredGender.HasFlag(RequiredGender.Male)) return false;
+                    if (!info.RequiredGender.HasFlag(RequiredGender.男)) return false;
                     break;
                 case MirGender.Female:
-                    if (!info.RequiredGender.HasFlag(RequiredGender.Female)) return false;
+                    if (!info.RequiredGender.HasFlag(RequiredGender.女)) return false;
                     break;
                 default:
                     return false;
@@ -6572,7 +6572,7 @@ namespace Server.MirObjects
             for (int i = 0; i < Info.Equipment.Length; i++)
             {
                 UserItem item = Info.Equipment[i];
-                if (item != null && item.Info.Type == ItemType.护甲 && item.Info.Shape == shape && item.Count >= count)
+                if (item != null && item.Info.Type == ItemType.护身符 && item.Info.Shape == shape && item.Count >= count)
                     return item;
             }
 
@@ -6583,7 +6583,7 @@ namespace Server.MirObjects
             for (int i = 0; i < Info.Equipment.Length; i++)
             {
                 UserItem item = Info.Equipment[i];
-                if (item != null && item.Info.Type == ItemType.护甲 && item.Count >= count)
+                if (item != null && item.Info.Type == ItemType.护身符 && item.Count >= count)
                 {
                     if (shape == 0)
                     {
@@ -7307,7 +7307,7 @@ namespace Server.MirObjects
         }
         public bool CanGainItem(UserItem item, bool useWeight = true)
         {
-            if (item.Info.Type == ItemType.护甲)
+            if (item.Info.Type == ItemType.护身符)
             {
                 if (FreeSpace(Info.Inventory) > 0 && (CurrentBagWeight + item.Weight <= Stats[Stat.BagWeight] || !useWeight)) return true;
 
@@ -7414,7 +7414,7 @@ namespace Server.MirObjects
                         return false;
                     break;
                 case EquipmentSlot.BraceletR:
-                    if (item.Info.Type != ItemType.手镯 && item.Info.Type != ItemType.护甲)
+                    if (item.Info.Type != ItemType.手镯 && item.Info.Type != ItemType.护身符)
                         return false;
                     break;
                 case EquipmentSlot.RingL:
@@ -7423,7 +7423,7 @@ namespace Server.MirObjects
                         return false;
                     break;
                 case EquipmentSlot.Amulet:
-                    if (item.Info.Type != ItemType.护甲)// || item.Info.Shape == 0
+                    if (item.Info.Type != ItemType.护身符)// || item.Info.Shape == 0
                         return false;
                     break;
                 case EquipmentSlot.Boots:
@@ -7450,11 +7450,11 @@ namespace Server.MirObjects
             switch (Gender)
             {
                 case MirGender.Male:
-                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.Male))
+                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.男))
                         return false;
                     break;
                 case MirGender.Female:
-                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.Female))
+                    if (!item.Info.RequiredGender.HasFlag(RequiredGender.女))
                         return false;
                     break;
             }
@@ -7591,7 +7591,7 @@ namespace Server.MirObjects
         }
         public void DamageItem(UserItem item, int amount, bool isChanged = false)
         {
-            if (item == null || item.CurrentDura == 0 || item.Info.Type == ItemType.护甲) return;
+            if (item == null || item.CurrentDura == 0 || item.Info.Type == ItemType.护身符) return;
             if ((item.WeddingRing == Info.Married) && (Info.Equipment[(int)EquipmentSlot.RingL].UniqueID == item.UniqueID)) return;
             if (item.GetTotal(Stat.Strong) > 0) amount = Math.Max(1, amount - item.GetTotal(Stat.Strong));
             item.CurrentDura = (ushort)Math.Max(ushort.MinValue, item.CurrentDura - amount);

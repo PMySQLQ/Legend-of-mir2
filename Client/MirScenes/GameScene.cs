@@ -2739,7 +2739,7 @@ namespace Client.MirScenes
                     return;
             }
 
-            if (p.Grid == MirGridType.Inventory && (p.Item.Info.Type == ItemType.药剂 || p.Item.Info.Type == ItemType.卷轴 || p.Item.Info.Type == ItemType.护甲 || (p.Item.Info.Type == ItemType.脚本 && p.Item.Info.Effect == 1)))
+            if (p.Grid == MirGridType.Inventory && (p.Item.Info.Type == ItemType.药剂 || p.Item.Info.Type == ItemType.卷轴 || p.Item.Info.Type == ItemType.护身符 || (p.Item.Info.Type == ItemType.脚本 && p.Item.Info.Effect == 1)))
             {
                 if (p.Item.Info.Type == ItemType.药剂|| p.Item.Info.Type == ItemType.卷轴 || (p.Item.Info.Type == ItemType.脚本 && p.Item.Info.Effect == 1))
                 {
@@ -2751,7 +2751,7 @@ namespace Client.MirScenes
                         return;
                     }
                 }
-                else if (p.Item.Info.Type == ItemType.护甲)
+                else if (p.Item.Info.Type == ItemType.护身符)
                 {
                     for (int i = 4; i < GameScene.User.BeltIdx; i++)
                     {
@@ -6978,7 +6978,7 @@ namespace Client.MirScenes
             {
                 switch (HoverItem.Info.Type)
                 {
-                    case ItemType.护甲:
+                    case ItemType.护身符:
                         text += string.Format(" Usage {0}/{1}", HoverItem.CurrentDura, HoverItem.MaxDura);
                         break;
                     case ItemType.矿物:
