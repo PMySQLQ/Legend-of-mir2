@@ -2364,7 +2364,7 @@ namespace Server.MirEnvir
                 return;
             }
 
-            if (p.Gender != MirGender.男 && p.Gender != MirGender.女)
+            if (p.Gender != MirGender.Male && p.Gender != MirGender.Female)
             {
                 c.Enqueue(new ServerPackets.NewCharacter { Result = 2 });
                 return;
@@ -2434,7 +2434,7 @@ namespace Server.MirEnvir
                 return false;
             }
 
-            if (p.Gender != MirGender.男 && p.Gender != MirGender.女)
+            if (p.Gender != MirGender.Male && p.Gender != MirGender.Female)
             {
                 c.Enqueue(new S.NewHero { Result = 2 });
                 return false;

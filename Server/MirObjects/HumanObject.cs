@@ -1055,14 +1055,14 @@ namespace Server.MirObjects
 
             switch (Gender)
             {
-                case MirGender.男:
+                case MirGender.Male:
                     if (!item.Info.RequiredGender.HasFlag(RequiredGender.Male))
                     {
                         ReceiveChat(GameLanguage.NotFemale, ChatType.System);
                         return false;
                     }
                     break;
-                case MirGender.女:
+                case MirGender.Female:
                     if (!item.Info.RequiredGender.HasFlag(RequiredGender.Female))
                     {
                         ReceiveChat(GameLanguage.NotMale, ChatType.System);
@@ -1706,10 +1706,10 @@ namespace Server.MirObjects
 
             switch (Gender)
             {
-                case MirGender.男:
+                case MirGender.Male:
                     if (!info.RequiredGender.HasFlag(RequiredGender.Male)) return false;
                     break;
-                case MirGender.女:
+                case MirGender.Female:
                     if (!info.RequiredGender.HasFlag(RequiredGender.Female)) return false;
                     break;
                 default:
@@ -7449,11 +7449,11 @@ namespace Server.MirObjects
 
             switch (Gender)
             {
-                case MirGender.男:
+                case MirGender.Male:
                     if (!item.Info.RequiredGender.HasFlag(RequiredGender.Male))
                         return false;
                     break;
-                case MirGender.女:
+                case MirGender.Female:
                     if (!item.Info.RequiredGender.HasFlag(RequiredGender.Female))
                         return false;
                     break;

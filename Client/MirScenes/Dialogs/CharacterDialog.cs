@@ -57,7 +57,7 @@ namespace Client.MirScenes.Dialogs
                     {
                         int wingOffset = actor.WingEffect == 1 ? 2 : 4;
 
-                        int genderOffset = actor.Gender == MirGender.男 ? 0 : 1;
+                        int genderOffset = actor.Gender == MirGender.Male ? 0 : 1;
 
                         Libraries.Prguse2.DrawBlend(1200 + wingOffset + genderOffset, DisplayLocation, Color.White, true, 1F);
                     }
@@ -77,10 +77,10 @@ namespace Client.MirScenes.Dialogs
                     Libraries.StateItems.Draw(Grid[(int)EquipmentSlot.Helmet].Item.Info.Image, DisplayLocation, Color.White, true, 1F);
                 else
                 {
-                    int hair = 441 + actor.Hair + (actor.Class == MirClass.刺客 ? 20 : 0) + (actor.Gender == MirGender.男 ? 0 : 40);
+                    int hair = 441 + actor.Hair + (actor.Class == MirClass.刺客 ? 20 : 0) + (actor.Gender == MirGender.Male ? 0 : 40);
 
-                    int offSetX = actor.Class == MirClass.刺客 ? (actor.Gender == MirGender.男 ? 6 : 4) : 0;
-                    int offSetY = actor.Class == MirClass.刺客 ? (actor.Gender == MirGender.男 ? 25 : 18) : 0;
+                    int offSetX = actor.Class == MirClass.刺客 ? (actor.Gender == MirGender.Male ? 6 : 4) : 0;
+                    int offSetY = actor.Class == MirClass.刺客 ? (actor.Gender == MirGender.Male ? 25 : 18) : 0;
 
                     Libraries.Prguse.Draw(hair, new Point(DisplayLocation.X + offSetX, DisplayLocation.Y + offSetY), Color.White, true, 1F);
                 }
@@ -659,7 +659,7 @@ namespace Client.MirScenes.Dialogs
 
         private void RefreshInterface()
         {
-            int offSet = Actor.Gender == MirGender.男 ? 0 : 1;
+            int offSet = Actor.Gender == MirGender.Male ? 0 : 1;
 
             Index = GridType == MirGridType.HeroEquipment ? 505 : 504;// +offSet;
             CharacterPage.Index = 340 + offSet;

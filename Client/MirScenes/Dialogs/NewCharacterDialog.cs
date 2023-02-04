@@ -230,7 +230,7 @@ namespace Client.MirScenes.Dialogs
             };
             MaleButton.Click += (o, e) =>
             {
-                Gender = MirGender.男;
+                Gender = MirGender.Male;
                 UpdateInterface();
             };
 
@@ -246,7 +246,7 @@ namespace Client.MirScenes.Dialogs
             };
             FemaleButton.Click += (o, e) =>
             {
-                Gender = MirGender.女;
+                Gender = MirGender.Female;
                 UpdateInterface();
             };
 
@@ -265,7 +265,7 @@ namespace Client.MirScenes.Dialogs
             base.Show();
 
             Class = MirClass.战士;
-            Gender = MirGender.男;
+            Gender = MirGender.Male;
             NameTextBox.Text = string.Empty;
 
             UpdateInterface();
@@ -323,10 +323,10 @@ namespace Client.MirScenes.Dialogs
 
             switch (Gender)
             {
-                case MirGender.男:
+                case MirGender.Male:
                     MaleButton.Index = 2421;
                     break;
-                case MirGender.女:
+                case MirGender.Female:
                     FemaleButton.Index = 2424;
                     break;
             }

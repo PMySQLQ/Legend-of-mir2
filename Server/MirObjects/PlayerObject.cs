@@ -2013,11 +2013,11 @@ namespace Server.MirObjects
 
                         switch (data.Gender)
                         {
-                            case MirGender.男:
-                                data.Gender = MirGender.女;
+                            case MirGender.Male:
+                                data.Gender = MirGender.Female;
                                 break;
-                            case MirGender.女:
-                                data.Gender = MirGender.男;
+                            case MirGender.Female:
+                                data.Gender = MirGender.Male;
                                 break;
                         }
 

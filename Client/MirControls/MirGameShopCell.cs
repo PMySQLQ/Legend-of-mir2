@@ -454,7 +454,7 @@ namespace Client.MirControls
             else
                 PreviewImage.Library = Libraries.CArmours[0];
 
-            if (GameScene.User.Gender == MirGender.男)
+            if (GameScene.User.Gender == MirGender.Male)
                 PreviewImage.Index = 448 + (8 * (Direction - 1));
             else
                 PreviewImage.Index = 1256 + (8 * (Direction - 1));
@@ -480,7 +480,7 @@ namespace Client.MirControls
             else
                 PreviewImage.Library = Libraries.CArmours[0];
 
-            if (GameScene.User.Gender == MirGender.男)
+            if (GameScene.User.Gender == MirGender.Male)
                 PreviewImage.Index = 32 + (6 * (Direction - 1));
             else
                 PreviewImage.Index = 840 + (6 * (Direction - 1));

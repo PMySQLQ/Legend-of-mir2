@@ -179,7 +179,7 @@ namespace Server.MirObjects.Monsters
                 Name = master != null ? master.Name : Name,
                 NameColour = NameColour,
                 Class = master != null ? master.Class : MirClass.法师,
-                Gender =  master != null ? master.Gender : MirGender.男,
+                Gender =  master != null ? master.Gender : MirGender.Male,
                 Location = CurrentLocation,
                 Direction = Direction,
                 Hair = master != null ? master.Hair : (byte)0,

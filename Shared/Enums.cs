@@ -794,8 +794,8 @@ public enum LightSetting : byte
 
 public enum MirGender : byte
 {
-    男 = 0,
-    女 = 1
+    Male = 0,
+    Female = 1
 }
 
 public enum MirClass : byte

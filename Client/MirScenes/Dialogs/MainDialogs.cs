@@ -2172,7 +2172,7 @@ namespace Client.MirScenes.Dialogs
                     {
                         int wingOffset = RealItem.Effect == 1 ? 2 : 4;
 
-                        int genderOffset = MapObject.User.Gender == MirGender.男 ? 0 : 1;
+                        int genderOffset = MapObject.User.Gender == MirGender.Male ? 0 : 1;
 
                         Libraries.Prguse2.DrawBlend(1200 + wingOffset + genderOffset, new Point(DisplayLocation.X, DisplayLocation.Y - 20), Color.White, true, 1F);
                     }
@@ -2190,10 +2190,10 @@ namespace Client.MirScenes.Dialogs
                     Libraries.StateItems.Draw(HelmetCell.Item.Info.Image, new Point(DisplayLocation.X, DisplayLocation.Y - 20), Color.White, true, 1F);
                 else
                 {
-                    int hair = 441 + Hair + (Class == MirClass.刺客 ? 20 : 0) + (Gender == MirGender.男 ? 0 : 40);
+                    int hair = 441 + Hair + (Class == MirClass.刺客 ? 20 : 0) + (Gender == MirGender.Male ? 0 : 40);
 
-                    int offSetX = Class == MirClass.刺客 ? (Gender == MirGender.男 ? 6 : 4) : 0;
-                    int offSetY = Class == MirClass.刺客 ? (Gender == MirGender.男 ? 25 : 18) : 0;
+                    int offSetX = Class == MirClass.刺客 ? (Gender == MirGender.Male ? 6 : 4) : 0;
+                    int offSetY = Class == MirClass.刺客 ? (Gender == MirGender.Male ? 25 : 18) : 0;
 
                     Libraries.Prguse.Draw(hair, new Point(DisplayLocation.X + offSetX, DisplayLocation.Y + offSetY - 20), Color.White, true, 1F);
                 }
@@ -2459,7 +2459,7 @@ namespace Client.MirScenes.Dialogs
 
         public void RefreshInferface()
         {
-            int offSet = Gender == MirGender.男 ? 0 : 1;
+            int offSet = Gender == MirGender.Male ? 0 : 1;
 
             CharacterPage.Index = 340 + offSet;
 

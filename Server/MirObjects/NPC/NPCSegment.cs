@@ -3135,11 +3135,11 @@ namespace Server.MirObjects
                         {
                             switch (player.Info.Gender)
                             {
-                                case MirGender.男:
-                                    player.Info.Gender = MirGender.女;
+                                case MirGender.Male:
+                                    player.Info.Gender = MirGender.Female;
                                     break;
-                                case MirGender.女:
-                                    player.Info.Gender = MirGender.男;
+                                case MirGender.Female:
+                                    player.Info.Gender = MirGender.Male;
                                     break;
                             }
                         }
