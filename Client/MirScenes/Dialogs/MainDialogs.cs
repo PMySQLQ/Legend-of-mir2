@@ -1519,7 +1519,7 @@ namespace Client.MirScenes.Dialogs
         public MirLabel[] KeyNameLabels = new MirLabel[8];
         public MirLabel BindNumberLabel = new MirLabel();
 
-        public MirImageControl[] CoolDowns = new MirImageControl[8];
+        public MirAnimatedControl[] CoolDowns = new MirAnimatedControl[8];
 
         public SkillBarDialog()
         {
@@ -1543,7 +1543,7 @@ namespace Client.MirScenes.Dialogs
             };
             _switchBindsButton.Click += (o, e) =>
             {
-                //Settings.SkillSet = !Settings.SkillSet;
+                Settings.SkillSet = !Settings.SkillSet;
 
                 Update();
             };
@@ -1557,13 +1557,8 @@ namespace Client.MirScenes.Dialogs
                     Parent = this,
                     Location = new Point(i * 25 + 15, 3),
                 };
-                int j = i + 1;
-                Cells[i].Click += (o, e) =>
-                    {
-                        GameScene.Scene.UseSpell(j + (8 * BarIndex));
-                    };
 
-                CoolDowns[i] = new MirImageControl
+                CoolDowns[i] = new MirAnimatedControl
                 {
                     Library = Libraries.Prguse2,
                     Parent = this,
@@ -1598,7 +1593,7 @@ namespace Client.MirScenes.Dialogs
                     NotControl = true
                 };
             }
-            OnMoving += SkillBar_OnMoving;
+           
         }
 
         private void SkillBar_OnMoving(object sender, MouseEventArgs e)
@@ -1654,42 +1649,46 @@ namespace Client.MirScenes.Dialogs
 
         public void Update()
         {
-            HasSkill = false;
-            foreach (var m in GameScene.User.Magics)
+            if (Settings.SkillSet)
             {
-                if ((m.Key < (BarIndex * 8)+1) || (m.Key > ((BarIndex + 1) * 8)+1)) continue;
-                HasSkill = true;
+                Index = 2190;
+                _switchBindsButton.Index = 2247;
+                BindNumberLabel.Text = "1";
+                BindNumberLabel.Location = new Point(0, 1);
+                GameScene.Scene.ChatDialog.ReceiveChat("<技能栏 1>", ChatType.Hint);
             }
-
-            if (!Visible) return;
-            Index = 2190;
-            _switchBindsButton.Index = 2247;
-            BindNumberLabel.Text = (BarIndex + 1).ToString();
-            BindNumberLabel.Location = new Point(0, 1);
-
-            for (var i = 1; i <= 8; i++)
+            else
+            {
+                Index = 2191;
+                _switchBindsButton.Index = 2248;
+                BindNumberLabel.Text = "2";
+                BindNumberLabel.Location = new Point(0, 10);
+                GameScene.Scene.ChatDialog.ReceiveChat("<技能栏 2>", ChatType.Hint);
+            }
+            for (int i = 1; i <= 8; i++)
             {
                 Cells[i - 1].Index = -1;
-
-                int offset = BarIndex * 8;
-                string key = GetKey(BarIndex, i);
-                KeyNameLabels[i - 1].Text = key;
-
-                foreach (var m in GameScene.User.Magics)
+                int num = ((!Settings.SkillSet) ? 8 : 0);
+                KeyNameLabels[i - 1].Text = (Settings.SkillSet ? "" : "Ctrl\n") + "F" + i;
+                foreach (ClientMagic magic2 in GameScene.User.Magics)
                 {
-                    if (m.Key != i + offset) continue;
-                    HasSkill = true;
-                    ClientMagic magic = MapObject.User.GetMagic(m.Spell);
-                    if (magic == null) continue;
 
-                    //string key = m.Key > 8 ? string.Format("CTRL F{0}", i) : string.Format("F{0}", m.Key);
+                    if (magic2.Key == i + num)
+                    {
+                        ClientMagic magic = MapObject.User.GetMagic(magic2.Spell);
+                        if (magic != null)
+                        {
+                            string text = ((magic2.Key > 8) ? $"CTRL+F{i}" : $"F{magic2.Key}");
+                            Cells[i - 1].Index = magic.Icon * 2;
+                            Cells[i - 1].Hint = string.Format("{0}\n魔法消耗: {1}\n冷却时间: {2}\n按键: {3}", magic.Name,
+                            (magic.BaseCost + (magic.LevelCost * magic.Level)), Functions.PrintTimeSpanFromMilliSeconds(magic.Delay), text);
+                            KeyNameLabels[i - 1].Text = "";
+                        }
+                    }
 
-                    Cells[i - 1].Index = magic.Icon*2;
-                    Cells[i - 1].Hint = string.Format("{0}\nMP: {1}\nCooldown: {2}\nKey: {3}", magic.Name,
-                        (magic.BaseCost + (magic.LevelCost * magic.Level)), Functions.PrintTimeSpanFromMilliSeconds(magic.Delay), key);
 
-                    KeyNameLabels[i - 1].Text = "";
                 }
+                CoolDowns[i - 1].Dispose();
             }
         }
 
@@ -1701,37 +1700,73 @@ namespace Client.MirScenes.Dialogs
 
         private void ProcessSkillDelay()
         {
-            if (!Visible) return;
 
-            int offset = BarIndex * 8;
-
+            if (!Visible)
+            {
+                return;
+            }
+            int num = ((!Settings.SkillSet) ? 8 : 0);
             for (int i = 0; i < Cells.Length; i++)
             {
-                foreach (var magic in GameScene.User.Magics)
+                foreach (ClientMagic magic in GameScene.User.Magics)
                 {
-                    if (magic.Key != i + offset + 1) continue;
-
-                    int totalFrames = 22;
-                    long timeLeft = magic.CastTime + magic.Delay - CMain.Time;
-
-                    if (timeLeft < 100)
+                    if (magic.Key != i + num + 1)
                     {
-                        if (timeLeft > 0) { 
-                            CoolDowns[i].Visible = false;
-                           // CoolDowns[i].Dispose();
-                        }
-                        else
+                        continue;
+                    }
+                    int num2 = 22;
+                    long num3 = magic.CastTime + magic.Delay - CMain.Time;
+                    if (num3 < 100 || (CoolDowns[i] != null && CoolDowns[i].Animated))
+                    {
+                        if (num3 <= 0)
+                        {
                             continue;
+                        }
+                        CoolDowns[i].Dispose();
                     }
-
-                    int delayPerFrame = (int)(magic.Delay / totalFrames);
-                    int startFrame = totalFrames - (int)(timeLeft / delayPerFrame);
-
-                    if ((CMain.Time <= magic.CastTime + magic.Delay))
+                    int num4 = (int)(magic.Delay / num2);
+                    int num5 = num2 - (int)(num3 / num4);
+                    if (CMain.Time > magic.CastTime + magic.Delay || magic.CastTime <= 0)
                     {
-                        CoolDowns[i].Visible = true;
-                        CoolDowns[i].Index = 1260 + startFrame;
+                        continue;
                     }
+                    CoolDowns[i].Dispose();
+                    CoolDowns[i] = new MirAnimatedControl
+                    {
+                        Index = 1260 + num5,
+                        AnimationCount = num2 - num5,
+                        AnimationDelay = num4,
+                        Library = Libraries.Prguse2,
+                        Parent = this,
+                        Location = new Point(i * 25 + 15, 3),
+                        NotControl = true,
+                        UseOffSet = true,
+                        Loop = false,
+                        Animated = true,
+                        Opacity = 0.6f
+                    };
+                    CoolDowns[i].AfterAnimation += delegate (object o, EventArgs e)
+                    {
+                        MirAnimatedControl EndEffect = new MirAnimatedControl
+                        {
+                            Index = 1240,
+                            AnimationCount = 6,
+                            AnimationDelay = 100L,
+                            Library = Libraries.Prguse2,
+                            Parent = this,
+                            Location = ((MirAnimatedControl)o).Location,
+                            NotControl = true,
+                            UseOffSet = true,
+                            Loop = false,
+                            Animated = true,
+                            Blending = true,
+                            ForeColour = Color.Goldenrod
+                        };
+                        EndEffect.AfterAnimation += delegate
+                        {
+                            EndEffect.Dispose();
+                        };
+                    };
                 }
             }
         }
@@ -1739,7 +1774,7 @@ namespace Client.MirScenes.Dialogs
         public override void Show()
         {
             if (Visible) return;
-            if (!HasSkill) return;
+            
             Settings.SkillBar = true;
             Visible = true;
             Update();
@@ -2816,6 +2851,27 @@ namespace Client.MirScenes.Dialogs
             }
         }
 
+        public void Resetskillshortcutkey(bool Ctrl)
+        {
+            foreach (KeyBind KeyCheck in CMain.InputKeys.Keylist)
+            {
+                if (KeyCheck.Key == Keys.None)
+                    continue;
+                if ((KeyCheck.function < KeybindOptions.Bar1Skill1) || (KeyCheck.function > KeybindOptions.Bar2Skill8)) continue;
+                //need to test this 
+                if (KeyCheck.function >= KeybindOptions.Bar1Skill1 && KeyCheck.function <= KeybindOptions.Bar1Skill8)
+                {
+                    KeyCheck.RequireCtrl = (byte)(Ctrl ? 1 : 0);
+                }
+                else if (KeyCheck.function >= KeybindOptions.Bar2Skill1 && KeyCheck.function <= KeybindOptions.Bar2Skill8)
+                {
+                    KeyCheck.RequireCtrl = (byte)(Ctrl ? 0 : 1);
+                }
+
+
+            }
+        }
+
         private void SoundBar_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left || SoundBar != ActiveControl) return;
@@ -3559,8 +3615,7 @@ namespace Client.MirScenes.Dialogs
 
                 Network.Enqueue(new C.MagicKey { Spell = Magic.Spell, Key = Key, OldKey = Magic.Key });
                 Magic.Key = Key;
-                foreach (SkillBarDialog Bar in GameScene.Scene.SkillBarDialogs)
-                    Bar.Update();
+                GameScene.Scene.SkillBarDialog.Update();
 
                 Dispose();
             };

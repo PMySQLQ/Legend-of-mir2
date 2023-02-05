@@ -109,7 +109,7 @@ namespace Client.MirScenes
         public HeroBehaviourPanel HeroBehaviourPanel;
         public SocketDialog SocketDialog;
 
-        public List<SkillBarDialog> SkillBarDialogs = new List<SkillBarDialog>();
+        public SkillBarDialog SkillBarDialog;
         public ChatOptionDialog ChatOptionDialog;
         public ChatNoticeDialog ChatNoticeDialog;
 
@@ -273,10 +273,8 @@ namespace Client.MirScenes
 
             SocketDialog = new SocketDialog { Parent = this, Visible = false };
 
-            SkillBarDialog Bar1 = new SkillBarDialog { Parent = this, Visible = false, BarIndex = 0 };
-            SkillBarDialogs.Add(Bar1);
-            SkillBarDialog Bar2 = new SkillBarDialog { Parent = this, Visible = false, BarIndex = 1 };
-            SkillBarDialogs.Add(Bar2);
+            SkillBarDialog = new SkillBarDialog { Parent = this, Visible = false };
+
             ChatOptionDialog = new ChatOptionDialog { Parent = this, Visible = false };
             ChatNoticeDialog = new ChatNoticeDialog { Parent = this, Visible = false };
 
@@ -439,7 +437,17 @@ namespace Client.MirScenes
                 GameScene.Scene.KeyboardLayoutDialog.CheckNewInput(e);
                 return;
             }
+            if (e.KeyCode == Keys.Oem3)
+            {
+                if (Settings.SkillMode)
+                {
+                    Settings.SkillSet = !Settings.SkillSet;
+                    OptionDialog.Resetskillshortcutkey(!Settings.SkillSet);
+                }
 
+                SkillBarDialog.Update();
+                return;
+            }
             foreach (KeyBind KeyCheck in CMain.InputKeys.Keylist)
             {
                 if (KeyCheck.Key == Keys.None)
@@ -485,6 +493,13 @@ namespace Client.MirScenes
                     case KeybindOptions.Inventory2:
                         if (!InventoryDialog.Visible) InventoryDialog.Show();
                         else InventoryDialog.Hide();
+                        break;
+                    case KeybindOptions.SkillTilde:
+                        if (Settings.SkillMode)
+                        {
+                            Settings.SkillSet = !Settings.SkillSet;
+                            SkillBarDialog.Update();
+                        }
                         break;
                     case KeybindOptions.Equipment:
                     case KeybindOptions.Equipment2:
@@ -548,12 +563,10 @@ namespace Client.MirScenes
                         else FishingDialog.Hide();
                         break;
                     case KeybindOptions.Skillbar:
-                        if (!Settings.SkillBar)
-                            foreach (SkillBarDialog Bar in SkillBarDialogs)
-                                Bar.Show();
-                        else
-                            foreach (SkillBarDialog Bar in SkillBarDialogs)
-                                Bar.Hide();
+                        if (!SkillBarDialog.Visible)
+                            SkillBarDialog.Show();         
+                        else     
+                            SkillBarDialog.Hide();
                         break;
                     case KeybindOptions.Mount:
                         if (GameScene.Scene.MountDialog.CanRide())
@@ -803,18 +816,9 @@ namespace Client.MirScenes
 
         public void ChangeSkillMode(bool? ctrl)
         {
-            if (Settings.SkillMode || ctrl == true)
-            {
-                Settings.SkillMode = false;
-                GameScene.Scene.ChatDialog.ReceiveChat("[SkillMode Ctrl]", ChatType.Hint);
-                GameScene.Scene.OptionDialog.ToggleSkillButtons(true);
-            }
-            else if (!Settings.SkillMode || ctrl == false)
-            {
-                Settings.SkillMode = true;
-                GameScene.Scene.ChatDialog.ReceiveChat("[SkillMode ~]", ChatType.Hint);
-                GameScene.Scene.OptionDialog.ToggleSkillButtons(false);
-            }
+            Settings.SkillMode = true;
+            GameScene.Scene.ChatDialog.ReceiveChat("[SkillMode Ctrl]", ChatType.Hint);
+            GameScene.Scene.OptionDialog.ToggleSkillButtons(true);
         }
 
         public void ChangePetMode()
@@ -1185,8 +1189,7 @@ namespace Client.MirScenes
             GameShopDialog.Process();
             MiniMapDialog.Process();
 
-            foreach (SkillBarDialog Bar in Scene.SkillBarDialogs)
-                Bar.Process();
+            SkillBarDialog.Process();
 
             DialogProcess();
 
@@ -1199,22 +1202,14 @@ namespace Client.MirScenes
 
         public void DialogProcess()
         {
-            if(Settings.SkillBar)
+            if (Settings.SkillBar)
             {
-                foreach (SkillBarDialog Bar in Scene.SkillBarDialogs)
-                    Bar.Show();
+                Scene.SkillBarDialog.Show();
+
             }
             else
             {
-                foreach (SkillBarDialog Bar in Scene.SkillBarDialogs)
-                    Bar.Hide();
-            }
-
-            for (int i = 0; i < Scene.SkillBarDialogs.Count; i++)
-            {
-                if (i * 2 > Settings.SkillbarLocation.Length) break;
-                if ((Settings.SkillbarLocation[i, 0] > Settings.Resolution - 100) || (Settings.SkillbarLocation[i, 1] > 700)) continue;//in theory you'd want the y coord to be validated based on resolution, but since client only allows for wider screens and not higher :(
-                Scene.SkillBarDialogs[i].Location = new Point(Settings.SkillbarLocation[i, 0], Settings.SkillbarLocation[i, 1]);
+                Scene.SkillBarDialog.Hide();
             }
 
             if (Settings.DuraView)
@@ -2107,8 +2102,6 @@ namespace Client.MirScenes
 
             CharacterDialog = new CharacterDialog(MirGridType.Equipment, User) { Parent = this, Visible = false };
             InventoryDialog.RefreshInventory();
-            foreach (SkillBarDialog Bar in SkillBarDialogs)
-                Bar.Update();
             AllowObserve = p.AllowObserve;
             Observing = p.Observer;
         }
@@ -4542,20 +4535,14 @@ namespace Client.MirScenes
 
             actor.Magics.Add(magic);
             actor.RefreshStats();
-            foreach (SkillBarDialog Bar in SkillBarDialogs)
-            {
-                Bar.Update();
-            }
+
         }
 
         private void RemoveMagic(S.RemoveMagic p)
         {
             User.Magics.RemoveAt(p.PlaceId);
             User.RefreshStats();
-            foreach (SkillBarDialog Bar in SkillBarDialogs)
-            {
-                Bar.Update();
-            }
+  
         }
 
         private void MagicLeveled(S.MagicLeveled p)

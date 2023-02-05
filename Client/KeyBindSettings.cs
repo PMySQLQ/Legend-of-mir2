@@ -107,6 +107,7 @@ namespace Client
         HeroEquipment,
         HeroSkills,
         PositionMoves,
+        SkillTilde
     }
 
     public class KeyBind

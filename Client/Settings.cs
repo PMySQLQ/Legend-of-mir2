@@ -131,7 +131,7 @@ namespace Client
         public static bool
             SkillMode = false,
             SkillBar = true,
-            //SkillSet = true,
+            SkillSet = true,
             Effect = true,
             LevelEffect = true,
             DropView = true,
@@ -233,7 +233,7 @@ namespace Client
 
             SkillMode = Reader.ReadBoolean("Game", "SkillMode", SkillMode);
             SkillBar = Reader.ReadBoolean("Game", "SkillBar", SkillBar);
-            //SkillSet = Reader.ReadBoolean("Game", "SkillSet", SkillSet);
+            SkillSet = Reader.ReadBoolean("Game", "SkillSet", SkillSet);
             Effect = Reader.ReadBoolean("Game", "Effect", Effect);
             LevelEffect = Reader.ReadBoolean("Game", "LevelEffect", Effect);
             DropView = Reader.ReadBoolean("Game", "DropView", DropView);
@@ -326,7 +326,7 @@ namespace Client
             Reader.Write("Game", "Password", Password);
             Reader.Write("Game", "SkillMode", SkillMode);
             Reader.Write("Game", "SkillBar", SkillBar);
-            //Reader.Write("Game", "SkillSet", SkillSet);
+            Reader.Write("Game", "SkillSet", SkillSet);
             Reader.Write("Game", "Effect", Effect);
             Reader.Write("Game", "LevelEffect", LevelEffect);
             Reader.Write("Game", "DropView", DropView);
