@@ -118,7 +118,7 @@ namespace Server
             this.MainTabs.Location = new System.Drawing.Point(0, 24);
             this.MainTabs.Name = "MainTabs";
             this.MainTabs.SelectedIndex = 0;
-            this.MainTabs.Size = new System.Drawing.Size(485, 317);
+            this.MainTabs.Size = new System.Drawing.Size(570, 342);
             this.MainTabs.TabIndex = 5;
             // 
             // tabPage1
@@ -127,7 +127,7 @@ namespace Server
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(477, 291);
+            this.tabPage1.Size = new System.Drawing.Size(562, 316);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Logs";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@ namespace Server
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
             this.LogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogTextBox.Size = new System.Drawing.Size(471, 285);
+            this.LogTextBox.Size = new System.Drawing.Size(556, 310);
             this.LogTextBox.TabIndex = 2;
             // 
             // tabPage2
@@ -149,7 +149,7 @@ namespace Server
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(477, 293);
+            this.tabPage2.Size = new System.Drawing.Size(1108, 486);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Debug Logs";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@ namespace Server
             this.DebugLogTextBox.Name = "DebugLogTextBox";
             this.DebugLogTextBox.ReadOnly = true;
             this.DebugLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DebugLogTextBox.Size = new System.Drawing.Size(471, 287);
+            this.DebugLogTextBox.Size = new System.Drawing.Size(1102, 480);
             this.DebugLogTextBox.TabIndex = 3;
             // 
             // tabPage3
@@ -172,7 +172,7 @@ namespace Server
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(477, 293);
+            this.tabPage3.Size = new System.Drawing.Size(562, 316);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Chat Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -182,9 +182,9 @@ namespace Server
             this.groupBox1.Controls.Add(this.GlobalMessageButton);
             this.groupBox1.Controls.Add(this.GlobalMessageTextBox);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(3, 248);
+            this.groupBox1.Location = new System.Drawing.Point(3, 271);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(471, 42);
+            this.groupBox1.Size = new System.Drawing.Size(556, 42);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Send Message";
@@ -208,12 +208,12 @@ namespace Server
             // 
             // ChatLogTextBox
             // 
-            this.ChatLogTextBox.Location = new System.Drawing.Point(3, 3);
+            this.ChatLogTextBox.Location = new System.Drawing.Point(6, 17);
             this.ChatLogTextBox.Multiline = true;
             this.ChatLogTextBox.Name = "ChatLogTextBox";
             this.ChatLogTextBox.ReadOnly = true;
             this.ChatLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ChatLogTextBox.Size = new System.Drawing.Size(471, 249);
+            this.ChatLogTextBox.Size = new System.Drawing.Size(548, 248);
             this.ChatLogTextBox.TabIndex = 4;
             // 
             // tabPage4
@@ -223,7 +223,7 @@ namespace Server
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(477, 293);
+            this.tabPage4.Size = new System.Drawing.Size(1108, 486);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Players Online";
             // 
@@ -243,7 +243,7 @@ namespace Server
             this.PlayersOnlineListView.HideSelection = false;
             this.PlayersOnlineListView.Location = new System.Drawing.Point(3, 3);
             this.PlayersOnlineListView.Name = "PlayersOnlineListView";
-            this.PlayersOnlineListView.Size = new System.Drawing.Size(471, 287);
+            this.PlayersOnlineListView.Size = new System.Drawing.Size(1102, 480);
             this.PlayersOnlineListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.PlayersOnlineListView.TabIndex = 0;
             this.PlayersOnlineListView.UseCompatibleStateImageBehavior = false;
@@ -284,9 +284,9 @@ namespace Server
             this.ConnectionsLabel,
             this.BlockedIPsLabel,
             this.CycleDelayLabel});
-            this.StatusBar.Location = new System.Drawing.Point(0, 341);
+            this.StatusBar.Location = new System.Drawing.Point(0, 366);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(485, 23);
+            this.StatusBar.Size = new System.Drawing.Size(570, 23);
             this.StatusBar.SizingGrip = false;
             this.StatusBar.TabIndex = 4;
             this.StatusBar.Text = "statusStrip1";
@@ -345,7 +345,7 @@ namespace Server
             this.configToolStripMenuItem1});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(485, 24);
+            this.MainMenu.Size = new System.Drawing.Size(570, 24);
             this.MainMenu.TabIndex = 3;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -663,7 +663,7 @@ namespace Server
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(485, 364);
+            this.ClientSize = new System.Drawing.Size(570, 389);
             this.Controls.Add(this.MainTabs);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.MainMenu);
@@ -695,8 +695,6 @@ namespace Server
         #endregion
 
         private TabControl MainTabs;
-        private TabPage tabPage1;
-        private TextBox LogTextBox;
         private StatusStrip StatusBar;
         private ToolStripStatusLabel PlayersLabel;
         private ToolStripStatusLabel MonsterLabel;
@@ -708,8 +706,6 @@ namespace Server
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem closeServerToolStripMenuItem;
         private Timer InterfaceTimer;
-        private TabPage tabPage2;
-        private TextBox DebugLogTextBox;
         private TabPage tabPage3;
         private TextBox ChatLogTextBox;
         private ToolStripMenuItem accountToolStripMenuItem;
@@ -758,6 +754,10 @@ namespace Server
         private ToolStripMenuItem dropBuilderToolStripMenuItem;
         private ToolStripStatusLabel BlockedIPsLabel;
         private ToolStripMenuItem clearBlockedIPsToolStripMenuItem;
+        private TabPage tabPage1;
+        private TextBox LogTextBox;
+        private TabPage tabPage2;
+        private TextBox DebugLogTextBox;
     }
 }
 
