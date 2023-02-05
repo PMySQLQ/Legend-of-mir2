@@ -6691,6 +6691,19 @@ namespace Server.MirObjects
                         RefreshStats();
                     }
                     break;
+
+                case 4:///stupple
+                    if (Level < magic.Info.Level5 || magic.Info.HumUpTrain == false || (byte)Class <= 4)
+                        return;
+
+                    magic.Experience += exp;
+                    if (magic.Experience >= magic.Info.Need5)
+                    {
+                        magic.Level++;
+                        magic.Experience = 0;
+                        RefreshStats();
+                    }
+                    break;
                 default:
                     return;
             }

@@ -472,11 +472,11 @@
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(543, 37);
+            this.label54.Location = new System.Drawing.Point(568, 37);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(83, 12);
+            this.label54.Size = new System.Drawing.Size(59, 12);
             this.label54.TabIndex = 114;
-            this.label54.Text = "Random Stats:";
+            this.label54.Text = "随机编号:";
             // 
             // LightIntensitytextBox
             // 
@@ -492,9 +492,9 @@
             this.label53.AutoSize = true;
             this.label53.Location = new System.Drawing.Point(701, 233);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(65, 12);
+            this.label53.Size = new System.Drawing.Size(59, 12);
             this.label53.TabIndex = 113;
-            this.label53.Text = "Intensity:";
+            this.label53.Text = "光照强度:";
             // 
             // NeedIdentifycheckbox
             // 
@@ -615,11 +615,11 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(579, 145);
+            this.label34.Location = new System.Drawing.Point(592, 145);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(47, 12);
+            this.label34.Size = new System.Drawing.Size(35, 12);
             this.label34.TabIndex = 72;
-            this.label34.Text = "Effect:";
+            this.label34.Text = "特效:";
             // 
             // label4
             // 
@@ -652,11 +652,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(585, 290);
+            this.label12.Location = new System.Drawing.Point(568, 290);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 12);
+            this.label12.Size = new System.Drawing.Size(59, 12);
             this.label12.TabIndex = 28;
-            this.label12.Text = "Price:";
+            this.label12.Text = "物品价格:";
             // 
             // DuraTextBox
             // 
@@ -679,11 +679,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(555, 262);
+            this.label11.Location = new System.Drawing.Point(568, 262);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 12);
+            this.label11.Size = new System.Drawing.Size(59, 12);
             this.label11.TabIndex = 24;
-            this.label11.Text = "Durability:";
+            this.label11.Text = "物品持久:";
             // 
             // RClassComboBox
             // 
@@ -707,20 +707,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(525, 65);
+            this.label6.Location = new System.Drawing.Point(568, 65);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 12);
+            this.label6.Size = new System.Drawing.Size(59, 12);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Required Amount:";
+            this.label6.Text = "需求数值:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(549, 233);
+            this.label9.Location = new System.Drawing.Point(568, 233);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 12);
+            this.label9.Size = new System.Drawing.Size(59, 12);
             this.label9.TabIndex = 22;
-            this.label9.Text = "Light Range:";
+            this.label9.Text = "光照范围:";
             // 
             // RAmountTextBox
             // 
@@ -743,20 +743,20 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(585, 92);
+            this.label10.Location = new System.Drawing.Point(568, 92);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.Size = new System.Drawing.Size(59, 12);
             this.label10.TabIndex = 26;
-            this.label10.Text = "Image:";
+            this.label10.Text = "素材内观:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(579, 204);
+            this.label8.Location = new System.Drawing.Point(568, 204);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 12);
+            this.label8.Size = new System.Drawing.Size(59, 12);
             this.label8.TabIndex = 20;
-            this.label8.Text = "Weight:";
+            this.label8.Text = "物品重量:";
             // 
             // ImageTextBox
             // 
@@ -788,20 +788,20 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(585, 119);
+            this.label7.Location = new System.Drawing.Point(568, 119);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.Size = new System.Drawing.Size(59, 12);
             this.label7.TabIndex = 18;
-            this.label7.Text = "Shape:";
+            this.label7.Text = "物品类型:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(555, 176);
+            this.label13.Location = new System.Drawing.Point(568, 176);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 12);
+            this.label13.Size = new System.Drawing.Size(59, 12);
             this.label13.TabIndex = 30;
-            this.label13.Text = "Stack Size:";
+            this.label13.Text = "堆叠数量:";
             // 
             // label33
             // 

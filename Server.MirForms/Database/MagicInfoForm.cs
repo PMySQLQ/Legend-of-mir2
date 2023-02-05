@@ -51,7 +51,9 @@ namespace Server
                  txtDmgBonusMax.Text = "0";
                  textBox1.Text = "0";
                  textBox2.Text = "0";
-             }
+                 textBoxfei5D.Text = "0";
+                 textBoxfei5.Text = "0";
+            }
              else
              {
                  tabControl1.Enabled = true;
@@ -69,6 +71,8 @@ namespace Server
                  txtSkillLvl3Req.Text = _selectedMagicInfo.Level3.ToString();
                  textBox1.Text = _selectedMagicInfo.Need4.ToString();
                  textBox2.Text = _selectedMagicInfo.Level4.ToString();
+                 textBoxfei5D.Text = _selectedMagicInfo.Need5.ToString();
+                 textBoxfei5.Text = _selectedMagicInfo.Level5.ToString();
                  txtMPBase.Text = _selectedMagicInfo.BaseCost.ToString();
                  txtMPIncrease.Text = _selectedMagicInfo.LevelCost.ToString();
                  txtDelayBase.Text = _selectedMagicInfo.DelayBase.ToString();
@@ -148,6 +152,11 @@ namespace Server
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.textBoxfei5D = new System.Windows.Forms.TextBox();
+            this.textBoxfei5 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -251,7 +260,7 @@ namespace Server
             // lblDamageExample
             // 
             this.lblDamageExample.AutoSize = true;
-            this.lblDamageExample.Location = new System.Drawing.Point(11, 452);
+            this.lblDamageExample.Location = new System.Drawing.Point(11, 466);
             this.lblDamageExample.Name = "lblDamageExample";
             this.lblDamageExample.Size = new System.Drawing.Size(89, 12);
             this.lblDamageExample.TabIndex = 0;
@@ -260,7 +269,7 @@ namespace Server
             // lblDamageExplained
             // 
             this.lblDamageExplained.AutoSize = true;
-            this.lblDamageExplained.Location = new System.Drawing.Point(11, 424);
+            this.lblDamageExplained.Location = new System.Drawing.Point(11, 438);
             this.lblDamageExplained.Name = "lblDamageExplained";
             this.lblDamageExplained.Size = new System.Drawing.Size(35, 12);
             this.lblDamageExplained.TabIndex = 9;
@@ -291,7 +300,7 @@ namespace Server
             this.panel4.Controls.Add(this.label17);
             this.panel4.Controls.Add(this.label16);
             this.panel4.Controls.Add(this.label15);
-            this.panel4.Location = new System.Drawing.Point(14, 224);
+            this.panel4.Location = new System.Drawing.Point(14, 238);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(233, 191);
             this.panel4.TabIndex = 6;
@@ -424,7 +433,7 @@ namespace Server
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Location = new System.Drawing.Point(253, 224);
+            this.panel3.Location = new System.Drawing.Point(253, 238);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(216, 191);
             this.panel3.TabIndex = 5;
@@ -502,7 +511,7 @@ namespace Server
             this.panel2.Controls.Add(this.label9);
             this.panel2.Location = new System.Drawing.Point(253, 53);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(216, 164);
+            this.panel2.Size = new System.Drawing.Size(216, 179);
             this.panel2.TabIndex = 4;
             // 
             // txtMPIncrease
@@ -553,11 +562,18 @@ namespace Server
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.textBoxfei5D);
+            this.panel1.Controls.Add(this.textBoxfei5);
+            this.panel1.Controls.Add(this.label27);
+            this.panel1.Controls.Add(this.label28);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.label26);
+            this.panel1.Controls.Add(this.textBoxfei5D);
+            this.panel1.Controls.Add(this.textBoxfei5);
             this.panel1.Controls.Add(this.txtSkillLvl3Points);
             this.panel1.Controls.Add(this.txtSkillLvl2Points);
             this.panel1.Controls.Add(this.txtSkillLvl1Points);
@@ -573,12 +589,58 @@ namespace Server
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(13, 53);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(234, 164);
+            this.panel1.Size = new System.Drawing.Size(234, 179);
             this.panel1.TabIndex = 3;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.ForeColor = System.Drawing.Color.Red;
+            this.checkBox2.Location = new System.Drawing.Point(112, 158);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(90, 16);
+            this.checkBox2.TabIndex = 26;
+            this.checkBox2.Text = "飞升技能5级";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // textBoxfei5D
+            // 
+            this.textBoxfei5D.Location = new System.Drawing.Point(162, 123);
+            this.textBoxfei5D.Name = "textBoxfei5D";
+            this.textBoxfei5D.Size = new System.Drawing.Size(46, 21);
+            this.textBoxfei5D.TabIndex = 25;
+            this.textBoxfei5D.TextChanged += new System.EventHandler(this.textBoxfei5D_TextChanged);
+            // 
+            // textBoxfei5
+            // 
+            this.textBoxfei5.Location = new System.Drawing.Point(48, 124);
+            this.textBoxfei5.Name = "textBoxfei5";
+            this.textBoxfei5.Size = new System.Drawing.Size(46, 21);
+            this.textBoxfei5.TabIndex = 24;
+            this.textBoxfei5.TextChanged += new System.EventHandler(this.textBoxfei5_TextChanged);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(103, 126);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(53, 12);
+            this.label27.TabIndex = 23;
+            this.label27.Text = "技能点：";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 128);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(35, 12);
+            this.label28.TabIndex = 22;
+            this.label28.Text = "等级5";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(53, 131);
+            this.textBox2.Location = new System.Drawing.Point(48, 98);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(46, 21);
             this.textBox2.TabIndex = 21;
@@ -588,17 +650,17 @@ namespace Server
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.ForeColor = System.Drawing.Color.Red;
-            this.checkBox1.Location = new System.Drawing.Point(15, 109);
+            this.checkBox1.Location = new System.Drawing.Point(6, 158);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(144, 16);
+            this.checkBox1.Size = new System.Drawing.Size(90, 16);
             this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Hum UP level 4 Skill";
+            this.checkBox1.Text = "飞升技能4级";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(181, 130);
+            this.textBox1.Location = new System.Drawing.Point(162, 99);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(46, 21);
             this.textBox1.TabIndex = 20;
@@ -607,24 +669,24 @@ namespace Server
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(103, 135);
+            this.label25.Location = new System.Drawing.Point(103, 102);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(77, 12);
+            this.label25.Size = new System.Drawing.Size(53, 12);
             this.label25.TabIndex = 19;
-            this.label25.Text = "Skill points";
+            this.label25.Text = "技能点：";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(4, 135);
+            this.label26.Location = new System.Drawing.Point(6, 102);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(41, 12);
+            this.label26.Size = new System.Drawing.Size(35, 12);
             this.label26.TabIndex = 18;
-            this.label26.Text = "等级 4";
+            this.label26.Text = "等级4";
             // 
             // txtSkillLvl3Points
             // 
-            this.txtSkillLvl3Points.Location = new System.Drawing.Point(181, 72);
+            this.txtSkillLvl3Points.Location = new System.Drawing.Point(162, 72);
             this.txtSkillLvl3Points.Name = "txtSkillLvl3Points";
             this.txtSkillLvl3Points.Size = new System.Drawing.Size(46, 21);
             this.txtSkillLvl3Points.TabIndex = 12;
@@ -632,7 +694,7 @@ namespace Server
             // 
             // txtSkillLvl2Points
             // 
-            this.txtSkillLvl2Points.Location = new System.Drawing.Point(181, 47);
+            this.txtSkillLvl2Points.Location = new System.Drawing.Point(162, 47);
             this.txtSkillLvl2Points.Name = "txtSkillLvl2Points";
             this.txtSkillLvl2Points.Size = new System.Drawing.Size(46, 21);
             this.txtSkillLvl2Points.TabIndex = 11;
@@ -640,7 +702,7 @@ namespace Server
             // 
             // txtSkillLvl1Points
             // 
-            this.txtSkillLvl1Points.Location = new System.Drawing.Point(181, 22);
+            this.txtSkillLvl1Points.Location = new System.Drawing.Point(162, 22);
             this.txtSkillLvl1Points.Name = "txtSkillLvl1Points";
             this.txtSkillLvl1Points.Size = new System.Drawing.Size(46, 21);
             this.txtSkillLvl1Points.TabIndex = 10;
@@ -651,31 +713,31 @@ namespace Server
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(103, 75);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 9;
-            this.label6.Text = "技能点";
+            this.label6.Text = "技能点：";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(103, 50);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 8;
-            this.label7.Text = "技能点";
+            this.label7.Text = "技能点：";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(103, 25);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 7;
-            this.label8.Text = "技能点";
+            this.label8.Text = "技能点：";
             // 
             // txtSkillLvl3Req
             // 
-            this.txtSkillLvl3Req.Location = new System.Drawing.Point(53, 72);
+            this.txtSkillLvl3Req.Location = new System.Drawing.Point(48, 72);
             this.txtSkillLvl3Req.Name = "txtSkillLvl3Req";
             this.txtSkillLvl3Req.Size = new System.Drawing.Size(46, 21);
             this.txtSkillLvl3Req.TabIndex = 6;
@@ -683,7 +745,7 @@ namespace Server
             // 
             // txtSkillLvl2Req
             // 
-            this.txtSkillLvl2Req.Location = new System.Drawing.Point(53, 47);
+            this.txtSkillLvl2Req.Location = new System.Drawing.Point(48, 47);
             this.txtSkillLvl2Req.Name = "txtSkillLvl2Req";
             this.txtSkillLvl2Req.Size = new System.Drawing.Size(46, 21);
             this.txtSkillLvl2Req.TabIndex = 5;
@@ -691,7 +753,7 @@ namespace Server
             // 
             // txtSkillLvl1Req
             // 
-            this.txtSkillLvl1Req.Location = new System.Drawing.Point(53, 22);
+            this.txtSkillLvl1Req.Location = new System.Drawing.Point(48, 22);
             this.txtSkillLvl1Req.Name = "txtSkillLvl1Req";
             this.txtSkillLvl1Req.Size = new System.Drawing.Size(46, 21);
             this.txtSkillLvl1Req.TabIndex = 4;
@@ -1067,6 +1129,34 @@ namespace Server
 
             ActiveControl.BackColor = SystemColors.Window;
             _selectedMagicInfo.Need4 = temp;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+
+            _selectedMagicInfo.HumUpTrain = checkBox2.Checked;
+        }
+
+        private void textBoxfei5_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            byte temp = 0;
+            if (!IsValid(ref temp)) return;
+
+            ActiveControl.BackColor = SystemColors.Window;
+            _selectedMagicInfo.Level5 = temp;
+        }
+
+        private void textBoxfei5D_TextChanged(object sender, EventArgs e)
+        {
+            if (ActiveControl != sender) return;
+            ushort temp = 0;
+            if (!IsValid(ref temp)) return;
+
+            ActiveControl.BackColor = SystemColors.Window;
+            _selectedMagicInfo.Need5 = temp;
+
         }
     }
 }

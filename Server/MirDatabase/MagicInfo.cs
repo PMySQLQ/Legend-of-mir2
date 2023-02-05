@@ -18,8 +18,8 @@ namespace Server.MirDatabase
         public string Name;
         public Spell Spell;
         public byte BaseCost, LevelCost, Icon;
-        public byte Level1, Level2, Level3, Level4;//stupple
-        public ushort Need1, Need2, Need3, Need4;//stupple
+        public byte Level1, Level2, Level3, Level4, Level5;//stupple
+        public ushort Need1, Need2, Need3, Need4, Need5;//stupple
         public uint DelayBase = 1800, DelayReduction;
         public ushort PowerBase, PowerBonus;
         public ushort MPowerBase, MPowerBonus;
@@ -48,11 +48,15 @@ namespace Server.MirDatabase
             Level3 = reader.ReadByte();
             if (version > 105)//stupple
                 Level4 = reader.ReadByte();
+            if (version > 108)//stupple
+                Level5 = reader.ReadByte();
             Need1 = reader.ReadUInt16();
             Need2 = reader.ReadUInt16();
             Need3 = reader.ReadUInt16();
             if (version > 105)//stupple
                 Need4 = reader.ReadUInt16();
+            if (version > 108)//stupple
+                Need5 = reader.ReadUInt16();
             DelayBase = reader.ReadUInt32();
             DelayReduction = reader.ReadUInt32();
             PowerBase = reader.ReadUInt16();
@@ -82,10 +86,12 @@ namespace Server.MirDatabase
             writer.Write(Level2);
             writer.Write(Level3);
             writer.Write(Level4);//stupple
+            writer.Write(Level5);//stupple
             writer.Write(Need1);
             writer.Write(Need2);
             writer.Write(Need3);
             writer.Write(Need4);//stupple
+            writer.Write(Need5);//stupple
             writer.Write(DelayBase);
             writer.Write(DelayReduction);
             writer.Write(PowerBase);
@@ -179,10 +185,12 @@ namespace Server.MirDatabase
                     Level2 = Info.Level2,
                     Level3 = Info.Level3,
                     Level4 = Info.Level4,
+                    Level5 = Info.Level5,
                     Need1 = Info.Need1,
                     Need2 = Info.Need2,
                     Need3 = Info.Need3,
                     Need4 = Info.Need4,
+                    Need5 = Info.Need5,
                     Level = Level,
                     Key = Key,
                     Experience = Experience,

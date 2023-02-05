@@ -63,5 +63,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox textBoxfei5D;
+        private System.Windows.Forms.TextBox textBoxfei5;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
     }
 }

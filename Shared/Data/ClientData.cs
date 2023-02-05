@@ -8,8 +8,8 @@ public class ClientMagic
     public string Name;
     public Spell Spell;
     public byte BaseCost, LevelCost, Icon;
-    public byte Level1, Level2, Level3, Level4;//stupple
-    public ushort Need1, Need2, Need3, Need4;//stupple
+    public byte Level1, Level2, Level3, Level4, Level5;//stupple
+    public ushort Need1, Need2, Need3, Need4, Need5;//stupple
 
     public byte Level, Key, Range;
     public ushort Experience;
@@ -32,10 +32,12 @@ public class ClientMagic
         Level2 = reader.ReadByte();
         Level3 = reader.ReadByte();
         Level4 = reader.ReadByte();//stupple
+        Level5 = reader.ReadByte();
         Need1 = reader.ReadUInt16();
         Need2 = reader.ReadUInt16();
         Need3 = reader.ReadUInt16();
         Need4 = reader.ReadUInt16();//stupple
+        Need5 = reader.ReadUInt16();
 
         Level = reader.ReadByte();
         Key = reader.ReadByte();
@@ -60,10 +62,12 @@ public class ClientMagic
         writer.Write(Level2);
         writer.Write(Level3);
         writer.Write(Level4);//stupple
+        writer.Write(Level5);//stupple
         writer.Write(Need1);
         writer.Write(Need2);
         writer.Write(Need3);
         writer.Write(Need4);//stupple
+        writer.Write(Need5);
 
         writer.Write(Level);
         writer.Write(Key);

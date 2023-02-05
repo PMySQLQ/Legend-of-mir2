@@ -3441,6 +3441,12 @@ namespace Client.MirScenes.Dialogs
                         ExpLabel.Text = "-";
                     break;
                 case 4:
+                    if (magic.IsHumUpTrain && (byte)GameScene.User.Class >= 5 && magic.Level5 <= GameScene.User.Level)
+                        ExpLabel.Text = string.Format("{0}/{1}", Magic.Experience, Magic.Need5);
+                    else
+                        ExpLabel.Text = "-";
+                    break;
+                case 5:
                     ExpLabel.Text = "-";
                     break;
             }
