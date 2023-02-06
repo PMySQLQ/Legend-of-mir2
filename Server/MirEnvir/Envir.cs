@@ -378,6 +378,8 @@ namespace Server.MirEnvir
             if (!MagicExists(Spell.烈火身)) MagicInfoList.Add(new MagicInfo { Name = "DarkBody", Spell = Spell.烈火身, Icon = 70, Level1 = 46, Level2 = 49, Level3 = 52, Need1 = 6000, Need2 = 10000, Need3 = 14000, BaseCost = 40, LevelCost = 7, Range = 0 });
             if (!MagicExists(Spell.血风击)) MagicInfoList.Add(new MagicInfo { Name = "Hemorrhage", Spell = Spell.血风击, Icon = 75, Level1 = 47, Level2 = 51, Level3 = 55, Need1 = 9000, Need2 = 15000, Need3 = 21000, Range = 0 });
             if (!MagicExists(Spell.月华乱舞)) MagicInfoList.Add(new MagicInfo { Name = "CresentSlash", Spell = Spell.月华乱舞, Icon = 71, Level1 = 50, Level2 = 53, Level3 = 56, Need1 = 12000, Need2 = 16000, Need3 = 24000, BaseCost = 19, LevelCost = 5, Range = 0 });
+            if (!MagicExists(Spell.猫舌兰)) MagicInfoList.Add(new MagicInfo { Name = "CatTongue", Spell = Spell.猫舌兰, Icon = 79, Level1 = 48, Level2 = 51, Level3 = 56, Need1 = 10, Need2 = 20, Need3 = 30, BaseCost = 30, LevelCost = 5, DelayBase = 20000, DelayReduction = 2000 });
+
             //if (!MagicExists(Spell.月影雾)) MagicInfoList.Add(new MagicInfo { Name = "MoonMist", Spell = Spell.金刚不坏, Icon = ?, Level1 = ?, Level2 = ?, Level3 = ?, Need1 = ?, Need2 = ?, Need3 = ?, BaseCost = ?, LevelCost = ?, DelayBase = ?, DelayReduction = ? });
 
             //Archer

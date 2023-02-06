@@ -11771,6 +11771,7 @@ namespace Client.MirScenes
 
                 case Spell.FireBounce:
                 case Spell.MeteorShower:
+      
                     if (actor.NextMagicObject != null)
                     {
                         if (!actor.NextMagicObject.Dead && actor.NextMagicObject.Race != ObjectType.Item && actor.NextMagicObject.Race != ObjectType.Merchant)
@@ -11793,6 +11794,7 @@ namespace Client.MirScenes
                 case Spell.吸血地精:
                 case Spell.痹魔阱:
                 case Spell.蛇柱阱:
+                case Spell.猫舌兰:
                     if (!actor.HasClassWeapon)
                     {
                         GameScene.Scene.OutputMessage("You must be wearing a bow to perform this skill.");
@@ -11808,20 +11810,6 @@ namespace Client.MirScenes
                     if (target == null) target = MapObject.MagicObject;
 
                     if (target != null && target.Race == ObjectType.Monster) MapObject.MagicObjectID = target.ObjectID;
-
-                    //if(magic.Spell == Spell.万斤闪)
-                    //{
-                    //    isTargetSpell = User.HasElements;
-                    //}
-
-                    //switch(magic.Spell)
-                    //{
-                    //    case Spell.吸血地精:
-                    //    case Spell.痹魔阱:
-                    //    case Spell.蛇柱阱:
-                    //        isTargetSpell = false;
-                    //        break;
-                    //}
 
                     break;
                 case Spell.净化术:

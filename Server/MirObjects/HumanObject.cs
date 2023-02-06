@@ -3710,7 +3710,9 @@ namespace Server.MirObjects
                 case Spell.OneWithNature:
                     OneWithNature(target, magic);
                     break;
-
+                case Spell.猫舌兰:
+                    if (!猫舌兰(target, magic)) targetID = 0;
+                    break;
                 //Custom Spells
                 case Spell.Portal:
                     Portal(magic, location, out cast);
@@ -5072,6 +5074,20 @@ namespace Server.MirObjects
 
         #region Assassin Skills
 
+        private bool 猫舌兰(MapObject target, UserMagic magic)
+        {
+            if (target == null || !target.IsAttackTarget(this) || (!CanFly(target.CurrentLocation))) return false;
+
+            int damage = magic.GetDamage(GetAttackPower(Stats[Stat.MinDC], Stats[Stat.MaxDC]));
+
+            int delay = Functions.MaxDistance(CurrentLocation, target.CurrentLocation) * 50 + 500; //50 MS per Step
+
+            DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + delay, magic, damage, target);
+
+            ActionList.Add(action);
+
+            return true;
+        }
         private void HeavenlySword(UserMagic magic)
         {
             int damage = magic.GetDamage(GetAttackPower(Stats[Stat.MinDC], Stats[Stat.MaxDC]));
@@ -6479,6 +6495,33 @@ namespace Server.MirObjects
 
                     DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + 500, this, magic, monster, location);
                     CurrentMap.ActionList.Add(action);
+                    break;
+                #endregion
+
+                #region 猫舌兰
+                case Spell.猫舌兰:
+                    value = (int)data[1];
+                    target = (MapObject)data[2];
+
+                    if (target == null || !target.IsAttackTarget(this) || target.CurrentMap != CurrentMap || target.Node == null) return;
+                    if (target.Attacked(this, value, DefenceType.AC, false) > 0)
+                    {
+                        int rnd = Envir.Random.Next(10);//0-9
+                        if (rnd >= 8)
+                        {
+                            if (target.Race == ObjectType.Player && Settings.PvpCanFreeze)
+                                target.ApplyPoison(new Poison { PType = PoisonType.Frozen, Duration = (magic.Level + 1) * 3, TickSpeed = 1000 }, this);
+                            else
+                                rnd -= 4;
+                        }
+
+                        if (rnd <= 4)
+                            target.ApplyPoison(new Poison { PType = PoisonType.Stun, Duration = (magic.Level + 1) * 3, TickSpeed = 1000 }, this);
+                        else if (rnd <= 7)
+                            target.ApplyPoison(new Poison { PType = PoisonType.Slow, Duration = (magic.Level + 1) * 3, TickSpeed = 1000 }, this);
+
+                        LevelMagic(magic);
+                    }
                     break;
                     #endregion
 

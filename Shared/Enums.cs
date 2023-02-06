@@ -1251,6 +1251,7 @@ public enum Spell : byte
     血风击 = 104,
     月华乱舞 = 105,
     月影雾 = 106,
+    猫舌兰 = 107,
 
     //Archer
     必中闪 = 121,
@@ -1402,6 +1403,7 @@ public enum BuffType : byte
     Rested,
     Skill,
     ClearRing,
+
 
     //Stats
     Impact = 200,

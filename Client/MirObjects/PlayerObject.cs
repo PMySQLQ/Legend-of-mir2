@@ -1165,6 +1165,14 @@ namespace Client.MirObjects
                                     GameScene.SpellTime = CMain.Time + 500; //Spell Delay
                                 }
                                 break;
+                            case Spell.猫舌兰:
+                                Frames.TryGetValue(MirAction.Attack3, out Frame);
+                                if (this == User)
+                                {
+                                    MapControl.NextAction = CMain.Time + 2500;
+                                    GameScene.SpellTime = CMain.Time + 1500; //Spell Delay
+                                }
+                                break;
                             case Spell.爆阱:
                                 Frames.TryGetValue(MirAction.Harvest, out Frame);
                                 CurrentAction = MirAction.Harvest;
@@ -3407,6 +3415,24 @@ namespace Client.MirObjects
                                         break;
 
                                     #endregion
+
+                                    #region 猫舌兰
+
+                                    case Spell.猫舌兰:
+                                        SoundManager.PlaySound(20000 + (ushort)Spell * 10);
+                                        missile = CreateProjectile(260, Libraries.Magic3, true, 6, 30, 4);
+
+                                        if (missile.Target != null)
+                                        {
+                                            missile.Complete += (o, e) =>
+                                            {
+                                                if (missile.Target.CurrentAction == MirAction.Dead) return;
+                                                missile.Target.Effects.Add(new Effect(Libraries.Magic3, 420, 8, 800, missile.Target));
+                                                SoundManager.PlaySound(20000 + (ushort)Spell.猫舌兰 * 10 + 1);
+                                            };
+                                        }
+                                        break;
+                                        #endregion
 
                                 }
 
