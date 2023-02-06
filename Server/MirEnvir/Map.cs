@@ -2211,6 +2211,69 @@ namespace Server.MirEnvir
                     }
                     break;
 
+                #endregion
+
+                #region HealingCircle
+
+                case Spell.阴阳五行阵:
+                    value = (int)data[2];
+                    location = (Point)data[3];
+
+                    train = true;
+                    show = true;
+
+                    for (int y = location.Y - 2; y <= location.Y + 2; y++)
+                    {
+                        if (y < 0) continue;
+                        if (y >= Height) break;
+
+                        for (int x = location.X - 2; x <= location.X + 2; x++)
+                        {
+                            if (x < 0) continue;
+                            if (x >= Width) break;
+
+                            cell = GetCell(x, y);
+
+                            if (!cell.Valid) continue;
+
+                            bool cast = true;
+                            if (cell.Objects != null)
+                                for (int o = 0; o < cell.Objects.Count; o++)
+                                {
+                                    MapObject target = cell.Objects[o];
+                                    if (target.Race != ObjectType.Spell || ((SpellObject)target).Spell != Spell.阴阳五行阵) continue;
+
+                                    cast = false;
+                                    break;
+                                }
+
+                            if (!cast) continue;
+
+                            SpellObject ob = new SpellObject
+                            {
+                                Spell = Spell.阴阳五行阵,
+                                Value = value,
+                                ExpireTime = Envir.Time + 6000,
+                                //ExpireTime = Envir.Time + (10 + value / 2) * 250,
+                                TickSpeed = 3000,
+                                Caster = player,
+                                CurrentLocation = new Point(x, y),
+                                CastLocation = location,
+                                Show = show,
+                                CurrentMap = this,
+
+
+                            };
+
+                            show = false;
+
+                            AddObject(ob);
+                            ob.Spawned();
+                        }
+                    }
+
+                    break;
+
                     #endregion
             }
 

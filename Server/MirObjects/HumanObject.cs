@@ -3535,6 +3535,9 @@ namespace Server.MirObjects
                 case Spell.疾光电影:
                     Lightning(magic);
                     break;
+                case Spell.阴阳五行阵:
+                    HealingCircle(magic, target == null ? location : target.CurrentLocation, out cast);
+                    break;
                 case Spell.迁移剑:
                     HeavenlySword(magic);
                     break;
@@ -4180,6 +4183,16 @@ namespace Server.MirObjects
             DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + 500, this, magic, damage, location);
 
             ActiveBlizzard = true;
+            CurrentMap.ActionList.Add(action);
+            cast = true;
+        }
+
+        private void HealingCircle(UserMagic magic, Point location, out bool cast)
+        {
+            cast = false;
+            int damage = magic.GetDamage(GetAttackPower(Stats[Stat.MinSC], Stats[Stat.MaxSC]));
+
+            DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + 500, this, magic, damage, location);
             CurrentMap.ActionList.Add(action);
             cast = true;
         }

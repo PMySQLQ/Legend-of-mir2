@@ -2189,6 +2189,15 @@ namespace Client.MirObjects
 
                             #endregion
 
+                            #region HealingCircle
+
+                            case Spell.阴阳五行阵:
+                                Effects.Add(new Effect(Libraries.Magic3, 620, 10, Frame.Count * FrameInterval, this));
+                                SoundManager.PlaySound(20000 + (ushort)Spell * 10);
+                                break;
+
+                                #endregion
+
                         }
 
 
@@ -3416,7 +3425,7 @@ namespace Client.MirObjects
 
                                     #endregion
 
-                                    #region 猫舌兰
+                                    #region CatTongue
 
                                     case Spell.猫舌兰:
                                         SoundManager.PlaySound(20000 + (ushort)Spell * 10);
@@ -3431,6 +3440,15 @@ namespace Client.MirObjects
                                                 SoundManager.PlaySound(20000 + (ushort)Spell.猫舌兰 * 10 + 1);
                                             };
                                         }
+                                        break;
+                                    #endregion
+
+
+                                    #region HealingCircle
+
+                                    case Spell.阴阳五行阵:
+
+                                        SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 1);
                                         break;
                                         #endregion
 
