@@ -4871,6 +4871,18 @@ namespace Client.MirScenes
                     case SpellEffect.DeathCrawlerBreath:
                         ob.Effects.Add(new Effect(Libraries.Monsters[(ushort)Monster.DeathCrawler], 272 + ((int)ob.Direction * 4), 4, 400, ob) { Blend = true });
                         break;
+
+                    case SpellEffect.Healing2:
+                        SoundManager.PlaySound(20000 + (ushort)Spell.治愈术 * 10 + 1);
+                        ob.Effects.Add(new Effect(Libraries.Magic3, 650, 10, 800, ob));
+                        break;
+                    case SpellEffect.Healing3:
+                        SoundManager.PlaySound(20000);
+                        ob.Effects.Add(new Effect(Libraries.Magic3, 660, 10, 800, ob));
+                        break;
+                    case SpellEffect.MoonMist:
+                        ob.Effects.Add(new Effect(Libraries.Magic3, 705, 10, 800, ob));
+                        break;
                 }
 
                 return;

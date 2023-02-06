@@ -1344,6 +1344,7 @@ public enum SpellEffect : byte
     Tester,
     Healing2,//阴阳五行
     Healing3,//阴阳五行
+    MoonMist,
 }
 
 
@@ -1378,7 +1379,7 @@ public enum BuffType : byte
     MagicShield,
     ElementalBarrier,
     HumUp, //stupple
-
+   
     //Monster
     HornedArcherBuff = 50,
     ColdArcherBuff,

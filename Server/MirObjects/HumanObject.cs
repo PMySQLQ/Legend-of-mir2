@@ -3716,6 +3716,9 @@ namespace Server.MirObjects
                 case Spell.猫舌兰:
                     CatTongue(target, magic);
                     break;
+                case Spell.月影雾:
+                    MoonMist(magic);
+                    break;
                 //Custom Spells
                 case Spell.Portal:
                     Portal(magic, location, out cast);
@@ -4430,6 +4433,23 @@ namespace Server.MirObjects
             CurrentMap.ActionList.Add(action);
             cast = true;
         }
+        private void MoonMist(UserMagic magic)
+        {
+            for (int i = 0; i < Buffs.Count; i++)
+                if (Buffs[i].Type == BuffType.MoonLight) return;
+
+            var time = GetAttackPower(Stats[Stat.MinAC], Stats[Stat.MaxAC]);
+
+            AddBuff(BuffType.MoonLight, this, (time + (magic.Level + 1) * 5) * 500, new Stats());
+
+            CurrentMap.Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.MoonMist }, CurrentLocation);
+            int damage = magic.GetDamage(GetAttackPower(Stats[Stat.MinDC], Stats[Stat.MaxDC]));
+            DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + 500, this, magic, damage, CurrentLocation, Direction);
+            CurrentMap.ActionList.Add(action);
+            LevelMagic(magic);
+
+        }
+
         private void TrapHexagon(UserMagic magic, Point location, out bool cast)
         {
             cast = false;

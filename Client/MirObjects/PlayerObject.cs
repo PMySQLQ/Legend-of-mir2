@@ -2196,6 +2196,15 @@ namespace Client.MirObjects
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10);
                                 break;
 
+                            #endregion
+
+                            #region MoonMist
+
+                            case Spell.月影雾:
+                                MapControl.Effects.Add(new Effect(Libraries.Magic3, 680, 25, 1800, CurrentLocation));
+                                SoundManager.PlaySound(20000 + (ushort)Spell * 10);
+                                break;
+
                                 #endregion
 
                         }
