@@ -45,6 +45,9 @@ public class ItemInfo
     public SpecialItemMode Unique = SpecialItemMode.None;
     public byte RandomStatsId;
     public RandomItemStat RandomStats;
+
+
+    public WearType WearType = WearType.All;//英雄
     public string ToolTip { get; set; } = string.Empty;
 
     public byte Slots;
@@ -201,6 +204,11 @@ public class ItemInfo
             Stats = new Stats(reader, version, customVersion);
         }
 
+        if (version > 109)
+        {
+            WearType = (WearType)reader.ReadByte();
+        }
+
         bool isTooltip = reader.ReadBoolean();
         if (isTooltip)
         {
@@ -261,6 +269,8 @@ public class ItemInfo
         writer.Write(Slots);
 
         Stats.Save(writer);
+
+        writer.Write((byte)WearType);
 
         writer.Write(ToolTip != null);
         if (ToolTip != null)

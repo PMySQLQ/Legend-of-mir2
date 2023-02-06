@@ -1056,6 +1056,14 @@ namespace Server.MirObjects
         {
             if (item == null) return false;
 
+            switch (item.Info.WearType)
+            {
+                case WearType.Hero:
+                    //ReceiveChat("Item is restricted for Heros.", ChatType.System);
+                    ReceiveChat("英雄不可用.", ChatType.System);
+                    return false;
+            }
+
             switch (Gender)
             {
                 case MirGender.Male:
@@ -2772,7 +2780,7 @@ namespace Server.MirObjects
             if (Info.Equipment[(int)EquipmentSlot.Weapon] == null) return;
             ItemInfo RealItem = Functions.GetRealItem(Info.Equipment[(int)EquipmentSlot.Weapon].Info, Info.Level, Info.Class, Envir.ItemInfoList);
 
-            if ((RealItem.Shape / Globals.ClassWeaponCount) != 2) return;
+            //if ((RealItem.Shape / Globals.ClassWeaponCount) != 2) return;//弓箭手武器方向问题
             if (Functions.InRange(CurrentLocation, location, Globals.MaxAttackRange) == false) return;
 
             MapObject target = null;
@@ -7403,6 +7411,12 @@ namespace Server.MirObjects
         }
         public bool CanEquipItem(UserItem item, int slot)
         {
+            switch (item.Info.WearType)
+            {
+                case WearType.Hero:
+                    ReceiveChat("非英雄物品.", ChatType.System);
+                    return false;
+            }
             switch ((EquipmentSlot)slot)
             {
                 case EquipmentSlot.Weapon:

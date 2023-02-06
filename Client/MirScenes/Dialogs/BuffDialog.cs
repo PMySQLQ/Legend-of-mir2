@@ -466,6 +466,8 @@ namespace Client.MirScenes.Dialogs
 
                 case BuffType.Concentration:
                     return 96;
+                case BuffType.ElementalBarrier:
+                    return 98;
                 case BuffType.VampireShot:
                     return 100;
                 case BuffType.PoisonShot:

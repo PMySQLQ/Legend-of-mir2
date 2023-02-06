@@ -210,6 +210,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label60 = new System.Windows.Forms.Label();
             this.tBSearchItem = new System.Windows.Forms.TextBox();
+            this.WearBox = new System.Windows.Forms.ComboBox();
+            this.label62 = new System.Windows.Forms.Label();
             this.ItemInfoPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -250,6 +252,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.WearBox);
+            this.tabPage1.Controls.Add(this.label62);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.label57);
             this.tabPage1.Controls.Add(this.SlotsTextBox);
@@ -308,7 +312,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // groupBox2
             // 
@@ -413,7 +416,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(49, 293);
+            this.label56.Location = new System.Drawing.Point(43, 323);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(53, 12);
             this.label56.TabIndex = 123;
@@ -423,10 +426,10 @@
             // 
             this.TooltipTextBox.BackColor = System.Drawing.Color.Black;
             this.TooltipTextBox.ForeColor = System.Drawing.Color.Goldenrod;
-            this.TooltipTextBox.Location = new System.Drawing.Point(108, 297);
+            this.TooltipTextBox.Location = new System.Drawing.Point(108, 320);
             this.TooltipTextBox.Multiline = true;
             this.TooltipTextBox.Name = "TooltipTextBox";
-            this.TooltipTextBox.Size = new System.Drawing.Size(347, 148);
+            this.TooltipTextBox.Size = new System.Drawing.Size(347, 125);
             this.TooltipTextBox.TabIndex = 122;
             this.TooltipTextBox.TextChanged += new System.EventHandler(this.TooltipTextBox_TextChanged);
             // 
@@ -2129,6 +2132,24 @@
             this.tBSearchItem.Size = new System.Drawing.Size(165, 21);
             this.tBSearchItem.TabIndex = 119;
             // 
+            // WearBox
+            // 
+            this.WearBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.WearBox.FormattingEnabled = true;
+            this.WearBox.Location = new System.Drawing.Point(108, 293);
+            this.WearBox.Name = "WearBox";
+            this.WearBox.Size = new System.Drawing.Size(116, 20);
+            this.WearBox.TabIndex = 10002;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(43, 296);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(59, 12);
+            this.label62.TabIndex = 10003;
+            this.label62.Text = "使用对象:";
+            // 
             // ItemInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2359,5 +2380,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.TextBox tBSearchItem;
+        private System.Windows.Forms.ComboBox WearBox;
+        private System.Windows.Forms.Label label62;
     }
 }

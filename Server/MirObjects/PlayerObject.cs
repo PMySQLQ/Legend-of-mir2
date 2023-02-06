@@ -13584,6 +13584,7 @@ namespace Server.MirObjects
                 MirClass.法师 => new WizardHero(CurrentHero, this),
                 MirClass.道士 => new TaoistHero(CurrentHero, this),
                 MirClass.刺客 => new AssassinHero(CurrentHero, this),
+                MirClass.弓手 => new ArcherHero(CurrentHero, this),
                 _ => new HeroObject(CurrentHero, this)
             };            
 

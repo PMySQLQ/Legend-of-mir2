@@ -2195,9 +2195,21 @@ namespace Client.MirControls
         {
             if (Item == null) return false;
 
+
+
+
             UserObject actor = GameScene.User;
             if (HeroGridType)
                 actor = GameScene.Hero;
+
+
+            switch (Item.Info.WearType)
+            {
+                case WearType.Hero:
+                    GameScene.Scene.ChatDialog.ReceiveChat("非英雄物品.", ChatType.System);
+                    return false;
+            }
+
 
             switch (actor.Gender)
             {
@@ -2415,6 +2427,14 @@ namespace Client.MirControls
                 return false;
 
             //If Can remove;
+
+            switch (i.Info.WearType)
+            {
+                case WearType.Hero:
+                    GameScene.Scene.ChatDialog.ReceiveChat("英雄物品.", ChatType.System);
+                    return false;
+            }
+
 
             switch (actor.Gender)
             {

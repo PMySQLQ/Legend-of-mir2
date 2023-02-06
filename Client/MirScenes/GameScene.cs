@@ -8843,6 +8843,28 @@ namespace Client.MirScenes
 
             int count = 0;
 
+            #region HERO/PLAYER
+            if (realItem.WearType != WearType.All)
+            {
+                count++;
+                Color colour = Color.LightGoldenrodYellow;
+
+                MirLabel WearLabel = new MirLabel
+                {
+                    AutoSize = true,
+                    ForeColour = Color.Yellow,
+                    Location = new Point(4, ItemLabel.DisplayRectangle.Bottom),
+                    OutLine = true,
+                    Parent = ItemLabel,
+                    Text = realItem.WearType == WearType.Hero ? $"禁止人物使用" : realItem.WearType == WearType.Player ? $"禁止英雄使用" : $"{realItem.WearType.ToString()} 物品",
+                };
+
+                ItemLabel.Size = new Size(Math.Max(ItemLabel.Size.Width, WearLabel.DisplayRectangle.Right + 4),
+                    Math.Max(ItemLabel.Size.Height, WearLabel.DisplayRectangle.Bottom));
+            }
+
+            #endregion
+
             #region DONT_DEATH_DROP
 
             if (HoverItem.Info.Bind != BindMode.None && HoverItem.Info.Bind.HasFlag(BindMode.DontDeathdrop))

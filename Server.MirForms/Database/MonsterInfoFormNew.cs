@@ -433,7 +433,8 @@ namespace Server.Database
 
                             try
                             {
-                                monsterInfoGridView.BeginEdit(true);
+                                if (dataRow != null)//怪物和物品导入错误
+                                    monsterInfoGridView.BeginEdit(true);
 
                                 if (dataRow == null)
                                 {

@@ -38,7 +38,7 @@ namespace Server
             RClassComboBox.Items.AddRange(Enum.GetValues(typeof (RequiredClass)).Cast<object>().ToArray());
             RGenderComboBox.Items.AddRange(Enum.GetValues(typeof (RequiredGender)).Cast<object>().ToArray());
             ISetComboBox.Items.AddRange(Enum.GetValues(typeof(ItemSet)).Cast<object>().ToArray());
-
+            WearBox.Items.AddRange(Enum.GetValues(typeof(WearType)).Cast<object>().ToArray());
             ITypeFilterComboBox.Items.AddRange(Enum.GetValues(typeof(ItemType)).Cast<object>().ToArray());
             ITypeFilterComboBox.Items.Add(new ComboBoxItem { Text = "All" });
             ITypeFilterComboBox.SelectedIndex = ITypeFilterComboBox.Items.Count - 1;
@@ -248,7 +248,7 @@ namespace Server
             AgilityTextBox.Text = info.Stats[Stat.Agility].ToString();
             ASpeedTextBox.Text = info.Stats[Stat.AttackSpeed].ToString();
             LuckTextBox.Text = info.Stats[Stat.Luck].ToString();
-
+            WearBox.SelectedItem = info.WearType;
             WWeightTextBox.Text = info.Stats[Stat.WearWeight].ToString();
             HWeightTextBox.Text = info.Stats[Stat.HandWeight].ToString();
             BWeightText.Text = info.Stats[Stat.BagWeight].ToString();
@@ -410,6 +410,8 @@ namespace Server
                 if (globalDropNotify_CheckBox.Checked != info.GlobalDropNotify)
                     globalDropNotify_CheckBox.CheckState = CheckState.Indeterminate;
 
+                if (WearBox.SelectedItem == null || (WearType)WearBox.SelectedItem != info.WearType) WearBox.SelectedItem = null;
+
                 if (ParalysischeckBox.Checked != info.Unique.HasFlag(SpecialItemMode.Paralize)) ParalysischeckBox.CheckState = CheckState.Indeterminate;
                 if (TeleportcheckBox.Checked != info.Unique.HasFlag(SpecialItemMode.Teleport)) TeleportcheckBox.CheckState = CheckState.Indeterminate;
                 if (ClearcheckBox.Checked != info.Unique.HasFlag(SpecialItemMode.ClearRing)) ClearcheckBox.CheckState = CheckState.Indeterminate;
@@ -426,6 +428,7 @@ namespace Server
                 if (FastRunCheckBox.Checked != info.CanFastRun) FastRunCheckBox.CheckState = CheckState.Indeterminate;
                 if (CanAwaken.Checked != info.CanAwakening) CanAwaken.CheckState = CheckState.Indeterminate;
                 if (TooltipTextBox.Text != info.ToolTip) TooltipTextBox.Text = string.Empty;
+
                 if (BlinkcheckBox.Checked != info.Unique.HasFlag(SpecialItemMode.Blink)) BlinkcheckBox.CheckState = CheckState.Indeterminate;
         }
             RefreshUniqueTab();
@@ -1852,11 +1855,6 @@ namespace Server
                     }
                 }
             }
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

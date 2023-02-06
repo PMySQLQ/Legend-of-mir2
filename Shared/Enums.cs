@@ -123,8 +123,12 @@ public enum ItemGrade : byte
     英雄 = 5,
 }
 
-
-
+public enum WearType : byte
+{
+    All = 0,
+    Hero = 1,
+    Player = 2,
+}
 public enum RefinedValue : byte
 {
     None = 0,

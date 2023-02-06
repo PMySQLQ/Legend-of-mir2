@@ -896,6 +896,10 @@ namespace Server.MirObjects
             Attack(Direction, Spell.None);
         }
 
+
+
+
+
         protected virtual bool InAttackRange()
         {
             if (Target.CurrentMap != CurrentMap) return false;
