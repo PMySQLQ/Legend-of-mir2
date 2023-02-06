@@ -1047,6 +1047,7 @@ namespace Server.MirObjects
 
             Enqueue(new S.StartGame { Result = 4, Resolution = Settings.AllowedResolution });
             ReceiveChat(string.Format(GameLanguage.Welcome, GameLanguage.GameName), ChatType.Hint);
+            ReceiveChat(string.Format("使用组合快捷键 CTRL-H 更改攻击模式"), ChatType.Hint);
 
             if (Settings.TestServer)
             {
