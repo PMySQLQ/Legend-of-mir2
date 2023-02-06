@@ -23,8 +23,8 @@ namespace Client.MirObjects
         public Spell Spell;
         public int FrameCount, FrameInterval, FrameIndex;
         public bool Repeat, Ended;
-        
 
+        public bool DrawBehind;
         public SpellObject(uint objectID) : base(objectID)
         {
         }
@@ -79,6 +79,16 @@ namespace Client.MirObjects
                     Light = 3;
                     Blend = true;
                     Repeat = false;
+                    break;
+                case Spell.阴阳五行阵:
+                    //CurrentLocation.Y = Math.Max(0, CurrentLocation.Y - 20);
+                    BodyLibrary = Libraries.Magic3;
+                    DrawFrame = 630;
+                    FrameInterval = 120;
+                    FrameCount = 11;
+                    Light = 3;
+                    Blend = true;
+                    DrawBehind = true;    // 绘制底层技能
                     break;
                 case Spell.天上秘术:
                     MapControl.Effects.Add(new Effect(Libraries.Magic2, 1600, 10, 800, CurrentLocation) { Repeat = true, RepeatUntil = CMain.Time + 3000 });

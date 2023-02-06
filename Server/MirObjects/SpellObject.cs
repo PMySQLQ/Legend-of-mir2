@@ -197,6 +197,24 @@ namespace Server.MirObjects
                         ob.Attacked(((HumanObject)Caster), Value, DefenceType.MAC, false);
                     }
                     break;
+                case Spell.阴阳五行阵:
+                    if (ob.Race != ObjectType.Player && ob.Race != ObjectType.Monster) return;
+                    if (ob.Dead) return;
+
+                    if (ob.IsAttackTarget(Caster))
+                    {
+                        ob.Attacked(((HumanObject)Caster), Value * 10 / 8, DefenceType.MAC, false);
+                        Broadcast(new S.ObjectEffect { ObjectID = ob.ObjectID, Effect = SpellEffect.Healing3 });
+                    }
+
+                    else if (ob.IsFriendlyTarget(Caster))
+                    {
+                        //if (ob.HealAmount != 0 || ob.PercentHealth == 100) return;
+                        if (ob.HealAmount > Value * 2 || ob.PercentHealth == 100) return;
+                        ob.HealAmount += (ushort)(Value * 2);
+                        Broadcast(new S.ObjectEffect { ObjectID = ob.ObjectID, Effect = SpellEffect.Healing2 });
+                    }
+                    break;
                 case Spell.MapLava:
                 case Spell.MapLightning:
                     {
@@ -476,6 +494,7 @@ namespace Server.MirObjects
                 case Spell.毒雾:
                 case Spell.天霜冰环:
                 case Spell.天上秘术:
+                case Spell.阴阳五行阵:
                 case Spell.StoneGolemQuake:
                 case Spell.EarthGolemPile:
                 case Spell.TreeQueenMassRoots:

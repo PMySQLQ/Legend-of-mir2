@@ -1341,7 +1341,9 @@ public enum SpellEffect : byte
     FlamingMutantWeb,
     FurbolgWarriorCritical,
     HumUpEffect,//stupple
-    Tester    
+    Tester,
+    Healing2,//阴阳五行
+    Healing3,//阴阳五行
 }
 
 

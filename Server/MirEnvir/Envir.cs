@@ -360,7 +360,7 @@ namespace Server.MirEnvir
             if (!MagicExists(Spell.毒雾)) MagicInfoList.Add(new MagicInfo { Name = "PoisonCloud", Spell = Spell.毒雾, Icon = 54, Level1 = 43, Level2 = 45, Level3 = 48, Need1 = 4000, Need2 = 8000, Need3 = 12000, BaseCost = 30, LevelCost = 5, MPowerBase = 40, PowerBase = 20, DelayBase = 18000, DelayReduction = 2000, Range = 9 });
             if (!MagicExists(Spell.先天气功)) MagicInfoList.Add(new MagicInfo { Name = "EnergyShield", Spell = Spell.先天气功, Icon = 57, Level1 = 48, Level2 = 51, Level3 = 54, Need1 = 5000, Need2 = 9000, Need3 = 13000, BaseCost = 50, LevelCost = 20, Range = 9 });
             if (!MagicExists(Spell.血龙水)) MagicInfoList.Add(new MagicInfo { Name = "PetEnhancer", Spell = Spell.血龙水, Icon = 78, Level1 = 45, Level2 = 48, Level3 = 51, Need1 = 4000, Need2 = 8000, Need3 = 12000, BaseCost = 30, LevelCost = 40, Range = 0 });
-            //if (!MagicExists(Spell.治愈术Circle)) MagicInfoList.Add(new MagicInfo { Name = "HealingCircle", Spell = Spell.金刚不坏, Icon = ?, Level1 = ?, Level2 = ?, Level3 = ?, Need1 = ?, Need2 = ?, Need3 = ?, BaseCost = ?, LevelCost = ?, DelayBase = ?, DelayReduction = ? });
+            if (!MagicExists(Spell.阴阳五行阵)) MagicInfoList.Add(new MagicInfo { Name = "HealingCircle", Spell = Spell.阴阳五行阵, Icon = 82, Level1 = 1, Level2 = 2, Level3 = 3, Need1 = 4000, Need2 = 8000, Need3 = 12000, BaseCost = 1, LevelCost = 5, MPowerBase = 40, PowerBase = 20, DelayBase = 18000, DelayReduction = 2000, Range = 9 });
 
             //Assassin
             if (!MagicExists(Spell.绝命剑法)) MagicInfoList.Add(new MagicInfo { Name = "FatalSword", Spell = Spell.绝命剑法, Icon = 58, Level1 = 7, Level2 = 9, Level3 = 12, Need1 = 500, Need2 = 1000, Need3 = 2300, Range = 0 });

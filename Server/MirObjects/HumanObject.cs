@@ -3714,7 +3714,7 @@ namespace Server.MirObjects
                     OneWithNature(target, magic);
                     break;
                 case Spell.猫舌兰:
-                    if (!猫舌兰(target, magic)) targetID = 0;
+                    CatTongue(target, magic);
                     break;
                 //Custom Spells
                 case Spell.Portal:
@@ -5087,7 +5087,7 @@ namespace Server.MirObjects
 
         #region Assassin Skills
 
-        private bool 猫舌兰(MapObject target, UserMagic magic)
+        private bool CatTongue(MapObject target, UserMagic magic)
         {
             if (target == null || !target.IsAttackTarget(this) || (!CanFly(target.CurrentLocation))) return false;
 

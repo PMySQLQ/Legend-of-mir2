@@ -1823,7 +1823,7 @@ namespace Server
         private void btMake_Click(object sender, EventArgs e)
         {
             string str = ItemNameTextBox.Text.Trim();
-            Regex regex = new Regex(@"\(([0-9#]{1,2}),([0-9#]{1,2}),([0-9#]{1,2}),([0-9#]{1,2}),([^\s]+)\)");
+            Regex regex = new Regex("^\\d+$");
             foreach (MirConnection Connection in SMain.Envir.Connections)
             {
                 if (Connection.Player.IsGM)
@@ -1835,7 +1835,7 @@ namespace Server
                             if (int.Parse(jifgRmabBB.Text.Trim()) >= 1)
                             {
                                 Connection.Player.Chat("@make  " + str + " " + jifgRmabBB.Text.Trim());
-                      
+                                label63.Text = "若不指定数量,默认为1.";
                             }
                             else
                             {
@@ -1844,14 +1844,14 @@ namespace Server
                         }
                         else
                         {
-                  
+                            label63.Text = "若不指定数量,默认为1.";
                             MessageBox.Show("你在侮辱我的智商?", "我操?!", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                     }
                     else
                     {
                         Connection.Player.Chat("@make  " + str);
-                    
+                        label63.Text = "若不指定数量,默认为1.";
                     }
                 }
             }

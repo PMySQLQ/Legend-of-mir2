@@ -10883,6 +10883,36 @@ namespace Client.MirScenes
             float oldOpacity = DXManager.Opacity;
             DXManager.SetOpacity(0.4F);
 
+            #region draw
+            for (int y = User.Movement.Y - ViewRangeY; y <= User.Movement.Y + ViewRangeY + 25; y++)//
+            {
+                if (y <= 0) continue;
+                if (y >= Height) break;
+                int drawY = (y - User.Movement.Y + OffSetY + 1) * CellHeight + User.OffSetMove.Y;
+                for (int x = User.Movement.X - ViewRangeX; x <= User.Movement.X + ViewRangeX; x++)
+                {
+                    if (x < 0) continue;
+                    if (x >= Width) break;
+                    if (M2CellInfo[x, y].CellObjects != null)
+                    {
+                        for (int i = 0; i < M2CellInfo[x, y].CellObjects.Count; i++)
+                        {
+                            if (M2CellInfo[x, y].CellObjects[i] is SpellObject)
+                            {
+                                SpellObject nSpell = (SpellObject)M2CellInfo[x, y].CellObjects[i];
+                                if (nSpell.DrawBehind)
+                                {
+                                    nSpell.Draw();
+                                    continue;
+                                }
+                            }
+                        }
+                    }
+                    //M2CellInfo[x, y].DrawObjects();
+                }
+
+            }
+            #endregion
             //MapObject.User.DrawMount();
 
             MapObject.User.DrawBody();
@@ -11844,6 +11874,7 @@ namespace Client.MirScenes
                     break;
                 case Spell.天霜冰环:
                 case Spell.天上秘术:
+                case Spell.阴阳五行阵:
                     if (actor.NextMagicObject != null)
                     {
                         if (!actor.NextMagicObject.Dead && actor.NextMagicObject.Race != ObjectType.Item && actor.NextMagicObject.Race != ObjectType.Merchant)
