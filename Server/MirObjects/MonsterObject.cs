@@ -464,8 +464,8 @@ namespace Server.MirObjects
                 case 213:
                     return new Siege(info); //TODO
 
-
-
+                case 255://地丁柱
+                    return new StoneTrap(info);
                 default:
                     return new MonsterObject(info);
             }

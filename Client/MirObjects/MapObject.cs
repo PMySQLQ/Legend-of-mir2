@@ -287,6 +287,9 @@ namespace Client.MirObjects
                         Effects.Add(new BuffEffect(Libraries.Monsters[(ushort)Monster.HornedCommander], 1174, 16, 1600, this, true, type) { Repeat = true, Light = 1 });
                     };
                     break;
+                case BuffType.FastMove:
+                    Effects.Add(new BuffEffect(Libraries.Magic3, 210, 7, 1400, this, true, type) { Repeat = true });
+                    break;
             }
         }
         public void RemoveBuffEffect(BuffType type)
@@ -313,6 +316,9 @@ namespace Client.MirObjects
                 case BuffType.MoonLight:
                 case BuffType.DarkBody:
                     if (ob != null) ob.Sneaking = false;
+                    break;
+                case BuffType.FastMove:
+                    if (ob != null) ob.FastChannel = false;
                     break;
             }
         }

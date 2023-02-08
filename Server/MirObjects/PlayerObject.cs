@@ -1143,6 +1143,8 @@ namespace Server.MirObjects
             if (Info.CrossHalfMoon) Enqueue(new S.SpellToggle { ObjectID = ObjectID, Spell = Spell.狂风斩, CanUse = true });
             if (Info.DoubleSlash) Enqueue(new S.SpellToggle { ObjectID = ObjectID, Spell = Spell.风剑术, CanUse = true });
 
+            Enqueue(new S.SpellToggle { Spell = Spell.爆阱, CanUse = false });
+
             for (int i = 0; i < Info.Pets.Count; i++)
             {
                 PetInfo info = Info.Pets[i];
@@ -4048,6 +4050,8 @@ namespace Server.MirObjects
                 script.Call(this, npcid, page.ToUpper());
             }
         }
+
+
         private UserItem GetBait(int count)
         {
             UserItem item = Info.Equipment[(int)EquipmentSlot.Weapon];

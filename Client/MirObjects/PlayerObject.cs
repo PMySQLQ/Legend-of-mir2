@@ -107,7 +107,7 @@ namespace Client.MirObjects
 
         public SpellEffect CurrentEffect;
 
-        public bool RidingMount, Sprint, FastRun, Fishing, FoundFish;
+        public bool RidingMount, Sprint, FastRun, Fishing, FoundFish, FastChannel;
         public long StanceTime, MountTime, FishingTime;
         public long BlizzardStopTime, ReincarnationStopTime, SlashingBurstTime;
 
@@ -1174,16 +1174,24 @@ namespace Client.MirObjects
                                 }
                                 break;
                             case Spell.爆阱:
-                                Frames.TryGetValue(MirAction.Harvest, out Frame);
-                                CurrentAction = MirAction.Harvest;
-                                ArcherLayTrap = true;
-                                if (this == User)
+                                if (!GameScene.Tipexp)
                                 {
-                                    uint targetID = (uint)action.Params[1];
-                                    Point location = (Point)action.Params[2];
-                                    Network.Enqueue(new C.Magic { ObjectID = GameScene.User.ObjectID, Spell = Spell, Direction = Direction, TargetID = targetID, Location = location });
-                                    MapControl.NextAction = CMain.Time + 1000;
-                                    GameScene.SpellTime = CMain.Time + 1500; //Spell Delay
+                                    Frames.TryGetValue(MirAction.Harvest, out Frame);
+                                    CurrentAction = MirAction.Harvest;
+                                    ArcherLayTrap = true;
+                                    if (this == User)
+                                    {
+                                        uint targetID = (uint)action.Params[1];
+                                        Point location = (Point)action.Params[2];
+                                        Network.Enqueue(new C.Magic { ObjectID = GameScene.User.ObjectID, Spell = Spell, Direction = Direction, TargetID = targetID, Location = location });
+                                        MapControl.NextAction = CMain.Time + 1000;
+                                        GameScene.SpellTime = CMain.Time + 1500; //Spell Delay
+                                    }
+                                }
+                                else
+                                {
+                                    Frames.TryGetValue(MirAction.Spell, out Frame);
+
                                 }
                                 break;
                             case Spell.爆闪:
@@ -1224,7 +1232,7 @@ namespace Client.MirObjects
                                 else Frames.TryGetValue(CurrentAction, out Frame);
                                 if (ElementCasted) ElementCasted = false;
                                 break;
-                            case Spell.BindingShot:
+                            case Spell.困魔箭:
                             case Spell.吸血地闪:
                             case Spell.毒魔闪:
                             case Spell.邪爆闪:
@@ -1232,6 +1240,7 @@ namespace Client.MirObjects
                             case Spell.吸血地精:
                             case Spell.痹魔阱:
                             case Spell.蛇柱阱:
+                            case Spell.地柱钉:
                                 Frames.TryGetValue(MirAction.AttackRange2, out Frame);
                                 CurrentAction = MirAction.AttackRange2;
                                 if (this == User)
@@ -1705,7 +1714,7 @@ namespace Client.MirObjects
 
                             #endregion
                             #region StormEscape
-                            case Spell.StormEscape:
+                            case Spell.雷仙风:
                                 Effects.Add(new Effect(Libraries.Magic3, 590, 10, Frame.Count * FrameInterval, this));
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10);
                                 break;
@@ -1721,7 +1730,7 @@ namespace Client.MirObjects
 
                             #region Blink
 
-                            case Spell.Blink:
+                            case Spell.移形换位:
                                 Effects.Add(new Effect(Libraries.Magic, 1590, 10, Frame.Count * FrameInterval, this));
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10);
                                 break;
@@ -2113,17 +2122,19 @@ namespace Client.MirObjects
                             case Spell.天霜冰环:
                                 Effects.Add(new Effect(Libraries.Magic2, 1540, 8, Frame.Count * FrameInterval, this));
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10);
-                                BlizzardStopTime = CMain.Time + 3000;
+                                if (!FastChannel)
+                                    BlizzardStopTime = CMain.Time + 3000;
                                 break;
 
                             #endregion
 
                             #region MeteorStrike
 
-                            case Spell.天上秘术:
+                            case Spell.流星火雨:
                                 Effects.Add(new Effect(Libraries.Magic2, 1590, 10, Frame.Count * FrameInterval, this));
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10);
-                                BlizzardStopTime = CMain.Time + 3000;
+                                if (!FastChannel)
+                                    BlizzardStopTime = CMain.Time + 3000;
                                 break;
 
                             #endregion
@@ -2202,6 +2213,15 @@ namespace Client.MirObjects
 
                             case Spell.月影雾:
                                 MapControl.Effects.Add(new Effect(Libraries.Magic3, 680, 25, 1800, CurrentLocation));
+                                SoundManager.PlaySound(20000 + (ushort)Spell * 10);
+                                break;
+
+                            #endregion
+
+                            #region FastMove
+
+                            case Spell.天上秘术:
+                                Effects.Add(new Effect(Libraries.Magic3, 200, 8, 8 * FrameInterval, this));
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10);
                                 break;
 
@@ -2698,7 +2718,7 @@ namespace Client.MirObjects
                                                 break;
                                         }
                                     break;
-                                case Spell.BindingShot:
+                                case Spell.困魔箭:
                                 case Spell.吸血地精:
                                 case Spell.痹魔阱:
                                 case Spell.蛇柱阱:
@@ -2813,6 +2833,24 @@ namespace Client.MirObjects
                                                     MapControl.Effects.Add(new Effect(Libraries.Magic3, 2690, 10, 1000, TargetPoint));
                                                 };
                                             }
+                                            break;
+                                    }
+                                    break;
+
+                                case Spell.地柱钉:
+                                    switch (FrameIndex)
+                                    {
+                                        case 7:
+                                            SoundManager.PlaySound(20000 + 121 * 10);
+                                            missile = CreateProjectile(2750, Libraries.Magic3, true, 5, 10, 5);
+                                            StanceTime = CMain.Time + StanceDelay;
+                                            missile.Explode = true;
+
+                                            missile.Complete += (o, e) =>
+                                            {
+                                                SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 7);//sound M130-7
+                                            };
+
                                             break;
                                     }
                                     break;
@@ -3293,7 +3331,7 @@ namespace Client.MirObjects
 
                                     #region MeteorStrike
 
-                                    case Spell.天上秘术:
+                                    case Spell.流星火雨:
                                         SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 1);
                                         SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 2);
                                         //BlizzardFreezeTime = CMain.Time + 3000;

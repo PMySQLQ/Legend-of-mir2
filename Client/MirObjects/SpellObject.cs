@@ -90,7 +90,7 @@ namespace Client.MirObjects
                     Blend = true;
                     DrawBehind = true;    // 绘制底层技能
                     break;
-                case Spell.天上秘术:
+                case Spell.流星火雨:
                     MapControl.Effects.Add(new Effect(Libraries.Magic2, 1600, 10, 800, CurrentLocation) { Repeat = true, RepeatUntil = CMain.Time + 3000 });
                     CurrentLocation.Y = Math.Max(0, CurrentLocation.Y - 20);
                     BodyLibrary = Libraries.Magic2;
@@ -130,6 +130,12 @@ namespace Client.MirObjects
                         FrameCount = 9;
                         Repeat = false;
                         SoundManager.PlaySound(20000 + 124 * 10 + 5);//Boom for all players in range
+                        for (int i = 0; i < 8; i++)
+                        {
+                            MirDirection dir = (MirDirection)(i % 8);
+                            Point hitPoint = Functions.PointMove(this.CurrentLocation, dir, i / 8 + 1);
+                            MapControl.Effects.Add(new Effect(Libraries.Magic3, 1570, 9, 900, hitPoint, 0, false));
+                        }
                     }
                     else
                     {

@@ -1286,7 +1286,7 @@ namespace Server.MirEnvir
                 case Spell.地狱雷光:
                 case Spell.火龙气焰:
                 case Spell.血龙闪:
-                case Spell.StormEscape:
+                case Spell.雷仙风:
                     value = (int)data[2];
                     location = (Point)data[3];
                     for (int y = location.Y - 2; y <= location.Y + 2; y++)
@@ -1622,7 +1622,7 @@ namespace Server.MirEnvir
 
                 #region MeteorStrike
 
-                case Spell.天上秘术:
+                case Spell.流星火雨:
                     value = (int)data[2];
                     location = (Point)data[3];
 
@@ -1648,7 +1648,7 @@ namespace Server.MirEnvir
                                 for (int o = 0; o < cell.Objects.Count; o++)
                                 {
                                     MapObject target = cell.Objects[o];
-                                    if (target.Race != ObjectType.Spell || ((SpellObject)target).Spell != Spell.天上秘术) continue;
+                                    if (target.Race != ObjectType.Spell || ((SpellObject)target).Spell != Spell.流星火雨) continue;
 
                                     cast = false;
                                     break;
@@ -1658,7 +1658,7 @@ namespace Server.MirEnvir
 
                             SpellObject ob = new SpellObject
                             {
-                                Spell = Spell.天上秘术,
+                                Spell = Spell.流星火雨,
                                 Value = value,
                                 ExpireTime = Envir.Time + 3000,
                                 TickSpeed = 440,
@@ -1852,29 +1852,25 @@ namespace Server.MirEnvir
                         if (cast)
                         {
                             player.LevelMagic(magic);
-
-                            System.Drawing.Point[] traps = new Point[3];
-                            traps[0] = front;
-                            traps[1] = Functions.Left(front, player.Direction);
-                            traps[2] = Functions.Right(front, player.Direction);
-
-                            for (int i = 0; i <= 2; i++)
+                            System.Drawing.Point[] Traps = new Point[1];
+                            Traps[0] = front;
+                            for (int i = 0; i <= 0; i++)
                             {
                                 SpellObject ob = new SpellObject
                                 {
                                     Spell = Spell.爆阱,
                                     Value = value,
-                                    ExpireTime = Envir.Time + (10 + value / 2) * 1000,
+                                    ExpireTime = Envir.Time + 15000,
                                     TickSpeed = 500,
                                     Caster = player,
-                                    CurrentLocation = traps[i],
+                                    CurrentLocation = Traps[i],
                                     CurrentMap = this,
                                     ExplosiveTrapID = trapID,
                                     ExplosiveTrapCount = i
                                 };
-
                                 AddObject(ob);
                                 ob.Spawned();
+                                player.ArcherTrapObjectsArray[trapID, i] = ob;
                             }
                         }
                     }
@@ -2325,7 +2321,23 @@ namespace Server.MirEnvir
 
                     break;
 
-                    #endregion
+                #endregion
+
+                #region Stonetrap
+                case Spell.地柱钉:
+                    monster = (MonsterObject)data[2];
+                    front = (Point)data[3];
+
+                    if (monster.Master.Dead) return;
+
+                    if (ValidPoint(front))
+                        monster.Spawn(this, front);
+                    else
+                        monster.Spawn(player.CurrentMap, player.CurrentLocation);
+
+                    monster.Master.Pets.Add(monster);
+                    break;
+                #endregion
             }
 
             if (train)

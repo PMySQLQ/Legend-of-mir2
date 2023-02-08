@@ -59,7 +59,7 @@
         Spell.噬血术,
         Spell.灭天火,
         Spell.冰咆哮,
-        Spell.天上秘术,
+        Spell.流星火雨,
         Spell.天霜冰环,
         Spell.灵魂火符
     };

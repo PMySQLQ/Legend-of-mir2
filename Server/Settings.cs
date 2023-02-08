@@ -173,6 +173,7 @@ namespace Server
                              ScrollMob2 = "TaoistScroll",
                              ScrollMob3 = "WizardScroll",
                              ScrollMob4 = "AssassinScroll",
+                             StoneTrap = "StoneTrap",//StoneTrap
                              HeroName = "Hero";
 
         public static string HealRing = "Healing",
@@ -431,6 +432,7 @@ namespace Server
             GroupInviteDelay = Reader.ReadInt64("Game", "GroupInviteDelay", GroupInviteDelay);
             TradeDelay = Reader.ReadInt64("Game", "TradeDelay", TradeDelay);
             TeleportToNPCCost = Reader.ReadInt32("Game", "TeleportToNPCCost", TeleportToNPCCost);
+            StoneTrap = Reader.ReadString("Game", "StoneTrap", StoneTrap);
             HeroName = Reader.ReadString("Game", "HeroName", HeroName);
 
             //Rested
@@ -685,6 +687,7 @@ namespace Server
             Reader.Write("Game", "TucsonGeneralEgg", TucsonGeneralEgg);
             Reader.Write("Game", "GroupInviteDelay", GroupInviteDelay);
             Reader.Write("Game", "TradeDelay", TradeDelay);
+            Reader.Write("Game", "StoneTrap", StoneTrap);
 
             Reader.Write("Rested", "Period", RestedPeriod);
             Reader.Write("Rested", "BuffLength", RestedBuffLength);

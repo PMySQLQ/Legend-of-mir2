@@ -55,6 +55,7 @@ namespace Server.MirObjects
 
         public override void Process()
         {
+
             if (Decoration) return;
 
             if (Caster != null && Caster.Node == null) Caster = null;
@@ -100,9 +101,18 @@ namespace Server.MirObjects
                 Despawn();
                 return;
             }
-
-            if (Spell == Spell.爆阱 && Caster != null && !Functions.InRange(CurrentLocation, Caster.CurrentLocation, 15))
+            if (Spell == Spell.爆阱 && FindObject(Caster.ObjectID, 20) == null && Caster != null)
             {
+                CurrentMap.RemoveObject(this);
+                Despawn();
+                ((HumanObject)Caster).Enqueue(new S.SpellToggle { Spell = Spell.爆阱, CanUse = false });
+                return;
+            }
+
+
+            if (Spell == Spell.爆阱 && Caster != null && ((HumanObject)Caster).detonate == true)
+            {
+                DetonateTrapNow();
                 CurrentMap.RemoveObject(this);
                 Despawn();
                 return;
@@ -178,7 +188,7 @@ namespace Server.MirObjects
                             }, Caster);
                     }
                     break;
-                case Spell.天上秘术:
+                case Spell.流星火雨:
                     {
                         if (ob.Race != ObjectType.Player && ob.Race != ObjectType.Monster) return;
                         if (ob.Dead) return;
@@ -189,12 +199,13 @@ namespace Server.MirObjects
                     break;
                 case Spell.爆阱:
                     {
+                        if (((HumanObject)Caster).detonate == false) return;
                         if (ob.Race != ObjectType.Player && ob.Race != ObjectType.Monster) return;
                         if (ob.Dead) return;
                         if (!ob.IsAttackTarget(Caster)) return;
                         if (DetonatedTrap) return;
                         DetonateTrapNow();
-                        ob.Attacked(((HumanObject)Caster), Value, DefenceType.MAC, false);
+                        //ob.Attacked(((HumanObject)Caster), Value, DefenceType.MAC, false);
                     }
                     break;
                 case Spell.阴阳五行阵:
@@ -392,12 +403,68 @@ namespace Server.MirObjects
                     break;
             }
         }
+        protected List<MapObject> FindAllTargets(int dist, Point location, bool needSight = true)
+        {
+            List<MapObject> targets = new List<MapObject>();
+            for (int d = 0; d <= dist; d++)
+            {
+                for (int y = location.Y - d; y <= location.Y + d; y++)
+                {
+                    if (y < 0) continue;
+                    if (y >= CurrentMap.Height) break;
 
+                    for (int x = location.X - d; x <= location.X + d; x += Math.Abs(y - location.Y) == d ? 1 : d * 2)
+                    {
+                        if (x < 0) continue;
+                        if (x >= CurrentMap.Width) break;
+
+                        Cell cell = CurrentMap.GetCell(x, y);
+                        if (!cell.Valid || cell.Objects == null) continue;
+
+                        for (int i = 0; i < cell.Objects.Count; i++)
+                        {
+                            MapObject ob = cell.Objects[i];
+                            switch (ob.Race)
+                            {
+                                case ObjectType.Monster:
+                                case ObjectType.Player:
+                                case ObjectType.Hero:
+                                    if (!ob.IsAttackTarget(Caster)) continue;
+                                    //if (ob.Hidden && (!CoolEye || Level < ob.Level) && needSight ) continue;
+                                    if (ob.Race == ObjectType.Player)
+                                    {
+                                        PlayerObject player = ((PlayerObject)ob);
+                                        if (player.GMGameMaster) continue;
+                                    }
+                                    targets.Add(ob);
+                                    continue;
+                                default:
+                                    continue;
+                            }
+                        }
+                    }
+                }
+            }
+            return targets;
+        }
         public void DetonateTrapNow()
         {
             DetonatedTrap = true;
             Broadcast(GetInfo());
             ExpireTime = Envir.Time + 1000;
+
+            ((HumanObject)Caster).detonate = false;
+            ((HumanObject)Caster).Enqueue(new S.SpellToggle { Spell = Spell.爆阱, CanUse = false });
+
+            Point location = CurrentLocation;
+
+            List<MapObject> targets = FindAllTargets(1, location);
+
+            for (int i = 0; i < targets.Count; i++)
+            {
+                Target = targets[i];
+                Target.Attacked((HumanObject)Caster, Value, DefenceType.MAC, false);
+            }
         }
 
         public override void SetOperateTime()
@@ -493,7 +560,7 @@ namespace Server.MirObjects
                     return null;
                 case Spell.毒雾:
                 case Spell.天霜冰环:
-                case Spell.天上秘术:
+                case Spell.流星火雨:
                 case Spell.阴阳五行阵:
                 case Spell.StoneGolemQuake:
                 case Spell.EarthGolemPile:
@@ -572,14 +639,7 @@ namespace Server.MirObjects
             }
 
             if (Spell == Spell.爆阱 && Caster != null)
-            {
-                var linkedTraps = CurrentMap.GetSpellObjects(Spell.爆阱, Owner).Where(x => x.ExplosiveTrapID == ExplosiveTrapID);
-
-                foreach (var trap in linkedTraps)
-                {
-                    trap.DetonateTrapNow();
-                }
-            }
+                ((HumanObject)Caster).ExplosiveTrapDetonated(ExplosiveTrapID, ExplosiveTrapCount);
 
             if (Spell == Spell.Portal && Caster != null)
             {

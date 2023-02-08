@@ -199,7 +199,8 @@ namespace Client.MirScenes
         public static uint DefaultNPCID;
         public static bool HideAddedStoreStats;
 
-        public long ToggleTime;        
+        public long ToggleTime;
+        public static bool Tipexp;
         public static long SpellTime;
 
         public MirLabel[] OutputLines = new MirLabel[10];
@@ -5067,6 +5068,9 @@ namespace Client.MirScenes
                     else
                         ChatDialog.ReceiveChat(prefix + GameLanguage.SpiritsFireDisappeared, ChatType.System);
                     break;
+                case Spell.爆阱:
+                    Tipexp = p.CanUse;
+                    break;
             }
         }
 
@@ -5241,9 +5245,38 @@ namespace Client.MirScenes
                     {
                         case BuffType.SwiftFeet:
                             User.Sprint = false;
+                            ReceiveChat(new S.Chat { Message = "移动速度恢复正常", Type = ChatType.Hint });
                             break;
                         case BuffType.Transform:
                             User.TransformType = -1;
+                            break;
+                        case BuffType.FastMove:
+                            User.FastChannel = true;
+                            break;
+                        case BuffType.UltimateEnhancer:
+                            switch (GameScene.User.Class)
+                            {
+                                case MirClass.法师:
+                                case MirClass.弓手:
+                                    ReceiveChat(new S.Chat { Message = "魔法恢复正常", Type = ChatType.Hint });
+                                    break;
+                                case MirClass.道士:
+                                    ReceiveChat(new S.Chat { Message = "道术恢复正常", Type = ChatType.Hint });
+                                    break;
+                                default:
+                                    ReceiveChat(new S.Chat { Message = "攻击恢复正常", Type = ChatType.Hint });
+                                    break;
+                            }
+                            break;
+                        case BuffType.BlessedArmour:
+                        case BuffType.ProtectionField:
+                            ReceiveChat(new S.Chat { Message = "物理防御恢复正常", Type = ChatType.Hint });
+                            break;
+                        case BuffType.SoulShield:
+                            ReceiveChat(new S.Chat { Message = "魔法防御恢复正常", Type = ChatType.Hint });
+                            break;
+                        case BuffType.LightBody:
+                            ReceiveChat(new S.Chat { Message = "敏捷恢复正常", Type = ChatType.Hint });
                             break;
                     }
 
@@ -11765,7 +11798,7 @@ namespace Client.MirScenes
 
             int cost = magic.Level * magic.LevelCost + magic.BaseCost;
 
-            if (magic.Spell == Spell.瞬息移动 || magic.Spell == Spell.Blink || magic.Spell == Spell.StormEscape)
+            if (magic.Spell == Spell.瞬息移动 || magic.Spell == Spell.移形换位 || magic.Spell == Spell.雷仙风)
             {
                 if (actor.Stats[Stat.TeleportManaPenaltyPercent] > 0)
                 {
@@ -11828,7 +11861,7 @@ namespace Client.MirScenes
                 case Spell.无我闪:
                 case Spell.万斤闪:
                 case Spell.爆闪:
-                case Spell.BindingShot:
+                case Spell.困魔箭:
                 case Spell.吸血地闪:
                 case Spell.毒魔闪:
                 case Spell.邪爆闪:
@@ -11885,7 +11918,7 @@ namespace Client.MirScenes
                     }
                     break;
                 case Spell.天霜冰环:
-                case Spell.天上秘术:
+                case Spell.流星火雨:
                 case Spell.阴阳五行阵:
                     if (actor.NextMagicObject != null)
                     {
@@ -11916,6 +11949,20 @@ namespace Client.MirScenes
                         return;
                     }
                     //isTargetSpell = false;
+                    break;
+
+                case Spell.地柱钉:
+                    if (!User.HasClassWeapon)
+                    {
+                        GameScene.Scene.OutputMessage("必须佩带弓箭.");
+                        User.ClearMagic();
+                        return;
+                    }
+                    if (User.NextMagicObject != null)
+                    {
+                        if (!User.NextMagicObject.Dead && User.NextMagicObject.Race != ObjectType.Item && User.NextMagicObject.Race != ObjectType.Merchant)
+                            target = User.NextMagicObject;
+                    }
                     break;
                 default:
                     //isTargetSpell = false;

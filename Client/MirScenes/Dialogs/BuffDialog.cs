@@ -532,6 +532,8 @@ namespace Client.MirScenes.Dialogs
                     return 158;
                 case BuffType.WonderDrug:
                     return 252;
+                case BuffType.FastMove:
+                    return 48;
                 default:
                     return 0;
             }

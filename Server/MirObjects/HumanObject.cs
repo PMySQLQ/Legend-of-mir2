@@ -180,6 +180,7 @@ namespace Server.MirObjects
         public bool IsGM, GMNeverDie, GMGameMaster;
         public bool HasUpdatedBaseStats = true;
 
+        public bool detonate;
         public virtual int PotionBeltMinimum => 0;
         public virtual int PotionBeltMaximum => 4;
         public virtual int AmuletBeltMinimum => 4;
@@ -187,6 +188,8 @@ namespace Server.MirObjects
         public virtual int BeltSize => 6;
 
         public LevelEffects LevelEffects = LevelEffects.None;
+
+        public MapObject[,] ArcherTrapObjectsArray = new MapObject[4, 3];
 
         public const long LoyaltyDelay = 1000, ItemExpireDelay = 60000, DuraDelay = 10000, RegenDelay = 10000, PotDelay = 200, HealDelay = 600, VampDelay = 500, MoveDelay = 600;
         public long StruckTime, RunTime, ActionTime, AttackTime, RegenTime, SpellTime, StackingTime, IncreaseLoyaltyTime, ItemExpireTime, TorchTime, DuraTime, PotTime, HealTime, VampTime, LogTime, DecreaseLoyaltyTime, SearchTime;
@@ -212,7 +215,7 @@ namespace Server.MirObjects
         public bool FatalSword, Slaying, TwinDrakeBlade, FlamingSword, MPEater, Hemorrhage, CounterAttack;
         public int MPEaterCount, HemorrhageAttackCount;
         public long FlamingSwordTime, CounterAttackTime;
-        public bool ActiveBlizzard, ActiveReincarnation, ActiveSwiftFeet, ReincarnationReady;
+        public bool ActiveBlizzard, ActiveReincarnation, ActiveSwiftFeet, ReincarnationReady, ActiveFastRun;
         public HumanObject ReincarnationTarget, ReincarnationHost;
         public long ReincarnationExpireTime;
 
@@ -447,6 +450,7 @@ namespace Server.MirObjects
                         lover = true;
                         if (Info.Married == 0) buff.FlagForRemoval = true;
                         break;
+        
                 }
 
                 if (buff.NextTime > Envir.Time) continue;
@@ -500,6 +504,9 @@ namespace Server.MirObjects
                         break;
                     case BuffType.ElementalBarrier:
                         CurrentMap.Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.ElementalBarrierDown }, CurrentLocation);
+                        break;
+                    case BuffType.FastMove:
+                        ActiveFastRun = false;
                         break;
                 }
 
@@ -2381,6 +2388,9 @@ namespace Server.MirObjects
                             TransformType = (short)buff.Values[0];
                             FastRun = true;
                             break;
+                        case BuffType.FastMove:
+                            ActiveFastRun = true;
+                            break;
                     }
                 }
             }
@@ -3363,7 +3373,7 @@ namespace Server.MirObjects
         {
             int cost = magic.Info.BaseCost + magic.Info.LevelCost * magic.Level;
             Spell spell = magic.Spell;
-            if (spell == Spell.瞬息移动 || spell == Spell.Blink || spell == Spell.StormEscape)
+            if (spell == Spell.瞬息移动 || spell == Spell.移形换位 || spell == Spell.雷仙风)
             {
                 if (Stats[Stat.TeleportManaPenaltyPercent] > 0)
                 {
@@ -3434,6 +3444,18 @@ namespace Server.MirObjects
                 return;
             }
 
+
+            if (Buffs.Any(e => e.Type == BuffType.FastMove))
+            {
+                UserMagic booster = GetMagic(Spell.天上秘术);
+
+                if (booster != null)
+                {
+                    int penalty = (int)Math.Round((decimal)(cost / 100) * (6 + booster.Level));
+                    cost += penalty;
+                }
+            }
+
             RegenTime = Envir.Time + RegenDelay;
             ChangeMP(-cost);
 
@@ -3501,7 +3523,7 @@ namespace Server.MirObjects
                     SummonSkeleton(magic);
                     break;
                 case Spell.瞬息移动:
-                case Spell.Blink:
+                case Spell.移形换位:
                     ActionList.Add(new DelayedAction(DelayedType.Magic, Envir.Time + 200, magic, location));
                     break;
                 case Spell.隐身术:
@@ -3549,11 +3571,11 @@ namespace Server.MirObjects
                     return;
                 case Spell.地狱雷光:
                 case Spell.火龙气焰:
-                case Spell.StormEscape:
+                case Spell.雷仙风:
                     ThunderStorm(magic);
                     if (spell == Spell.火龙气焰)
                         SpellTime = Envir.Time + 2500; //Spell Delay
-                    if (spell == Spell.StormEscape)
+                    if (spell == Spell.雷仙风)
                         //Start teleport.
                         ActionList.Add(new DelayedAction(DelayedType.Magic, Envir.Time + 750, magic, location));
                     break;
@@ -3611,7 +3633,7 @@ namespace Server.MirObjects
                 case Spell.天霜冰环:
                     Blizzard(magic, target == null ? location : target.CurrentLocation, out cast);
                     break;
-                case Spell.天上秘术:
+                case Spell.流星火雨:
                     MeteorStrike(magic, target == null ? location : target.CurrentLocation, out cast);
                     break;
                 case Spell.冰焰术:
@@ -3680,7 +3702,7 @@ namespace Server.MirObjects
                     BackStep(magic);
                     return;
                 case Spell.爆阱:
-                    ExplosiveTrap(magic, Front);
+                    ExplosiveTrap(magic, Front, out cast);
                     break;
                 case Spell.爆闪:
                     if (!DelayedExplosion(target, magic)) targetID = 0;
@@ -3694,7 +3716,7 @@ namespace Server.MirObjects
                 case Spell.金刚术:
                     ActionList.Add(new DelayedAction(DelayedType.Magic, Envir.Time + 500, magic, magic.GetPower(GetAttackPower(Stats[Stat.MinMC], Stats[Stat.MaxMC]))));
                     break;
-                case Spell.BindingShot:
+                case Spell.困魔箭:
                     BindingShot(magic, target, out cast);
                     break;
                 case Spell.吸血地精:
@@ -3719,6 +3741,9 @@ namespace Server.MirObjects
                 case Spell.月影雾:
                     MoonMist(magic);
                     break;
+                case Spell.天上秘术:
+                    FastMove(magic, out cast);
+                    break;
                 //Custom Spells
                 case Spell.Portal:
                     Portal(magic, location, out cast);
@@ -3728,6 +3753,10 @@ namespace Server.MirObjects
                     return;
                 case Spell.FireBounce:
                     if (!FireBounce(target, magic, this)) targetID = 0;
+                    break;
+                case Spell.地柱钉:
+                    //ArcherSummonStone(magic, target, location);
+                    ArcherSummonStone(magic, target == null ? location : target.CurrentLocation, out cast);
                     break;
                 default:
                     cast = false;
@@ -4231,6 +4260,14 @@ namespace Server.MirObjects
             int bonus = 6 + magic.Level * 6;
 
             ActionList.Add(new DelayedAction(DelayedType.Magic, Envir.Time + 500, magic, bonus));
+        }
+        private void FastMove(UserMagic magic, out bool cast)
+        {
+            cast = true;
+
+            AddBuff(BuffType.FastMove, this, (Settings.Second + 4000) + (magic.Level * 12000), new Stats(), true);
+
+            LevelMagic(magic);
         }
 
         #endregion
@@ -5506,30 +5543,51 @@ namespace Server.MirObjects
             ActionList.Add(action);
             return true;
         }
-        private void ExplosiveTrap(UserMagic magic, Point location)
+        private void ExplosiveTrap(UserMagic magic, Point location, out bool cast)
         {
-            int freeTrapSpot = -1;
+            cast = false;
+            UserItem item = Getqigongstone(1);
+            if (item == null) return;
+            cast = true;
+            ConsumeItem(item, 1);
 
-            var trapIDs = CurrentMap.GetSpellObjects(Spell.爆阱, this).Select(x => x.ExplosiveTrapID).Distinct();
+            int trapCount = 0;
+            for (int i = 0; i <= 3; i++)
+                if (ArcherTrapObjectsArray[i, 0] != null) trapCount++;
 
-            var max = magic.Level + 1;
-
-            if (trapIDs.Count() >= max) return;
-
-            for (int i = 0; i < max; i++)
+            if (trapCount >= 1)
             {
-                if (!trapIDs.Contains(i))
+                detonate = true;
+                return;
+            }
+            int freeTrapSpot = -1;
+            for (int i = 0; i <= 3; i++)
+                if (ArcherTrapObjectsArray[i, 0] == null)
                 {
                     freeTrapSpot = i;
                     break;
                 }
-            }
-
             if (freeTrapSpot == -1) return;
-
             int damage = magic.GetDamage(GetAttackPower(Stats[Stat.MinMC], Stats[Stat.MaxMC]));
             DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + 500, this, magic, damage, location, freeTrapSpot);
             CurrentMap.ActionList.Add(action);
+            Enqueue(new S.SpellToggle { Spell = Spell.爆阱, CanUse = true });
+        }
+
+        public void ExplosiveTrapDetonated(int obIDX, int Trapnr)
+        {
+            SpellObject ArcherTrap;
+            if (ArcherTrapObjectsArray[obIDX, Trapnr] == null) return;
+            for (int j = 0; j <= 0; j++)
+            {
+                if (j != Trapnr)
+                {
+                    ArcherTrap = (SpellObject)ArcherTrapObjectsArray[obIDX, j];
+                    ArcherTrap.DetonateTrapNow();
+                }
+                ArcherTrapObjectsArray[obIDX, j] = null;
+            }
+
         }
 
         public void DoKnockback(MapObject target, UserMagic magic)//ElementalShot - knockback
@@ -5607,6 +5665,22 @@ namespace Server.MirObjects
 
             DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + delay, magic, value, location, target);
             ActionList.Add(action);
+        }
+
+        public void ArcherSummonStone(UserMagic magic, Point location, out bool cast)
+        {
+            cast = false;
+
+            if (!CurrentMap.ValidPoint(location)) return;
+            if (!CanFly(location)) return;
+            uint duration = (uint)((magic.Level * 5 + 10) * 1000);
+            int value = (int)duration;
+            int delay = Functions.MaxDistance(CurrentLocation, location) * 50 + 500; //50 MS per Step
+            //延迟类型.魔法，时间，魔法，数值，坐标，目标
+            DelayedAction action = new DelayedAction(DelayedType.Magic, Envir.Time + delay, magic, value, location);
+            ActionList.Add(action);
+            cast = true;
+           
         }
 
         public void OneWithNature(MapObject target, UserMagic magic)
@@ -5909,7 +5983,7 @@ namespace Server.MirObjects
                 #endregion
 
                 #region StormEscape
-                case Spell.StormEscape:
+                case Spell.雷仙风:
                     location = (Point)data[1];
                     if (CurrentMap.Info.NoTeleport)
                     {
@@ -5943,7 +6017,7 @@ namespace Server.MirObjects
 
                 #region Blink
 
-                case Spell.Blink:
+                case Spell.移形换位:
                     {
                         location = (Point)data[1];
                         if (CurrentMap.Info.NoTeleport)
@@ -6291,7 +6365,7 @@ namespace Server.MirObjects
 
                 #region BindingShot
 
-                case Spell.BindingShot:
+                case Spell.困魔箭:
                     value = (int)data[1];
                     target = (MapObject)data[2];
                     targetLocation = (Point)data[3];
@@ -6556,7 +6630,29 @@ namespace Server.MirObjects
                         LevelMagic(magic);
                     }
                     break;
-                    #endregion
+                #endregion
+
+                #region Stonetrap
+
+                case Spell.地柱钉:
+                    {
+                        value = (int)data[1];
+                        location = (Point)data[2];
+                        if (Pets.Where(x => x.Race == ObjectType.Monster).Count() >= magic.Level + 1) return;
+                        MonsterInfo mInfo = Envir.GetMonsterInfo(Settings.StoneTrap);
+                        if (mInfo == null) return;
+                        LevelMagic(magic);
+                        monster = MonsterObject.GetMonster(mInfo);
+                        monster.Master = this;
+                        monster.MaxPetLevel = (byte)(1 + magic.Level * 2);
+                        monster.Direction = Direction;
+                        monster.ActionTime = Envir.Time + 1000;
+
+                        DelayedAction act = new DelayedAction(DelayedType.Magic, Envir.Time + 500, this, magic, monster, location);
+                        CurrentMap.ActionList.Add(act);//这里会转到map.cs的CompleteMagic
+                        break;
+                    }
+               #endregion
 
             }
         }
@@ -6654,6 +6750,18 @@ namespace Server.MirObjects
             target.ApplyPoison(new Poison { PType = pt, Duration = duration, TickSpeed = tickSpeed }, this);
             target.Broadcast(new S.ObjectEffect { ObjectID = target.ObjectID, Effect = sp });
         }
+        protected UserItem Getqigongstone(int count, int shape = 0)
+        {
+
+            for (int i = 0; i < Info.Equipment.Length; i++)
+            {
+                UserItem item = Info.Equipment[i];
+                if (item != null && item.Info.Type == ItemType.护身符 && item.Count >= count && item.Info.Shape == 4)
+                    return item;
+            }
+            return null;
+        }
+
         protected UserItem GetAmulet(int count, int shape = 0)
         {
             for (int i = 0; i < Info.Equipment.Length; i++)
@@ -6831,7 +6939,7 @@ namespace Server.MirObjects
             if (effects) Enqueue(new S.ObjectTeleportIn { ObjectID = ObjectID, Type = effectnumber });
 
             if (RidingMount) RefreshMount();
-            if (ActiveBlizzard) ActiveBlizzard = false;
+            if (ActiveBlizzard && !ActiveFastRun) ActiveBlizzard = false;
 
             if (CheckStacked())
             {
@@ -7028,6 +7136,7 @@ namespace Server.MirObjects
             attacker.GatherElement();
 
             DamageDura();
+
             ActiveBlizzard = false;
             ActiveReincarnation = false;
 
@@ -7118,6 +7227,7 @@ namespace Server.MirObjects
             LogTime = Envir.Time + Globals.LogDelay;
 
             DamageDura();
+
             ActiveBlizzard = false;
             ActiveReincarnation = false;
 
@@ -7190,7 +7300,8 @@ namespace Server.MirObjects
             LogTime = Envir.Time + Globals.LogDelay;
 
             DamageDura();
-            ActiveBlizzard = false;
+            if (!ActiveFastRun)
+                ActiveBlizzard = false;
             ActiveReincarnation = false;
             Enqueue(new S.Struck { AttackerID = 0 });
             Broadcast(new S.ObjectStruck { ObjectID = ObjectID, AttackerID = 0, Direction = Direction, Location = CurrentLocation });

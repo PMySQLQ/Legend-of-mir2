@@ -1202,10 +1202,10 @@ public enum Spell : byte
     火龙气焰 = 49,
     天霜冰环 = 50,
     深延术 = 51,
-    天上秘术 = 52,
+    流星火雨 = 52,
     冰焰术 = 53,
-    雷仙风 = 54,
-    StormEscape = 55,
+    天上秘术 = 54,
+    雷仙风 = 55,
 
     //Taoist
     治愈术 = 61,
@@ -1273,11 +1273,11 @@ public enum Spell : byte
     蛇柱阱 = 137,
     血龙闪 = 138,
     OneWithNature = 139,
-    BindingShot = 140,
+    困魔箭 = 140,
     MentalState = 141,
 
     //Custom
-    Blink = 151,
+    移形换位 = 151,
     Portal = 152,
     BattleCry = 153,
     FireBounce = 154,
@@ -1379,7 +1379,8 @@ public enum BuffType : byte
     MagicShield,
     ElementalBarrier,
     HumUp, //stupple
-   
+    FastMove,
+
     //Monster
     HornedArcherBuff = 50,
     ColdArcherBuff,
@@ -1406,6 +1407,7 @@ public enum BuffType : byte
     Rested,
     Skill,
     ClearRing,
+
 
 
     //Stats
