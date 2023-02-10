@@ -102,6 +102,7 @@ namespace Server
             this.MainTabs = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.LogTextBox = new System.Windows.Forms.TextBox();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusBar.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -128,7 +129,7 @@ namespace Server
             this.CycleDelayLabel});
             this.StatusBar.Location = new System.Drawing.Point(0, 559);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(923, 23);
+            this.StatusBar.Size = new System.Drawing.Size(899, 23);
             this.StatusBar.SizingGrip = false;
             this.StatusBar.TabIndex = 4;
             this.StatusBar.Text = "statusStrip1";
@@ -193,7 +194,7 @@ namespace Server
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.MainMenu.ShowItemToolTips = true;
-            this.MainMenu.Size = new System.Drawing.Size(102, 582);
+            this.MainMenu.Size = new System.Drawing.Size(126, 582);
             this.MainMenu.TabIndex = 3;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -206,76 +207,77 @@ namespace Server
             this.clearBlockedIPsToolStripMenuItem,
             this.toolStripMenuItem1,
             this.reloadNPCsToolStripMenuItem,
+            this.toolStripMenuItem2,
             this.reloadDropsToolStripMenuItem,
             this.toolStripSeparator1,
             this.closeServerToolStripMenuItem});
             this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
-            this.controlToolStripMenuItem.Size = new System.Drawing.Size(95, 29);
+            this.controlToolStripMenuItem.Size = new System.Drawing.Size(119, 29);
             this.controlToolStripMenuItem.Text = "Control";
             // 
             // startServerToolStripMenuItem
             // 
             this.startServerToolStripMenuItem.Name = "startServerToolStripMenuItem";
-            this.startServerToolStripMenuItem.Size = new System.Drawing.Size(223, 30);
+            this.startServerToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.startServerToolStripMenuItem.Text = "Start Server";
             this.startServerToolStripMenuItem.Click += new System.EventHandler(this.startServerToolStripMenuItem_Click);
             // 
             // stopServerToolStripMenuItem
             // 
             this.stopServerToolStripMenuItem.Name = "stopServerToolStripMenuItem";
-            this.stopServerToolStripMenuItem.Size = new System.Drawing.Size(223, 30);
+            this.stopServerToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.stopServerToolStripMenuItem.Text = "Stop Server";
             this.stopServerToolStripMenuItem.Click += new System.EventHandler(this.stopServerToolStripMenuItem_Click);
             // 
             // rebootServerToolStripMenuItem
             // 
             this.rebootServerToolStripMenuItem.Name = "rebootServerToolStripMenuItem";
-            this.rebootServerToolStripMenuItem.Size = new System.Drawing.Size(223, 30);
+            this.rebootServerToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.rebootServerToolStripMenuItem.Text = "Reboot Server";
             this.rebootServerToolStripMenuItem.Click += new System.EventHandler(this.rebootServerToolStripMenuItem_Click);
             // 
             // clearBlockedIPsToolStripMenuItem
             // 
             this.clearBlockedIPsToolStripMenuItem.Name = "clearBlockedIPsToolStripMenuItem";
-            this.clearBlockedIPsToolStripMenuItem.Size = new System.Drawing.Size(223, 30);
+            this.clearBlockedIPsToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.clearBlockedIPsToolStripMenuItem.Text = "Clear Blocked IPs";
             this.clearBlockedIPsToolStripMenuItem.Click += new System.EventHandler(this.clearBlockedIPsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(220, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(222, 6);
             // 
             // reloadNPCsToolStripMenuItem
             // 
             this.reloadNPCsToolStripMenuItem.Name = "reloadNPCsToolStripMenuItem";
-            this.reloadNPCsToolStripMenuItem.Size = new System.Drawing.Size(223, 30);
+            this.reloadNPCsToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.reloadNPCsToolStripMenuItem.Text = "Reload NPCs";
             this.reloadNPCsToolStripMenuItem.Click += new System.EventHandler(this.reloadNPCsToolStripMenuItem_Click);
             // 
             // reloadDropsToolStripMenuItem
             // 
             this.reloadDropsToolStripMenuItem.Name = "reloadDropsToolStripMenuItem";
-            this.reloadDropsToolStripMenuItem.Size = new System.Drawing.Size(223, 30);
+            this.reloadDropsToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.reloadDropsToolStripMenuItem.Text = "Reload Drops";
             this.reloadDropsToolStripMenuItem.Click += new System.EventHandler(this.reloadDropsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(220, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(222, 6);
             // 
             // closeServerToolStripMenuItem
             // 
             this.closeServerToolStripMenuItem.Name = "closeServerToolStripMenuItem";
-            this.closeServerToolStripMenuItem.Size = new System.Drawing.Size(223, 30);
+            this.closeServerToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.closeServerToolStripMenuItem.Text = "Close Server";
             this.closeServerToolStripMenuItem.Click += new System.EventHandler(this.closeServerToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
             // 
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(95, 29);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(119, 29);
             this.accountToolStripMenuItem.Text = "Account";
             this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
             // 
@@ -292,7 +294,7 @@ namespace Server
             this.magicInfoToolStripMenuItem,
             this.gameshopToolStripMenuItem});
             this.databaseFormsToolStripMenuItem.Name = "databaseFormsToolStripMenuItem";
-            this.databaseFormsToolStripMenuItem.Size = new System.Drawing.Size(95, 29);
+            this.databaseFormsToolStripMenuItem.Size = new System.Drawing.Size(119, 29);
             this.databaseFormsToolStripMenuItem.Text = "Database";
             // 
             // mapInfoToolStripMenuItem
@@ -367,7 +369,7 @@ namespace Server
             this.monsterTunerToolStripMenuItem,
             this.dropBuilderToolStripMenuItem});
             this.configToolStripMenuItem1.Name = "configToolStripMenuItem1";
-            this.configToolStripMenuItem1.Size = new System.Drawing.Size(95, 29);
+            this.configToolStripMenuItem1.Size = new System.Drawing.Size(119, 29);
             this.configToolStripMenuItem1.Text = "Config";
             // 
             // serverToolStripMenuItem
@@ -516,7 +518,7 @@ namespace Server
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.MainTabs);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.StatusBar);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(923, 582);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(899, 582);
             // 
             // toolStripContainer1.LeftToolStripPanel
             // 
@@ -718,6 +720,13 @@ namespace Server
             this.LogTextBox.Size = new System.Drawing.Size(449, 243);
             this.LogTextBox.TabIndex = 2;
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(225, 30);
+            this.toolStripMenuItem2.Text = "Reload Gameshop";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
             // SMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -828,6 +837,7 @@ namespace Server
         private TabPage tabPage1;
         private TextBox LogTextBox;
         protected MenuStrip MainMenu;
+        private ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

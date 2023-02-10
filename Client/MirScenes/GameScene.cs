@@ -6798,10 +6798,18 @@ namespace Client.MirScenes
             GameScene.Scene.MentorDialog.UpdateInterface();
         }
 
-        private void GameShopUpdate(S.GameShopInfo p)
+        private void GameShopUpdate(S.GameShopInfo p)//商城
         {
+
             p.Item.Stock = p.StockLevel;
-            GameShopInfoList.Add(p.Item);
+
+            var itm = GameShopInfoList.FirstOrDefault(x => x.GIndex == p.Item.GIndex);
+
+            if (itm != null)
+                itm.UpdateItem(p.Item);
+            else
+                GameShopInfoList.Add(p.Item);
+
             if (p.Item.Date > CMain.Now.AddDays(-7)) GameShopDialog.New.Visible = true;
         }
 

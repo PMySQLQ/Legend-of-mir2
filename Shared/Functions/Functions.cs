@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 
 public static class Functions
@@ -97,15 +98,15 @@ public static class Functions
         }
         else if (t.TotalHours < 1.0)
         {
-            answer = accurate ? string.Format("{0}分 {1:D2}秒", t.Minutes, t.Seconds) : string.Format("{0}分", t.Minutes);
+            answer = accurate ? string.Format("{0}分钟 {1:D2}秒", t.Minutes, t.Seconds) : string.Format("{0}分钟", t.Minutes);
         }
         else if (t.TotalDays < 1.0)
         {
-            answer = accurate ? string.Format("{0}h {1:D2}分 {2:D2}秒", (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}h {1:D2}分", (int)t.TotalHours, t.Minutes);
+            answer = accurate ? string.Format("{0}小时 {1:D2}分钟 {2:D2}秒", (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}小时{1:D2}分分钟", (int)t.TotalHours, t.Minutes);
         }
         else // more than 1 day
         {
-            answer = accurate ? string.Format("{0}d {1:D2}h {2:D2}分 {3:D2}秒", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}d {1}h {2:D2}分", (int)t.TotalDays, (int)t.Hours, t.Minutes);
+            answer = accurate ? string.Format("{0}天 {1:D2}小时{2:D2}分钟{3:D2}秒", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds) : string.Format("{0}天 {1}小时 {2:D2}分钟", (int)t.TotalDays, (int)t.Hours, t.Minutes);
         }
 
         return answer;
@@ -121,15 +122,15 @@ public static class Functions
         }
         else if (t.TotalHours < 1.0)
         {
-            answer = string.Format("{0}分 {1:D2}秒", t.TotalMinutes, t.Seconds);
+            answer = string.Format("{0}分钟 {1:D2}秒", t.TotalMinutes, t.Seconds);
         }
         else if (t.TotalDays < 1.0)
         {
-            answer = string.Format("{0}h {1:D2}分 {2:D2}秒", (int)t.TotalHours, t.Minutes, t.Seconds);
+            answer = string.Format("{0}小时 {1:D2}分钟 {2:D2}秒", (int)t.TotalHours, t.Minutes, t.Seconds);
         }
         else
         {
-            answer = string.Format("{0}d {1}h {2:D2}分 {3:D2}s", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds);
+            answer = string.Format("{0}天 {1}小时 {2:D2}分钟 {3:D2}秒", (int)t.Days, (int)t.Hours, t.Minutes, t.Seconds);
         }
 
         return answer;
@@ -312,11 +313,35 @@ public static class Functions
         }
         return p;
     }
+    public static bool HasClassWeapon(int Weapon, MirClass Class)
+    {
 
+        switch (Weapon / Globals.ClassWeaponCount)
+        {
+            case 1:
+                return Class == MirClass.刺客 || Class == MirClass.飞燕刺客;
+            case 2:
+                return Class == MirClass.弓手 || Class == MirClass.暗鬼弓手;
+            case 3:
+                return Class == MirClass.碧血战士;
+            case 4:
+                return Class == MirClass.虹玄法师;
+            case 5:
+                return Class == MirClass.翊仙道士;
+            case 6:
+                return Class == MirClass.飞燕刺客;
+            case 7:
+                return Class == MirClass.暗鬼弓手;
+            default:
+                return Class == MirClass.战士 || Class == MirClass.法师 || Class == MirClass.道士 || Class == MirClass.碧血战士 || Class == MirClass.虹玄法师 || Class == MirClass.翊仙道士;
+            case 8:
+                return false;
+        }
+
+    }
     public static int MaxDistance(Point p1, Point p2)
     {
         return Math.Max(Math.Abs(p1.X - p2.X), Math.Abs(p1.Y - p2.Y));
-
     }
 
     public static MirDirection ReverseDirection(MirDirection dir)
@@ -345,15 +370,53 @@ public static class Functions
     }
     public static ItemInfo GetRealItem(ItemInfo Origin, ushort Level, MirClass job, List<ItemInfo> ItemList)
     {
+        #region Demand conversion
+        RequiredClass requClass = RequiredClass.None;
+        switch (job)
+        {
+            case MirClass.战士:
+                requClass = RequiredClass.战士;
+                break;
+            case MirClass.法师:
+                requClass = RequiredClass.法师;
+                break;
+            case MirClass.道士:
+                requClass = RequiredClass.道士;
+                break;
+            case MirClass.刺客:
+                requClass = RequiredClass.刺客;
+                break;
+            case MirClass.弓手:
+                requClass = RequiredClass.弓手;
+                break;
+            case MirClass.碧血战士:
+                requClass = RequiredClass.碧血战士;
+                break;
+            case MirClass.虹玄法师:
+                requClass = RequiredClass.虹玄法师;
+                break;
+            case MirClass.翊仙道士:
+                requClass = RequiredClass.翊仙道士;
+                break;
+            case MirClass.飞燕刺客:
+                requClass = RequiredClass.飞燕刺客;
+                break;
+            case MirClass.暗鬼弓手:
+                requClass = RequiredClass.暗鬼弓手;
+                break;
+        }
+        #endregion
+
+
         if (Origin.ClassBased && Origin.LevelBased)
-            return GetClassAndLevelBasedItem(Origin, job, Level, ItemList);
+            return GetClassAndLevelBasedItem(Origin, requClass, Level, ItemList);
         if (Origin.ClassBased)
-            return GetClassBasedItem(Origin, job, ItemList);
+            return GetClassBasedItem(Origin, requClass, ItemList);
         if (Origin.LevelBased)
             return GetLevelBasedItem(Origin, Level, ItemList);
         return Origin;
     }
-    public static ItemInfo GetLevelBasedItem(ItemInfo Origin, ushort level, List<ItemInfo> ItemList)
+    public static ItemInfo GetLevelBasedItem(ItemInfo Origin, ushort level, List<ItemInfo> ItemList)//等级
     {
         ItemInfo output = Origin;
         for (int i = 0; i < ItemList.Count; i++)
@@ -365,26 +428,28 @@ public static class Functions
         }
         return output;
     }
-    public static ItemInfo GetClassBasedItem(ItemInfo Origin, MirClass job, List<ItemInfo> ItemList)
+    public static ItemInfo GetClassBasedItem(ItemInfo Origin, RequiredClass requClass, List<ItemInfo> ItemList)//职业
     {
         for (int i = 0; i < ItemList.Count; i++)
         {
             ItemInfo info = ItemList[i];
             if (info.Name.StartsWith(Origin.Name))
-                if (((ushort)info.RequiredClass == (1 << (ushort)job)) && (Origin.RequiredGender == info.RequiredGender))
+                //if (((ushort)info.RequiredClass == (1 << (ushort)job)) && (Origin.RequiredGender == info.RequiredGender))
+                if (info.RequiredClass.HasFlag(requClass) && Origin.RequiredClass != info.RequiredClass && Origin.RequiredGender == info.RequiredGender)
                     return info;
         }
         return Origin;
     }
 
-    public static ItemInfo GetClassAndLevelBasedItem(ItemInfo Origin, MirClass job, ushort level, List<ItemInfo> ItemList)
+    public static ItemInfo GetClassAndLevelBasedItem(ItemInfo Origin, RequiredClass requClass, ushort level, List<ItemInfo> ItemList)//职业和等级
     {
         ItemInfo output = Origin;
         for (int i = 0; i < ItemList.Count; i++)
         {
             ItemInfo info = ItemList[i];
             if (info.Name.StartsWith(Origin.Name))
-                if ((ushort)info.RequiredClass == (1 << (ushort)job))
+                if (info.RequiredClass.HasFlag(requClass) && Origin.RequiredClass != info.RequiredClass)
+                    //if ((ushort)info.RequiredClass == (1 << (ushort)job))
                     if ((info.RequiredType == RequiredType.Level) && (info.RequiredAmount <= level) && (output.RequiredAmount <= info.RequiredAmount) && (Origin.RequiredGender == info.RequiredGender))
                         output = info;
         }

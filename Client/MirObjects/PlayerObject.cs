@@ -46,29 +46,9 @@ namespace Client.MirObjects
         {
             get
             {
-                switch (Weapon / Globals.ClassWeaponCount)
-                {
-                    default:
-                        return Class == MirClass.法师 || Class == MirClass.战士 || Class == MirClass.道士;
-                    case 1:
-                        return Class == MirClass.刺客;
-                    case 2:
-                        return Class == MirClass.弓手;
-                    case 3://stupple
-                        return Class == MirClass.碧血战士;
-                    case 4:
-                        return Class == MirClass.虹玄法师;
-                    case 5:
-                        return Class == MirClass.翊仙道士;
-                    case 6:
-                        return Class == MirClass.飞燕刺客;
-                    case 7:
-                        return Class == MirClass.暗鬼弓手;
-
-                }
+                return Functions.HasClassWeapon(Weapon, Class);
             }
         }
-
         public bool HasFishingRod
         {
             get
@@ -1529,6 +1509,8 @@ namespace Client.MirObjects
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10 + (Gender == MirGender.Male ? 0 : 1));
                                 break;
                             case Spell.风剑术:
+                                if (!HasClassWeapon)  //刺客单手武器
+                                    Frames.TryGetValue(MirAction.Attack1, out Frame);
                                 FrameInterval = (int)(FrameInterval * 0.46f); //46% Animation Speed
                                 EffectFrameInterval = (int)(EffectFrameInterval * 0.46f);
                                 action = new QueuedAction { Action = MirAction.Attack4, Direction = Direction, Location = CurrentLocation, Params = new List<object>() };
@@ -1568,6 +1550,8 @@ namespace Client.MirObjects
                         switch (Spell)
                         {
                             case Spell.风剑术:
+                                if (!HasClassWeapon)  //刺客单手武器
+                                    Frames.TryGetValue(MirAction.Attack1, out Frame);
                                 FrameInterval = (int)(FrameInterval * 0.46f); //46% Animation Speed
                                 EffectFrameInterval = (int)(EffectFrameInterval * 0.46f);
                                 SoundManager.PlaySound(20000 + (ushort)Spell * 10 + 1);

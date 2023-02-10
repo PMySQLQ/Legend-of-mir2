@@ -807,6 +807,43 @@ public class GameShopItem
     {
     }
 
+    public void UpdateItem(GameShopItem g)  //刷新
+    {
+        ItemIndex = g.ItemIndex;
+        GIndex = g.GIndex;
+        Info = g.Info;
+        GoldPrice = g.GoldPrice;
+        CreditPrice = g.CreditPrice;
+        Count = g.Count;
+        Class = g.Class;
+        Category = g.Category;
+        Stock = g.Stock;
+        iStock = g.iStock;
+        Deal = g.Deal;
+        TopItem = g.TopItem;
+        Date = g.Date;
+    }
+    public static GameShopItem CloneItem(GameShopItem g)
+    {
+        var n = new GameShopItem
+        {
+            ItemIndex = g.ItemIndex,
+            GIndex = g.GIndex,
+            Info = g.Info,
+            GoldPrice = g.GoldPrice,
+            CreditPrice = g.CreditPrice,
+            Count = g.Count,
+            Class = g.Class,
+            Category = g.Category,
+            Stock = g.Stock,
+            iStock = g.iStock,
+            Deal = g.Deal,
+            TopItem = g.TopItem,
+            Date = g.Date,
+        };
+
+        return n;
+    }
     public GameShopItem(BinaryReader reader, int version = int.MaxValue, int Customversion = int.MaxValue)
     {
         ItemIndex = reader.ReadInt32();

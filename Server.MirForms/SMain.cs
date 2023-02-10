@@ -455,5 +455,39 @@ namespace Server
         {
             Envir.IPBlocks.Clear();
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            int u = 0;
+
+            Envir.GameShopList.Clear();//清空商城物品
+            foreach (var NewItem in EditEnvir.GameShopList)
+            {
+                var OldItem = Envir.GameShopList.Find(x => x.GIndex == NewItem.GIndex);
+                if (OldItem != null)
+                {
+                    OldItem.UpdateItem(NewItem);
+                }
+                else
+                {
+                    var CloneItem = GameShopItem.CloneItem(NewItem);
+                    Envir.GameShopList.Add(CloneItem);
+                    u++;
+                }
+            }
+
+            SMain.Enqueue("[Gameshop DataBase] 物品总数:" + Envir.GameShopList.Count.ToString());
+            SMain.Enqueue("[Gameshop DataBase] " + (Envir.GameShopList.Count - u).ToString() + " 已更新");
+            SMain.Enqueue("[Gameshop DataBase] " + u.ToString() + " 已添加");
+
+            foreach (var p in Envir.Players)// 更新玩家物品的所有信息
+            {
+                if (p.Info == null) continue;
+
+                p.GetGameShop();
+
+            }
+
+        }
     }
 }
