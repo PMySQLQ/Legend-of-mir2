@@ -8391,7 +8391,7 @@ namespace Client.MirScenes
             #endregion
 
             #region FASTRUN
-            minValue = realItem.CanFastRun==true?1:0;
+            minValue = realItem.CanFastRun == true ? 1:0;
             maxValue = 0;
             addValue = 0;
 
