@@ -8666,6 +8666,63 @@ namespace Client.MirScenes
             }
             return null;
         }
+
+        public static string RequiredClassToString(RequiredClass classType)
+        {
+            if (classType == RequiredClass.战士)
+                return "战士";
+            else if (classType == RequiredClass.法师)
+                return "法师";
+            else if (classType == RequiredClass.道士)
+                return "道士";
+            else if (classType == RequiredClass.刺客)
+                return "刺客";
+            else if (classType == RequiredClass.弓手)
+                return "弓手";
+            else if (classType == RequiredClass.战法道)
+                return "战士/法师/道士";
+            else if (classType == RequiredClass.普通去弓全职业)
+                return "战士/法师/道士/刺客";
+            else if (classType == RequiredClass.非仙全职业)
+                return "战士/法师/道士/刺客/弓手";
+            else if (classType == RequiredClass.碧血战士)
+                return "碧血战士";
+            else if (classType == RequiredClass.虹玄法师)
+                return "虹玄法师";
+            else if (classType == RequiredClass.翊仙道士)
+                return "翊仙道士";
+            else if (classType == RequiredClass.飞燕刺客)
+                return "飞燕刺客";
+            else if (classType == RequiredClass.暗鬼弓手)
+                return "暗鬼弓手";
+            else if (classType == RequiredClass.战仙)
+                return "战士/碧血战士";
+            else if (classType == RequiredClass.法仙)
+                return "法师/虹玄法师";
+            else if (classType == RequiredClass.道仙)
+                return "道士/翊仙道士";
+            else if (classType == RequiredClass.刺仙)
+                return "刺客/飞燕刺客";
+            else if (classType == RequiredClass.弓仙)
+                return "弓手/暗鬼弓手";
+            else if (classType == RequiredClass.飞升战法道)
+                return "碧血战士/虹玄法师/翊仙道士";
+            else if (classType == RequiredClass.飞升全职业)
+                return "碧血战士/虹玄法师/翊仙道士/飞燕刺客/暗鬼弓手";
+            else if (classType == RequiredClass.飞升去弓全职业)
+                return "碧血战士/虹玄法师/翊仙道士/飞燕刺客";
+
+            else if (classType == RequiredClass.所有战法道)
+                return "战士/法师/道士/碧血战士/虹玄法师/翊仙道士";
+
+            else if (classType == RequiredClass.所有去弓)
+                return "战士/法师/道士/刺客/碧血战士/虹玄法师/翊仙道士/飞燕刺客";
+
+            else if (classType == RequiredClass.None)
+                return "全职业";
+            else
+                return "全职业";
+        }
         public MirControl NeedInfoLabel(UserItem item, bool Inspect = false)
         {
             ushort level = Inspect ? InspectDialog.Level : MapObject.User.Level;
@@ -8772,6 +8829,8 @@ namespace Client.MirScenes
                 count++;
                 Color colour = Color.White;
 
+    
+
                 switch (MapObject.User.Class)
                 {
                     case MirClass.战士:
@@ -8824,7 +8883,7 @@ namespace Client.MirScenes
                     Location = new Point(4, ItemLabel.DisplayRectangle.Bottom),
                     OutLine = true,
                     Parent = ItemLabel,
-                    Text = string.Format(GameLanguage.ClassRequired, realItem.RequiredClass)
+                    Text = string.Format(GameLanguage.ClassRequired, RequiredClassToString(realItem.RequiredClass))
                 };
 
                 ItemLabel.Size = new Size(Math.Max(ItemLabel.Size.Width, CLASSLabel.DisplayRectangle.Right + 4),
@@ -11057,7 +11116,7 @@ namespace Client.MirScenes
                         switch (MapDarkLight)
                         {
                             case 1:
-                                darkness = Color.FromArgb(255, 20, 20, 20);
+                                darkness = Color.FromArgb(255, 20, 23, 52);
                                 break;
                             case 2:
                                 darkness = Color.LightSlateGray;
@@ -11069,14 +11128,16 @@ namespace Client.MirScenes
                                 darkness = Color.Goldenrod;
                                 break;
                             default:
-                                darkness = Color.Black;
+                                darkness = Color.FromArgb(255, 20, 23, 52);
                                 break;
                         }
                     }
                     break;
                 case LightSetting.半晚:
+                    darkness = Color.FromArgb(255, 128, 119, 65);
+                    break;
                 case LightSetting.黎明:
-                    darkness = Color.FromArgb(255, 50, 50, 50);
+                    darkness = Color.FromArgb(255, 71, 76, 128);
                     break;
                 default:
                 case LightSetting.白天:
