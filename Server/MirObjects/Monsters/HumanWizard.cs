@@ -52,7 +52,7 @@ namespace Server.MirObjects.Monsters
             if (Master != null && Master is PlayerObject && Envir.Time > DecreaseMPTime)
             {
                 DecreaseMPTime = Envir.Time + 1000;
-                if (!Master.Dead) ((PlayerObject)Master).ChangeMP(-10);
+                //if (!Master.Dead) ((PlayerObject)Master).ChangeMP(-10);//法师分身术优化蓝耗
 
                 if (((PlayerObject)Master).MP <= 0) Die();
             }
@@ -121,7 +121,7 @@ namespace Server.MirObjects.Monsters
         {
             if (Master != null && Master is PlayerObject)
             {
-                ((PlayerObject)Master).ChangeMP(amount);
+                ((PlayerObject)Master).ChangeMP(-Envir.Random.Next(10, 21));//法师分身术优化蓝耗
                 return;
             }
             base.ChangeHP(amount);
