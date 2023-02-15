@@ -50,17 +50,17 @@ namespace Client.MirObjects
                     break;
                 case Spell.火墙:
                     BodyLibrary = Libraries.Magic;
-                    DrawFrame = 1630;
-                    FrameInterval = 120;
-                    FrameCount = 6;
-                    Light = 3;
+                    DrawFrame = 4432;
+                    FrameInterval = 140;
+                    FrameCount = 8;
+                    Light = 1;
                     Blend = true;
                     break;
                 case Spell.毒雾:
                     BodyLibrary = Libraries.Magic2;
-                    DrawFrame = 1650;
-                    FrameInterval = 120;
-                    FrameCount = 20;
+                    DrawFrame = 3029;
+                    FrameInterval = 180;
+                    FrameCount = 12;
                     Light = 3;
                     Blend = true;
                     break;
@@ -73,9 +73,9 @@ namespace Client.MirObjects
                 case Spell.天霜冰环:
                     CurrentLocation.Y = Math.Max(0, CurrentLocation.Y - 20);
                     BodyLibrary = Libraries.Magic2;
-                    DrawFrame = 1550;
-                    FrameInterval = 100;
-                    FrameCount = 30;
+                    DrawFrame = 3133;
+                    FrameInterval = 150;
+                    FrameCount = 18;
                     Light = 3;
                     Blend = true;
                     Repeat = false;
@@ -91,12 +91,12 @@ namespace Client.MirObjects
                     DrawBehind = true;    // 绘制底层技能
                     break;
                 case Spell.流星火雨:
-                    MapControl.Effects.Add(new Effect(Libraries.Magic2, 1600, 10, 800, CurrentLocation) { Repeat = true, RepeatUntil = CMain.Time + 3000 });
+                    //MapControl.Effects.Add(new Effect(Libraries.Magic2, 1600, 10, 800, CurrentLocation) { Repeat = true, RepeatUntil = CMain.Time + 3000 });
                     CurrentLocation.Y = Math.Max(0, CurrentLocation.Y - 20);
                     BodyLibrary = Libraries.Magic2;
-                    DrawFrame = 1610;
-                    FrameInterval = 100;
-                    FrameCount = 30;
+                    DrawFrame = 2800;
+                    FrameInterval = 150;
+                    FrameCount = 18;
                     Light = 3;
                     Blend = true;
                     Repeat = false;

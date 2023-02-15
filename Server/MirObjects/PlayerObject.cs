@@ -3891,6 +3891,9 @@ namespace Server.MirObjects
 
                             player.CheckItem(item);
 
+
+                            if (player == null || player.Info == null || player.Node == null) continue;
+
                             if (!player.Connection.SentChatItem.Contains(item))
                             {
                                 player.Enqueue(new S.NewChatItem { Item = item });

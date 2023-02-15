@@ -134,6 +134,7 @@ namespace Client.MirObjects
 
         public static List<MirLabel> DamageLabelList = new List<MirLabel>();
         public List<Damage> Damages = new List<Damage>();
+        public List<Flap> Flaps = new List<Flap>();
 
         protected Point GlobalDisplayLocationOffset
         {
@@ -239,12 +240,12 @@ namespace Client.MirObjects
                 case BuffType.EnergyShield:
                     BuffEffect effect;
 
-                    Effects.Add(effect = new BuffEffect(Libraries.Magic2, 1880, 9, 900, this, true, type) { Repeat = false });
+                    Effects.Add(effect = new BuffEffect(Libraries.Magic4, 1085, 9, 900, this, true, type) { Repeat = false });
                     SoundManager.PlaySound(20000 + (ushort)Spell.先天气功 * 10 + 0);
 
                     effect.Complete += (o, e) =>
                     {
-                        Effects.Add(new BuffEffect(Libraries.Magic2, 1900, 2, 800, this, true, type) { Repeat = true });
+                        Effects.Add(new BuffEffect(Libraries.Magic4, 1094, 4, 800, this, true, type) { Repeat = true });
                     };
                     break;
                 case BuffType.MagicBooster:
@@ -438,9 +439,21 @@ namespace Client.MirObjects
         }
         public void DrawDamages()
         {
+         
+            for (int i = Flaps.Count - 1; i >= 0; i--)
+            {
+                Flap info = Flaps[i];
+
+                if (CMain.Time > info.ExpireTime)
+                    Flaps.RemoveAt(i);
+                else
+                    info.Draw(DisplayRectangle.Location);
+            }
+
             for (int i = Damages.Count - 1; i >= 0; i--)
             {
                 Damage info = Damages[i];
+
                 if (CMain.Time > info.ExpireTime)
                 {
                     if (info.DamageLabel != null)

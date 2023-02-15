@@ -2115,6 +2115,7 @@ namespace Client.MirScenes.Dialogs
             GameScene.Scene.MainDialog.PModeLabel.Location = new Point((GameScene.Scene.MiniMapDialog.Location.X - 3) - GameScene.Scene.MainDialog.Location.X,
             (GameScene.Scene.MiniMapDialog.Size.Height + 180) - Settings.ScreenHeight);
 
+
             if (GameScene.Scene.NewMail)
             {
                 double time = (CMain.Time) / 100D;

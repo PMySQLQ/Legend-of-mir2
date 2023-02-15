@@ -2319,7 +2319,7 @@ namespace Server.MirObjects
             {
                 Broadcast(new S.ObjectEffect { ObjectID = ObjectID, Effect = SpellEffect.Critical });
                 damage = Math.Min(int.MaxValue, damage + (int)Math.Floor(damage * (((double)attacker.Stats[Stat.CriticalDamage] / (double)Settings.CriticalDamageWeight) * 10)));
-                BroadcastDamageIndicator(DamageType.Critical);
+                BroadcastDamageIndicator(DamageType.Critical, damage);
             }
 
             if (Target != this && attacker.IsAttackTarget(this))

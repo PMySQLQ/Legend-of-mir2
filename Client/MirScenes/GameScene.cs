@@ -3131,6 +3131,8 @@ namespace Client.MirScenes
                     ChatDialog.ReceiveChat(GameLanguage.AttackMode_All, ChatType.Hint);
                     break;
             }
+
+
         }
         private void ChangePMode(S.ChangePMode p)
         {
@@ -3305,12 +3307,12 @@ namespace Client.MirScenes
                         effect.Clear();
                         effect.Remove();
 
-                        User.Effects.Add(effect = new BuffEffect(Libraries.Magic2, 1890, 6, 600, User, true, BuffType.EnergyShield) { Repeat = false });
+                        User.Effects.Add(effect = new BuffEffect(Libraries.Magic4, 1105, 3, 600, User, true, BuffType.EnergyShield) { Repeat = false });
                         SoundManager.PlaySound(20000 + (ushort)Spell.先天气功 * 10 + 1);
                         
                         effect.Complete += (o, e) =>
                         {
-                            User.Effects.Add(new BuffEffect(Libraries.Magic2, 1900, 2, 800, User, true, BuffType.EnergyShield) { Repeat = true });
+                            User.Effects.Add(new BuffEffect(Libraries.Magic4, 1094, 2, 800, User, true, BuffType.EnergyShield) { Repeat = true });
                         };
 
 
@@ -3354,12 +3356,12 @@ namespace Client.MirScenes
                             effect.Clear();
                             effect.Remove();
 
-                            ob.Effects.Add(effect = new BuffEffect(Libraries.Magic2, 1890, 6, 600, ob, true, BuffType.EnergyShield) { Repeat = false });
+                            ob.Effects.Add(effect = new BuffEffect(Libraries.Magic4, 1105, 3, 600, ob, true, BuffType.EnergyShield) { Repeat = false });
                             SoundManager.PlaySound(20000 + (ushort)Spell.先天气功 * 10 + 1);
 
                             effect.Complete += (o, e) =>
                             {
-                                ob.Effects.Add(new BuffEffect(Libraries.Magic2, 1900, 2, 800, ob, true, BuffType.EnergyShield) { Repeat = true });
+                                ob.Effects.Add(new BuffEffect(Libraries.Magic4, 1094, 4, 800, ob, true, BuffType.EnergyShield) { Repeat = true });
                             };
 
                             break;
@@ -3385,19 +3387,20 @@ namespace Client.MirScenes
                     switch (p.Type)
                     {
                         case DamageType.Hit: //add damage level colours
-                            obj.Damages.Add(new Damage(p.Damage.ToString("#,##0"), 1000, obj.Race == ObjectType.Player ? Color.Red : Color.White, 50));
+                            obj.Flaps.Add(new Flap(User == obj ? FlapType.Red : obj.Race == ObjectType.Player ? FlapType.Red : FlapType.Green, p.Damage));
                             break;
                         case DamageType.Miss:
-                            obj.Damages.Add(new Damage("躲避", 1200, obj.Race == ObjectType.Player ? Color.LightCoral : Color.LightGray, 50));
+                            //obj.Damages.Add(new Damage("躲避", 1200, obj.Race == ObjectType.Player ? Color.LightCoral : Color.LightGray, 50));
+                            obj.Flaps.Add(new Flap(FlapType.Miss, 1200));
                             break;
                         case DamageType.Critical:
-                            obj.Damages.Add(new Damage("暴击", 1000, obj.Race == ObjectType.Player ? Color.DarkRed : Color.DarkRed, 50) { Offset = 15 });
+                            obj.Flaps.Add(new Flap(obj.Race == ObjectType.Player ? FlapType.Yellow : FlapType.Yellow, p.Damage));
                             break;
                         case DamageType.Heal:
-                            obj.Damages.Add(new Damage("＋" + p.Damage.ToString("#,##0"), 1000, obj.Race == ObjectType.Player ? Color.Green : Color.White, 50));
+                            obj.Flaps.Add(new Flap(User == obj ? FlapType.Red : obj.Race == ObjectType.Player ? FlapType.Red : FlapType.Red, 50));
                             break;
                         case DamageType.Mana:
-                            obj.Damages.Add(new Damage("+" + p.Damage.ToString("#,##0"), 1000, obj.Race == ObjectType.Player ? Color.Blue : Color.White, 50));
+                            obj.Flaps.Add(new Flap(User == obj ? FlapType.Blue : obj.Race == ObjectType.Player ? FlapType.Blue : FlapType.Blue, 50));
                             break;
                         case DamageType.MagicalHit://神奇一击
                             obj.Damages.Add(new Damage(p.Damage.ToString("#,##0"), 1000, Color.DodgerBlue, 100));
@@ -4724,7 +4727,7 @@ namespace Client.MirScenes
                             player.ShieldEffect.Remove();
                         }
                         player.MagicShield = true;
-                        player.Effects.Add(player.ShieldEffect = new Effect(Libraries.Magic, 3890, 3, 600, ob) { Repeat = true });
+                        player.Effects.Add(player.ShieldEffect = new Effect(Libraries.Magic, 4074, 3, 600, ob) { Repeat = true });
                         break;
                     case SpellEffect.MagicShieldDown:
                         if (ob.Race != ObjectType.Player && ob.Race != ObjectType.Hero) return;
