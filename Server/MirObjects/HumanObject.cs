@@ -693,11 +693,7 @@ namespace Server.MirObjects
                 }
             }
 
-            if (healthRegen > 0)
-            {
-                ChangeHP(healthRegen);
-                BroadcastDamageIndicator(DamageType.Heal, healthRegen);
-            }
+            if (healthRegen > 0) ChangeHP(healthRegen);
 
             if (HP == Stats[Stat.HP])
             {
@@ -705,12 +701,7 @@ namespace Server.MirObjects
                 HealAmount = 0;
             }
 
-            if (manaRegen > 0)
-            {
-                BroadcastDamageIndicator(DamageType.Mana, manaRegen);
-                ChangeMP(manaRegen);
-            }
-
+            if (manaRegen > 0) ChangeMP(manaRegen);
             if (MP == Stats[Stat.MP]) PotManaAmount = 0;
         }
         private void ProcessPoison()
@@ -752,7 +743,7 @@ namespace Server.MirObjects
                         }
 
                         PoisonDamage(-poison.Value, poison.Owner);
-                        BroadcastDamageIndicator(DamageType.Hit, -poison.Value);
+                        BroadcastDamageIndicator(DamageType.GreenPoison, -poison.Value);
 
                         if (Dead) break;
                         RegenTime = Envir.Time + RegenDelay;

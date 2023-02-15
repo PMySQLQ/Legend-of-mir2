@@ -2983,7 +2983,7 @@ namespace Client.MirObjects
                                         {
                                             dest = Functions.PointMove(dest, Direction, 1);
                                             if (!GameScene.Scene.MapControl.ValidPoint(dest)) break;
-                                            effect = new Effect(Libraries.Magic, 930, 6, 500, dest) { Rate = 0.7F };
+                                            effect = new Effect(Libraries.Magic4, 930, 6, 500, dest) { Rate = 0.7F };
 
                                             effect.SetStart(CMain.Time + i * 50);
                                             MapControl.Effects.Add(effect);
@@ -2997,7 +2997,7 @@ namespace Client.MirObjects
                                             {
                                                 dest = Functions.PointMove(dest, dir, 1);
                                                 if (!GameScene.Scene.MapControl.ValidPoint(dest)) break;
-                                                effect = new Effect(Libraries.Magic, 930, 6, 500, dest) { Rate = 0.7F };
+                                                effect = new Effect(Libraries.Magic4, 930, 6, 500, dest) { Rate = 0.7F };
 
                                                 effect.SetStart(CMain.Time + r * 50);
                                                 MapControl.Effects.Add(effect);
@@ -3009,7 +3009,7 @@ namespace Client.MirObjects
                                             {
                                                 dest = Functions.PointMove(dest, dir, 1);
                                                 if (!GameScene.Scene.MapControl.ValidPoint(dest)) break;
-                                                effect = new Effect(Libraries.Magic, 930, 6, 500, dest) { Rate = 0.7F };
+                                                effect = new Effect(Libraries.Magic4, 930, 6, 500, dest) { Rate = 0.7F };
 
                                                 effect.SetStart(CMain.Time + r * 50);
                                                 MapControl.Effects.Add(effect);
@@ -5072,7 +5072,7 @@ namespace Client.MirObjects
                             Libraries.Magic2.DrawBlend(3166 + ((int)Direction * 14) + FrameIndex, DrawLocation, Color.White, true, 1F);
                             break;
                         case Spell.狂风斩:
-                            Libraries.Magic2.DrawBlend(2817 + ((int)Direction * 10) + FrameIndex, DrawLocation, Color.White, true, 1F);
+                            Libraries.Magic4.DrawBlend(4720 + ((int)Direction * 10) + FrameIndex, DrawLocation, Color.White, true, 1F);
                             break;
                         case Spell.烈火剑法:
                             Libraries.Magic.DrawBlend(4258 + ((int)Direction * 10) + FrameIndex, DrawLocation, Color.White, true, 1F);

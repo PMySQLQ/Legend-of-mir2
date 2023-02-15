@@ -5369,9 +5369,9 @@ namespace Server.MirObjects
                             break;
                         case 1: //SunPotion
                             ChangeHP(item.Info.Stats[Stat.HP]);
-                            BroadcastDamageIndicator(DamageType.Heal, item.Info.Stats[Stat.HP]);
+                           // BroadcastDamageIndicator(DamageType.Heal, item.Info.Stats[Stat.HP]);
                             ChangeMP(item.Info.Stats[Stat.MP]);
-                            BroadcastDamageIndicator(DamageType.Mana, item.Info.Stats[Stat.MP]);
+                           // BroadcastDamageIndicator(DamageType.Mana, item.Info.Stats[Stat.MP]);
                             break;
                         case 2: //MysteryWater
                             if (UnlockCurse)

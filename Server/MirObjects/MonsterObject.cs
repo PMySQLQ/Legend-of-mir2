@@ -1335,7 +1335,7 @@ namespace Server.MirObjects
 
                         //ChangeHP(-poison.Value);
                         PoisonDamage(-poison.Value, poison.Owner);
-                        BroadcastDamageIndicator(DamageType.Hit, -poison.Value);
+                        BroadcastDamageIndicator(DamageType.GreenPoison, -poison.Value);
                         if (PoisonStopRegen)
                             RegenTime = Envir.Time + RegenDelay;
                         if (poison.Owner != null && Target == null)
