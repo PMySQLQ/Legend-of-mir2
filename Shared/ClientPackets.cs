@@ -2305,15 +2305,18 @@ namespace ClientPackets
         public int GIndex;
         public byte Quantity;
 
+        public int PType;
         protected override void ReadPacket(BinaryReader reader)
         {
             GIndex = reader.ReadInt32();
             Quantity = reader.ReadByte();
+            PType = reader.ReadInt32();
         }
         protected override void WritePacket(BinaryWriter writer)
         {
             writer.Write(GIndex);
             writer.Write(Quantity);
+            writer.Write(PType);
         }
     }
 

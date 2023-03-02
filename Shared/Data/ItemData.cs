@@ -803,6 +803,8 @@ public class GameShopItem
     public bool TopItem = false;
     public DateTime Date;
 
+    public bool CanBuyGold = false;
+    public bool CanBuyCredit = false;
     public GameShopItem()
     {
     }
@@ -822,6 +824,8 @@ public class GameShopItem
         Deal = g.Deal;
         TopItem = g.TopItem;
         Date = g.Date;
+        CanBuyCredit = g.CanBuyCredit;
+        CanBuyGold = g.CanBuyGold;
     }
     public static GameShopItem CloneItem(GameShopItem g)
     {
@@ -840,6 +844,8 @@ public class GameShopItem
             Deal = g.Deal,
             TopItem = g.TopItem,
             Date = g.Date,
+            CanBuyCredit = g.CanBuyCredit,
+            CanBuyGold = g.CanBuyGold,
         };
 
         return n;
@@ -865,6 +871,12 @@ public class GameShopItem
         Deal = reader.ReadBoolean();
         TopItem = reader.ReadBoolean();
         Date = DateTime.FromBinary(reader.ReadInt64());
+
+        if (version > 110)
+        {
+            CanBuyGold = reader.ReadBoolean();
+            CanBuyCredit = reader.ReadBoolean();
+        }
     }
 
     public GameShopItem(BinaryReader reader, bool packet = false)
@@ -882,6 +894,8 @@ public class GameShopItem
         Deal = reader.ReadBoolean();
         TopItem = reader.ReadBoolean();
         Date = DateTime.FromBinary(reader.ReadInt64());
+        CanBuyCredit = reader.ReadBoolean();
+        CanBuyGold = reader.ReadBoolean();
     }
 
     public void Save(BinaryWriter writer, bool packet = false)
@@ -899,6 +913,9 @@ public class GameShopItem
         writer.Write(Deal);
         writer.Write(TopItem);
         writer.Write(Date.ToBinary());
+        writer.Write(CanBuyCredit);
+        writer.Write(CanBuyGold);
+
     }
 
     public override string ToString()
